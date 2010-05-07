@@ -6,7 +6,7 @@
  */
 
 body {
-    background: #DDD url("../../global/img/bg.jpg") repeat-x;
+    background: #DDD url("../img/bg.jpg") repeat-x;
 }
 
 .shadow-box {
@@ -35,7 +35,7 @@ body {
 }
 
 #logo {
-    background: url("../../global/img/logo.png") no-repeat;
+    background: url("../img/logo.png") no-repeat;
     cursor: pointer;
     float: left;
     height: 60px;
