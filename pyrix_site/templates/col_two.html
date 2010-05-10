@@ -4,6 +4,17 @@
 {% block tpl_id %}tpl_col_two{% endblock %}
 
 {% block content %}
+  <div id="col2" class="span-20 last">
+    <div style="padding:10px">
+    {% block page_title %}<h2>{% page_attribute title %}</h2>{% endblock %}
+      {% block col_left %}
+        {% with "640" as width %}
+          {% placeholder col_left %}
+        {% endwith %}
+    {% endblock %}
+    </div>
+  </div>
+  
   <div id="col1" class="span-4">
     <div style="padding:10px">
       {% include "sidebar_submenu.html" %}
@@ -14,17 +25,6 @@
           {% placeholder col_sidebar %}
         {% endwith %}
       {% endblock %}
-    </div>
-  </div>
-
-  <div id="col2" class="span-20 last">
-    <div style="padding:10px">
-    {% block page_title %}<h2>{% page_attribute title %}</h2>{% endblock %}
-      {% block col_left %}
-        {% with "640" as width %}
-          {% placeholder col_left %}
-        {% endwith %}
-    {% endblock %}
     </div>
   </div>
 {% endblock %}
