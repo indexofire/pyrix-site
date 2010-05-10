@@ -4,7 +4,7 @@
 {% block tpl_id %}tpl_col_three{% endblock %}
 
 {% block content %}
-    <div id="col1" class="grid_4">	    
+    <div id="col1" class="span-4">	    
 		{% include "sidebar_submenu.html" %}	
 		{% block col_sidebar %}
 			{% with "220" as width %}
@@ -13,7 +13,7 @@
 		{% endblock %}
     </div>
 	
-    <div id="col2" class="grid_6 push_1">
+    <div id="col2" class="span-16">
     	{% block page_title %}<h1>{% page_attribute title %}</h1>{% endblock %}
 		{% block col_left %}
 			{% with "340" as width %}
@@ -22,7 +22,7 @@
 		{% endblock %}
     </div>
 	
-    <div id="col3" class="grid_4 push_2">
+    <div id="col3" class="span-4 last">
 		{% block col_right %}
 			{% with "220" as width %}
 				{% placeholder col_right %}
