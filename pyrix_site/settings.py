@@ -79,7 +79,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.page.CurrentPageMiddleware',
     #'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.media.PlaceholderMediaMiddleware',
-    #'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -120,7 +120,7 @@ INSTALLED_APPS = (
     'reversion',
     'dbgettext',
     'cms_content',
-    #'debug_toolbar',
+    'debug_toolbar',
 )
 
 try:
