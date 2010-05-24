@@ -122,7 +122,7 @@ INSTALLED_APPS = (
     'cms_content',
     #'debug_toolbar',
     #'tinymce',
-    'markitup',
+    #'markitup',
 )
 
 try:
