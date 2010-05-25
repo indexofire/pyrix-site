@@ -126,7 +126,7 @@ a:hover {
 
 /* Breadcrumb Settings */
 #breadcrumb {
-    margin-left: 6px;
+    padding: 0px 6px;
 }
 
 #breadcrumb ul {
@@ -134,6 +134,7 @@ a:hover {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
+    
 }
 
 #breadcrumb ul li {

@@ -32,7 +32,7 @@ $(document).ready(function(){
     <div id="main_menu">
     {% spaceless %}
       <ul>
-      {% show_menu 0 2 100 100 %}
+      {% show_menu 0 1 0 0 %}
       </ul>
     {% endspaceless %}
     </div>
@@ -41,11 +41,12 @@ $(document).ready(function(){
 <!-- heard ends -->
 
 <!-- main start -->
-<div class="container">
-  <div class="span-24 last shadow-box">
-    <div class="span-24 last" id="breadcrumb">
+<div class="container shadow-box">
+  <div class="span-24 last">
+    <div id="breadcrumb">
       <ul>{% show_breadcrumb %}</ul>
     </div>
+    <div class="span-24 last" style="border-bottom: 1px dotted #9C9C9C; display: block;"></div>
     <div class="span-24 last">
       {% block content %}{% endblock content %}
     </div>
@@ -54,7 +55,7 @@ $(document).ready(function(){
   </div>
 </div>
 <!-- main ends -->
-
+<div style="height:60px"></div>
 <!-- foot start -->
 <div id="footer">
   <div class="det">
