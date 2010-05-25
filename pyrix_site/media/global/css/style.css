@@ -1,16 +1,19 @@
-/* Page Style
- *
+/* ----------
+ * Page Style
+ * ----------
  * Global CSS
- *
+ * ----------
  * Author: Mark Renton <indexofire@gmail.com>
+ * ------------------------------------------
  */
 
 body {
-    background: #DDD url("../img/bg.jpg") repeat-x;
+    /*background: #DDD url("../img/bg.jpg") repeat-x;*/
+    background: #EFEFEF;
 }
 
 .shadow-box {
-    background: #FFF;
+    background: #FEFFFF;
     border-radius: 1px;
     box-shadow: 0px 0px 3px #ACACAC;
     -webkit-border-radius: 1px;
@@ -68,20 +71,15 @@ a:hover {
 }
 
 /* Main Menu Settings */
-#main_menu {
-    margin: 0px;
-    padding: 0px;
-}
-
 #main_menu ul {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
-    display: block;
 }
 
 #main_menu ul li {
     float: left;
+    margin-right: 20px;
 }
 
 #main_menu ul li a.menu {
@@ -90,10 +88,8 @@ a:hover {
 
 #main_menu ul li.menu_selected a.menu,
 #main_menu ul li a.ancestor {
-    color: #ACACAC;
-    padding: 5px 10px 6px 10px;
-}
 
+}
 
 #main_menu ul li a.menu:hover {
     color: #3C3C3C;
@@ -106,7 +102,7 @@ a:hover {
 #main_menu ul li.menu_selected a,
 #main_menu ul li.menu_selected a:visited {
     color: #3C3C3C;
-    background: #F0F0F0;
+    text-decoration: underline;
     display: block;
 }
 
@@ -115,8 +111,6 @@ a:hover {
     background: #F0F0F0;
     display: block;
 }
-
-#main_menu
 
 /* Login Menu */
 #login {
@@ -132,8 +126,7 @@ a:hover {
 
 /* Breadcrumb Settings */
 #breadcrumb {
-    padding: 0px;
-    margin: 0px;
+    margin-left: 6px;
 }
 
 #breadcrumb ul {

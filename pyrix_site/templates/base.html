@@ -20,7 +20,7 @@ $(document).ready(function(){
 	$.jFastMenu("#main_menu");
 });
 //]]>
-</script> 
+</script>
 <body>
 
 <!-- head start -->
@@ -32,7 +32,7 @@ $(document).ready(function(){
     <div id="main_menu">
     {% spaceless %}
       <ul>
-      {% show_menu 0 1 100 100 %}
+      {% show_menu 0 2 100 100 %}
       </ul>
     {% endspaceless %}
     </div>
@@ -42,30 +42,20 @@ $(document).ready(function(){
 
 <!-- main start -->
 <div class="container">
-  <div class="span-24 last">
-    <!--<div id="main_menu">
-    {% spaceless %}
-      <ul>
-      {% show_menu 0 0 100 100 %}
-      </ul>
-    {% endspaceless %}
-    </div>-->
-  </div>
-  <div class="span-24 last shadow-box" style="margin-bottom:20px">
-    <div id="breadcrumb">
+  <div class="span-24 last shadow-box">
+    <div class="span-24 last" id="breadcrumb">
       <ul>{% show_breadcrumb %}</ul>
     </div>
+    <div class="span-24 last">
+      {% block content %}{% endblock content %}
+    </div>
   </div>
-  <div class="span-24 last shadow-box">
-  {% block content %}{% endblock content %}
+  <div class="span-24 last" style="height:120px">
   </div>
 </div>
+<!-- main ends -->
 
-<div style="height:100px">
-</div>
-<!--  main ends -->
-
-<!-- footer start
+<!-- foot start -->
 <div id="footer">
   <div class="det">
   <div class="container">
@@ -73,7 +63,7 @@ $(document).ready(function(){
   </div>
   </div>
 </div>
-footer ends   -->
+<!-- foot end -->
 
 </body>
 </html>
