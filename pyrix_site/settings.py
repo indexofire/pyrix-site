@@ -66,6 +66,7 @@ SECRET_KEY = '87=llta=149jepze@g#fa^m#hzu^mv%@8+%fd5p)*1$(*tvbh6'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,7 +80,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.page.CurrentPageMiddleware',
     #'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.media.PlaceholderMediaMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -120,9 +121,10 @@ INSTALLED_APPS = (
     'reversion',
     'dbgettext',
     'cms_content',
-    'debug_toolbar',
+    #'debug_toolbar',
     #'tinymce',
     #'markitup',
+    'filer',
 )
 
 try:
