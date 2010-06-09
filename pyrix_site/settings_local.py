@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 gettext = lambda s: s
 
 # django-cms-2.0 Settings:
