@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     #(r'^blog/', include('zinnia.urls')),
     #(r'^comment/', include('django.contrib.comments.urls')),
     #(r'^forum/', include('forum.urls')),
+    (r'^cache/', include('django_memcached.urls')),
 )
 
 if settings.DEBUG:
