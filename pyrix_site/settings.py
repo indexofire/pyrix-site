@@ -8,7 +8,7 @@ ADMINS = (
     ('Mark Renton', 'indexofire@gmail.com'),
 )
 
-CACHE_BACKEND = 'locmem://127.0.0.1:11211/'
+#CACHE_BACKEND = 'locmem://127.0.0.1:11211/'
 
 MANAGERS = ADMINS
 
@@ -107,8 +107,8 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
+    #'django.contrib.sites',
+    #'django.contrib.messages',
     'django.contrib.admin',
     'cms',
     'mptt',
@@ -126,7 +126,7 @@ INSTALLED_APPS = (
     #'debug_toolbar',
     #'tinymce',
     #'markitup',
-    'filer',
+    #'filer',
     'django_memcached',
 )
 
@@ -134,4 +134,3 @@ try:
     from settings_local import *
 except ImportError:
     pass
-
