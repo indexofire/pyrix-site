@@ -127,7 +127,7 @@ INSTALLED_APPS = (
     #'tinymce',
     #'markitup',
     #'filer',
-    'django_memcached',
+    #'django_memcached',
 )
 
 try:
