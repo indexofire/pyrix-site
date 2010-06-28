@@ -12,9 +12,7 @@ urlpatterns = patterns('',
     (r'^jsi18n/(?P<packages>\S+?)/$', 'django.views.i18n.javascript_catalog'),
     #(r'^users/', include('usercenter.urls')),
     #(r'^blog/', include('zinnia.urls')),
-    #(r'^comment/', include('django.contrib.comments.urls')),
-    #(r'^forum/', include('forum.urls')),
-    #(r'^cache/', include('django_memcached.urls')),
+    (r'^comment/', include('django.contrib.comments.urls')),
 )
 
 if settings.DEBUG:

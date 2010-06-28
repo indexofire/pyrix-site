@@ -14,7 +14,7 @@ CMS_MENU_TITLE_OVERWRITE = True
 CMS_HIDE_UNTRANSLATED = False
 CMS_URL_OVERWRITE = True
 LANGUAGES = (
-    #('en-us', gettext('English')),
+    ('en', gettext('English')),
     ('zh-cn', gettext("Chinese")),
 )
 CMS_TEMPLATES = (
@@ -62,3 +62,5 @@ CMS_CONTENT_ROOT_URL = '/cms/'
 CMS_CONTENT_CODE_HIGHLIGHT = True
 CMS_CONTENT_CODE_HIGHLIGHT_CSS = 'code_highlight'
 CMS_CONTENT_CODE_HIGHLIGHT_LINENOS = True
+
+AKISMET_API_KEY = '773ea92115d8'
