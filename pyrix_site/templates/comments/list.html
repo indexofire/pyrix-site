@@ -1,0 +1,9 @@
+<ul id="comments">
+{% for comment in comment_list %}
+<li id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
+  <span>{{ comment.name|escape }}</span>
+  <div>{{ comment.comment|escape|linebreaksbr }}</div>
+  <span>{{ comment.submit_date|date:"Y.m.d" }}</span>
+</li>
+{% endfor %}
+</ul>

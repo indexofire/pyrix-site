@@ -24,17 +24,16 @@
 <!-- main start -->
 <div class="container shadow-box">
   <div class="span-24 last">
-    <div id="breadcrumb">
+    <div id="breadcrumb" style="border-bottom: 1px dashed #ACACAC; height:28px; display: block;">
       <ul>{% show_breadcrumb %}</ul>
     </div>
-    <div class="span-24 last" style="border-bottom: 1px dashed #ACACAC; display: block;"></div>
     <div class="span-24 last" style="border-bottom: 1px dashed #ACACAC; display: block;">
       {% block content %}{% endblock content %}
     </div>
   </div>
-  <div class="span-24 last" style="height:30px">
+  <div class="span-24 last" style="height:28px">
+    <p>show something</p>
   </div>
-</div>
 </div>
 <!-- main ends -->
 {% endblock body %}
