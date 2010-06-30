@@ -83,7 +83,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.media.PlaceholderMediaMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'cms_content.middleware.FrontEndPublishMiddleware',
+    #'cms_content.middleware.FrontEndPublishMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
