@@ -28,6 +28,7 @@ CMS_PLACEHOLDER_CONF = {
         'plugins': (
             'TextPlugin',
             'LinkPlugin',
+            'LatestArticlePlugin',
         ),
         'name': gettext("sidebar column"),
     },

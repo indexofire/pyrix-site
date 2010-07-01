@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'cms.plugins.link',
     'cms.plugins.picture',
     'cmsplugin_rst',
+    'cms_content.plugins',
     #'south',
     'reversion',
     'dbgettext',

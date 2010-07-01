@@ -9,11 +9,9 @@
   </div>
   <div class="right">
     <div id="main_menu">
-    {% spaceless %}
       <ul>
       {% show_menu 0 0 %}
       </ul>
-    {% endspaceless %}
     </div>
   </div>
 </div>
@@ -24,16 +22,19 @@
 <!-- main start -->
 <div class="container shadow-box">
   <div class="span-24 last">
-    <div id="breadcrumb" style="border-bottom: 1px dashed #ACACAC; height:28px; display: block;">
-      <ul>{% show_breadcrumb %}</ul>
-    </div>
-    <div class="span-24 last" style="border-bottom: 1px dashed #ACACAC; display: block;">
-      {% block content %}{% endblock content %}
-    </div>
+      <div class="box"><ul id="breadcrumb">{% show_breadcrumb %}</ul></div>
   </div>
-  <div class="span-24 last" style="height:28px">
-    <p style="padding: 4px 8px">
-      <a href="{% url article-add %}">add article</a> | 
+</div>
+
+<div style="height:20px"></div>
+
+<div class="container shadow-box">
+  <div class="span-24 last">
+      {% block content %}{% endblock content %}
+  </div>
+  <div class="span-24 last" style="border-top: 1px dashed #ACACAC;">
+    <p class="box" style="margin:0px">
+      <a href="add/">add article</a> | 
       <a href="delete/">delete article</a>
     </p>
   </div>

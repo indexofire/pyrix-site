@@ -8,13 +8,12 @@
  */
 
 body {
-    /*background: #DDD url("../img/bg.jpg") repeat-x;*/
     background: #EFEFEF;
 }
 
 .shadow-box {
     background: #FEFEFE;
-    border: 1px solid #BCBCBC;
+    border: 1px solid #9F9F9F;
     border-radius: 2px;
     box-shadow: 0px 0px 1px #ACACAC;
     -webkit-border-radius: 2px;
@@ -24,6 +23,7 @@ body {
 
     /* behavior: url(/media/global/css/ie-css3.htc); */
 }
+
 .left {
     float: left;
 }
@@ -31,6 +31,7 @@ body {
 .right {
     float: right;
 }
+
 #header {
     height: 60px;
     line-height: 60px;
@@ -46,11 +47,11 @@ body {
     height: 60px;
     width: 200px;
 }
+
 /* the settings of article's readmore link's */
 a {
     text-decoration: none;
 }
-
 a:link,
 a:visited {
     color: #222;
@@ -127,25 +128,20 @@ a:hover {
 }
 
 /* Breadcrumb Settings */
-#breadcrumb {
-    padding: 0px 6px;
-}
-
-#breadcrumb ul {
+ul#breadcrumb {
     float: left;
     list-style-type: none;
     margin: 0px;
     padding: 0px;
-    
 }
 
-#breadcrumb ul li {
+ul#breadcrumb li {
     float: left;
-    display: block;
+
     padding: 4px;
 }
 
-#breadcrumb ul li a{
+ul#breadcrumb li a{
     text-decoration: none;
     float: left;
     color: #E99D01;
@@ -153,7 +149,7 @@ a:hover {
 
 #breadcrumb .menu span {
     color: #F5F5EE;
-    text-shadow: black 1px 1px 0px;
+    /*text-shadow: black 1px 1px 0px;*/
     display: block;
     float: left;
     display: block;
