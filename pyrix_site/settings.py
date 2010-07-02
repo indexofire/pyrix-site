@@ -12,6 +12,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'indexofire@gmail.com'
+EMAIL_HOST_PASSWORD = '7810018uvs'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 DATABASE_FILE = os.path.join(PROJECT_PATH, 'database/data.sql')
 
 DATABASES = {
@@ -127,6 +133,7 @@ INSTALLED_APPS = (
     'dbgettext',
     'cms_content',
     #'debug_toolbar',
+    'registration',
 )
 
 try:

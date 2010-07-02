@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     #(r'^robots.txt$', direct_to_template, {'template': 'robots.txt', 'mimetype': 'text/plain'}),
     (r'^admin/', include(admin.site.urls)),
     (r'^jsi18n/(?P<packages>\S+?)/$', 'django.views.i18n.javascript_catalog'),
-    #(r'^users/', include('usercenter.urls')),
+    (r'^accounts/', include('registration.backends.default.urls')),
     #(r'^blog/', include('zinnia.urls')),
     (r'^comment/', include('django.contrib.comments.urls')),
 )

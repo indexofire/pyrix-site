@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="blockform">
+  <h2><span>{% trans "Message" %}</span></h2>
+  <div class="inform message">
+    <div class="forminfo">
+      <h3>{% trans "Thank you!" %}</h3>
+      <p>{% trans "You have completed account activation! Now you can login our site to visit!" %}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
