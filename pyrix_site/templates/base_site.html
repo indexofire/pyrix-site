@@ -16,8 +16,17 @@
 
 <body>
 
-{% block head %}
-{% endblock head %}
+<div id="top">
+  <div class="topbar">
+    {% block topbar %}{% endblock %}
+  </div>
+  <div class="topmain">
+  {% block head %}{% endblock head %}
+  </div>
+
+</div>
+
+
 
 {% block body %}
 {% endblock body %}

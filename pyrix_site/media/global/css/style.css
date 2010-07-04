@@ -8,7 +8,7 @@
  */
 
 body {
-    background: #EFEFEF;
+    background: #FAFBFC;
 }
 
 .shadow-box {
@@ -73,47 +73,6 @@ a:hover {
     z-index: -1;
 }
 
-/* Main Menu Settings */
-#main_menu ul {
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-}
-
-#main_menu ul li {
-    float: left;
-    margin-right: 20px;
-}
-
-#main_menu ul li a.menu {
-    
-}
-
-#main_menu ul li.menu_selected a.menu,
-#main_menu ul li a.ancestor {
-
-}
-
-#main_menu ul li a.menu:hover {
-    color: #3C3C3C;
-    background: #ACACAC;
-    display: block;
-}
-
-#main_menu ul li a.ancestor,
-#main_menu ul li.menu_selected,
-#main_menu ul li.menu_selected a,
-#main_menu ul li.menu_selected a:visited {
-    color: #3C3C3C;
-    text-decoration: underline;
-    display: block;
-}
-
-#main_menu ul li.menu_selected a:hover {
-    color: #3C3C3C;
-    background: #F0F0F0;
-    display: block;
-}
 
 /* Login Menu */
 #login {
@@ -203,4 +162,87 @@ ul#breadcrumb li a{
 
 
 .entryPost {
+}
+
+/* top bar of every pages */
+#top {
+    border-bottom: #FFFFFF;
+    background: #6E6D6C;
+    margin-bottom: 15px;
+}
+
+#top .topbar {
+    margin: 0px;
+    padding: 0px;
+    background: #EFEFEF;
+    height: 26px;
+    line-height: 25px;
+}
+
+#top .topnav {
+    margin: 0px auto;
+    width: 950px;
+}
+
+#top .topnav a:hover {
+    color: #54AFDC;
+    text-decoration: underline;
+}
+
+#top .topmain {
+    border-bottom: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    box-shadow: inset 0px 0px 3px #222;
+    -webkit-box-shadow: inset 0px 0px 3px #222;
+    -moz-box-shadow: inset 0px 0px 3px #222;
+}
+
+#top .topmenu {
+    margin: 0px auto;
+    padding: 0px;
+    width: 950px;
+    height: 80px;
+    color: #ECECEC;
+}
+
+#top .topmenu a {
+    color: #EFEFEF;
+}
+
+/* Main Menu Settings */
+#main_menu {
+    margin-top: 53px;
+}
+
+#main_menu ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+#main_menu ul li {
+    float: left;
+    border-bottom: 1px solid #FAFBFC;
+}
+
+#main_menu ul li a {
+    border-top: 1px solid #222;
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
+    margin-right: 8px;
+    padding: 4px 8px;
+    display: block;
+}
+
+#main_menu ul li a.menu.selected {
+    color: #3C3C3C;
+    background: #FAFBFC;
+    display: block;
+}
+
+#main_menu ul li a.menu:hover,
+#main_menu ul li a.menu.selected:hover {
+    color: #3C3C3C;
+    background: #BEBEBE;
+    display: block;
 }
