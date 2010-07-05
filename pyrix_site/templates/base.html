@@ -2,14 +2,22 @@
 {% load i18n cms_tags menu_tags %}
 
 {% block scripts %}
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>-->
 {% endblock scripts %}
 
 {% block topbar %}
-  <div class="topnav">
-    <span class="left"><a href="/accounts/login/">{% trans "Login" %}</a> | <a href="/accounts/register/">{% trans "Register" %}</a></span>
-    <span class="right">hello</span>
-  </div>
+<div class="topnav">
+  {% if request.user.is_authenticated %}
+  <span class="left">
+    <a href="/accounts/logout/">{% trans "Logout" %}</a>
+  </span>
+  {% else %}
+  <span class="left">
+    <a href="/accounts/login/">{% trans "Login" %}</a> | <a href="/accounts/register/">{% trans "Register" %}</a>
+  </span>
+  {% endif %}
+  <span class="right">hello</span>
+</div>
 {% endblock %}
 
 {% block head %}
@@ -31,22 +39,26 @@
 <!-- main start -->
 <div class="container shadow-box">
   <div class="span-24 last">
-      <div class="box"><ul id="breadcrumb">{% show_breadcrumb %}</ul></div>
+      <div><ul id="breadcrumb">{% show_breadcrumb %}</ul></div>
   </div>
 </div>
 
 <div style="height:20px"></div>
 
-<div class="container shadow-box">
+<div class="container">
   <div class="span-24 last">
       {% block content %}{% endblock content %}
   </div>
-  <div class="span-24 last" style="border-top: 1px dashed #ACACAC;">
+  
+  <div class="span-24 last" style="margin-top:20px">
+    <div class="shadow-box">
     <p class="box" style="margin:0px">
       <a href="add/">add article</a> | 
       <a href="delete/">delete article</a>
     </p>
+    </div>
   </div>
+  
 </div>
 <!-- main ends -->
 {% endblock body %}

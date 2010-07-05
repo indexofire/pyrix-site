@@ -4,9 +4,10 @@
 {% block tpl_id %}tpl_col_three{% endblock %}
 
 {% block content %}
-  <div id="col1" class="span-4">
+<div id="col1" class="span-6">
+  <div class="shadow-box">
     <div style="padding:10px">    
-      {% include "sidebar_submenu.html" %}	
+      {% include "sidebar_submenu.html" %}
       {% block col_sidebar %}
         {% with "220" as width %}
           {% placeholder col_sidebar %}
@@ -14,8 +15,10 @@
       {% endblock %}
     </div>
   </div>
+</div>
 
-  <div id="col2" class="span-16">
+<div id="col2" class="span-14">
+  <div class="shadow-box">
     <div style="padding:10px">
       {% block page_title %}<h1>{% page_attribute title %}</h1>{% endblock %}
       {% block col_left %}
@@ -25,8 +28,11 @@
       {% endblock %}
     </div>
   </div>
-	
-  <div id="col3" class="span-4 last">
+</div>
+
+
+<div id="col3" class="span-4 last">
+  <div class="shadow-box">
     <div style="padding:10px">
       {% block col_right %}
         {% with "220" as width %}
@@ -35,4 +41,5 @@
       {% endblock %}
     </div>
   </div>
+</div>
 {% endblock %}

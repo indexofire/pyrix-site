@@ -6,7 +6,17 @@
 {% endblock tpl_id %}
 
 {% block content %}
-<div id="col2" class="span-20">
+<div id="col1" class="span-6">
+  <div id="menutree" class="shadow-box">
+    <ul>{% include "sidebar_submenu.html" %}</ul>
+    {% block col_sidebar %}
+      {% placeholder col_sidebar %}
+    {% endblock %}
+  </div>
+</div>
+
+<div id="col2" class="span-18 last">
+<div class="shadow-box">
   <div style="padding:20px;">
   {% block page_title %}<h2>{% page_attribute title %}</h2>{% endblock %}
   {% block col_left %}
@@ -14,15 +24,5 @@
   {% endblock col_left %}
   </div>
 </div>
-  
-<div id="col1" class="span-4 last">
-  <div style="padding:2px">
-    {% include "sidebar_submenu.html" %}
-  </div>
-  <div  style="padding:2px">
-    {% block col_sidebar %}
-      {% placeholder col_sidebar %}
-    {% endblock %}
-  </div>
 </div>
 {% endblock content %}
