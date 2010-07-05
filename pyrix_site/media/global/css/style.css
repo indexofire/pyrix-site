@@ -40,7 +40,7 @@ body {
 }
 
 #logo {
-    background: url("../img/logo.png") no-repeat;
+    /* background: url("../img/logo.png") no-repeat; */
     cursor: pointer;
     float: left;
     height: 60px;
@@ -107,12 +107,11 @@ ul#breadcrumb li a{
 
 #breadcrumb .menu span {
     color: #F5F5EE;
-    /*text-shadow: black 1px 1px 0px;*/
+    text-shadow: black 1px 1px 0px;
     display: block;
     float: left;
     display: block;
 }
-
 
 /* Page Footer Settings */
 #footer {
@@ -127,46 +126,10 @@ ul#breadcrumb li a{
     display: block;
 }
 
-
-/* SubNav Menu Settings */
-#nav_sub {
-
-}
-
-#nav_sub ul {
-
-}
-
-#nav_sub ul li {
-
-}
-
-.mybox {
-    background: white;
-    border: 1px solid #CDCCC3;
-    padding: 1px;
-}
-
-.place_boxer {
-    background: url("/media/global/img/box_bg.png") repeat-x 0px 0px;
-    padding: 25px;
-    margin: 0px;
-    display: block;
-}
-
-.place_boxer img {
-    border: 0px;
-    padding-bottom: 20px;
-}
-
-
-.entryPost {
-}
-
 /* top bar of every pages */
 #top {
     border-bottom: #FFFFFF;
-    background: #6E6D6C;
+    background: #3E4D5C;
     margin-bottom: 15px;
 }
 
