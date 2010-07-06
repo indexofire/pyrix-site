@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'cms_content',
     #'debug_toolbar',
     'registration',
+    'profiles',
 )
 
 try:
