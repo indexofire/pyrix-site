@@ -1,9 +1,11 @@
 {% extends "base_site.html" %}
 {% load i18n cms_tags menu_tags %}
 
+
 {% block scripts %}
   <!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>-->
 {% endblock scripts %}
+
 
 {% block topbar %}
 <div class="topnav">
@@ -13,12 +15,14 @@
   </span>
   {% else %}
   <span class="left">
-    <a href="/accounts/login/">{% trans "Login" %}</a> | <a href="/accounts/register/">{% trans "Register" %}</a>
+    <a href="/accounts/login/">{% trans "Login" %}</a> | 
+    <a href="/accounts/register/">{% trans "Register" %}</a>
   </span>
   {% endif %}
   <span class="right">hello</span>
 </div>
 {% endblock %}
+
 
 {% block head %}
 <!-- head start -->
@@ -35,6 +39,7 @@
 <!-- heard ends -->
 {% endblock head %}
 
+
 {% block body %}
 <!-- main start -->
 <div class="container shadow-box">
@@ -45,13 +50,11 @@
 
 <div style="height:20px"></div>
 
-<div class="container">
+<div class="container shadow-box">
   <div class="span-24 last">
       {% block content %}{% endblock content %}
   </div>
-  
-  <div class="span-24 last" style="margin-top:20px">
-    <div class="shadow-box">
+  <div class="span-24 last" style="margin-top:20px;border-top:1px dashed #9c9c9c;">
     <p class="box" style="margin:0px">
       <a href="add/">add article</a> | 
       <a href="delete/">delete article</a>
@@ -63,10 +66,9 @@
 <!-- main ends -->
 {% endblock body %}
 
+
 {% block foot %}
-
 <div style="height:60px"></div>
-
 <!-- foot start -->
 <div id="footer">
   <div class="det">
