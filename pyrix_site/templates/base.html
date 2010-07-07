@@ -32,7 +32,7 @@
   </div>
   <div class="right">
     <div id="main_menu">
-      <ul>{% show_menu 0 0 0 0 %}</ul>
+      <ul>{% show_menu 0 0 %}</ul>
     </div>
   </div>
 </div>
@@ -44,7 +44,7 @@
 <!-- main start -->
 <div class="container shadow-box">
   <div class="span-24 last">
-      <div><ul id="breadcrumb">{% show_breadcrumb %}</ul></div>
+    <div><ul id="breadcrumb">{% show_breadcrumb %}</ul></div>
   </div>
 </div>
 
@@ -52,12 +52,13 @@
 
 <div class="container shadow-box">
   <div class="span-24 last">
-      {% block content %}{% endblock content %}
+      {% block content %}
+      {% endblock content %}
   </div>
   <div class="span-24 last" style="margin-top:20px;border-top:1px dashed #9c9c9c;">
     <p class="box" style="margin:0px">
-      <a href="add/">add article</a> | 
-      <a href="delete/">delete article</a>
+    {% block panel %}
+    {% endblock panel %}
     </p>
     </div>
   </div>

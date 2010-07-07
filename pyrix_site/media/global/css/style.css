@@ -45,6 +45,7 @@ body {
     float: left;
     height: 60px;
     width: 200px;
+    text-shadow: 1px 1px 1px black;
 }
 
 /* the settings of article's readmore link's */
@@ -129,7 +130,7 @@ ul#breadcrumb li a{
 /* top bar of every pages */
 #top {
     border-bottom: #FFFFFF;
-    background: #3E4D5C;
+    background: #6A7B8C;
     margin-bottom: 15px;
 }
 
@@ -168,7 +169,7 @@ ul#breadcrumb li a{
 }
 
 #top .topmenu a {
-    color: #EFEFEF;
+    color: #FEFEFE;
 }
 
 /* Main Menu Settings */
@@ -214,5 +215,9 @@ ul#breadcrumb li a{
 }
 
 #menu_tree ul {
+    list-style-type: none;
+}
 
+#menu_tree ul li {
+    float: left;
 }
