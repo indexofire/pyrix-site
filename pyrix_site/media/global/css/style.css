@@ -214,10 +214,3 @@ ul#breadcrumb li a{
     background: #EFEFEF;
 }
 
-#menu_tree ul {
-    list-style-type: none;
-}
-
-#menu_tree ul li {
-    float: left;
-}
