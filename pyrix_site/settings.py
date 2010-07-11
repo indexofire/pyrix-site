@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     #'debug_toolbar',
     'registration',
     'profiles',
+    'wiki',
 )
 
 try:

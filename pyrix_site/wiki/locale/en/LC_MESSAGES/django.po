@@ -1,0 +1,248 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-03 23:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:8
+msgid "Content"
+msgstr ""
+
+#: forms.py:9
+msgid "Change message (optional)"
+msgstr ""
+
+#: forms.py:25 templates/wakawaka/edit.html:44
+msgid "Delete"
+msgstr ""
+
+#: forms.py:34
+msgid "Delete this revision"
+msgstr ""
+
+#: forms.py:38
+msgid "Delete the page with all revisions"
+msgstr ""
+
+#: forms.py:61
+#, python-format
+msgid "The page %s was deleted"
+msgstr ""
+
+#: forms.py:72
+#, python-format
+msgid "The revision for %s was deleted"
+msgstr ""
+
+#: forms.py:79
+#, python-format
+msgid ""
+"You can not delete this revison for %s because it's the only one and you "
+"have no permission to delete the whole page."
+msgstr ""
+
+#: forms.py:87
+#, python-format
+msgid "The page for %s was deleted because you deleted the only revision"
+msgstr ""
+
+#: models.py:6
+msgid "slug"
+msgstr ""
+
+#: models.py:7 models.py:30
+msgid "created"
+msgstr ""
+
+#: models.py:8 models.py:31
+msgid "modified"
+msgstr ""
+
+#: models.py:26
+msgid "content"
+msgstr ""
+
+#: models.py:27
+msgid "change message"
+msgstr ""
+
+#: models.py:29
+msgid "creator ip"
+msgstr ""
+
+#: views.py:66
+msgid "You don't have permission to edit pages."
+msgstr ""
+
+#: views.py:74
+#, python-format
+msgid "Reverted to \"%s\""
+msgstr ""
+
+#: views.py:83
+msgid "You don't have permission to add wiki pages."
+msgstr ""
+
+#: views.py:88
+#, python-format
+msgid "Describe your new page %s here..."
+msgstr ""
+
+#: views.py:89
+msgid "Initial revision"
+msgstr ""
+
+#: views.py:110
+msgid "You have made no changes!"
+msgstr ""
+
+#: views.py:123
+#, python-format
+msgid "Your changes to %s were saved"
+msgstr ""
+
+#: views.py:174
+msgid "No changes were made between this two files."
+msgstr ""
+
+#: templates/wakawaka/base.html:20
+msgid "Start"
+msgstr ""
+
+#: templates/wakawaka/base.html:23
+msgid "Recent revisions"
+msgstr ""
+
+#: templates/wakawaka/base.html:26
+msgid "All Pages"
+msgstr ""
+
+#: templates/wakawaka/changes.html:16
+#, python-format
+msgid "Changes for %(slug)s"
+msgstr ""
+
+#: templates/wakawaka/edit.html:7 templates/wakawaka/edit.html.py:16
+#, python-format
+msgid "Add %(slug)s"
+msgstr ""
+
+#: templates/wakawaka/edit.html:9 templates/wakawaka/edit.html.py:18
+#, python-format
+msgid "Edit %(slug)s"
+msgstr ""
+
+#: templates/wakawaka/edit.html:23
+msgid "You are editing an revision which is not the latest!"
+msgstr ""
+
+#: templates/wakawaka/edit.html:29
+msgid "Save changes"
+msgstr ""
+
+#: templates/wakawaka/edit.html:30
+msgid "or"
+msgstr ""
+
+#: templates/wakawaka/edit.html:36
+msgid "Cancel"
+msgstr ""
+
+#: templates/wakawaka/edit.html:41
+msgid "Please confirm deletion"
+msgstr ""
+
+#: templates/wakawaka/edit.html:49
+msgid "Revisions for this page"
+msgstr ""
+
+#: templates/wakawaka/page.html:24
+msgid "You are viewing an older revision!"
+msgstr ""
+
+#: templates/wakawaka/page.html:26
+msgid "See the latest version"
+msgstr ""
+
+#: templates/wakawaka/page.html:41
+msgid "DATETIME_FORMAT"
+msgstr ""
+
+#: templates/wakawaka/page.html:41
+#, python-format
+msgid ""
+"\n"
+"    \t\t    Recently modified by <em>%(creator)s</em>: %(modified)s\n"
+"    \t\t"
+msgstr ""
+
+#: templates/wakawaka/page.html:44
+msgid "History"
+msgstr ""
+
+#: templates/wakawaka/page.html:49
+msgid "Edit"
+msgstr ""
+
+#: templates/wakawaka/page_list.html:6 templates/wakawaka/page_list.html:10
+msgid "All wiki pages"
+msgstr ""
+
+#: templates/wakawaka/revision_list.html:6
+#: templates/wakawaka/revision_list.html:10
+msgid "List of all revisions"
+msgstr ""
+
+#: templates/wakawaka/revision_list.html:14
+msgid "Page"
+msgstr ""
+
+#: templates/wakawaka/revision_list.html:15
+#: templates/wakawaka/revision_table.html:7
+msgid "Changed"
+msgstr ""
+
+#: templates/wakawaka/revision_list.html:16
+#: templates/wakawaka/revision_table.html:8
+msgid "Message"
+msgstr ""
+
+#: templates/wakawaka/revision_list.html:17
+#: templates/wakawaka/revision_table.html:9
+msgid "Modified by"
+msgstr ""
+
+#: templates/wakawaka/revision_list.html:27
+#: templates/wakawaka/revision_table.html:38
+msgid "View"
+msgstr ""
+
+#: templates/wakawaka/revision_list.html:29
+#: templates/wakawaka/revision_table.html:39
+msgid "Revert"
+msgstr ""
+
+#: templates/wakawaka/revision_table.html:6
+msgid "Compare"
+msgstr ""
+
+#: templates/wakawaka/revision_table.html:45
+msgid "Compare revisions"
+msgstr ""
+
+#: templates/wakawaka/revisions.html:6 templates/wakawaka/revisions.html:10
+#, python-format
+msgid "History for %(slug)s"
+msgstr ""
