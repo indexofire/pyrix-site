@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     (r'^accounts/', include('registration.backends.default.urls')),
     #(r'^blog/', include('zinnia.urls')),
     (r'^comment/', include('django.contrib.comments.urls')),
-    (r'^wiki/', include('wiki.urls')),
+    #(r'^wiki/', include('wiki.urls')),
 )
 
 if settings.DEBUG:
