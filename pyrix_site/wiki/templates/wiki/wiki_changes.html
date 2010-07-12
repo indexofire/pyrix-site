@@ -1,6 +1,6 @@
-{% extends "wiki/base.html" %}
+{% extends "wiki/wiki_base.html" %}
 
-{% load wakawaka_tags %}
+{% load wiki_tags %}
 {% load i18n %}
 
 {% block extrahead %}
@@ -16,9 +16,9 @@
 	{% blocktrans with page.slug as slug %}Changes for {{ slug  }}{% endblocktrans %}
 {% endblock %}
 
-{% block content %}
-	<h1>{{ page.slug }}</h1>
+{% block wiki_content %}
+<h1>{{ page.slug }}</h1>
 
-	<pre class="changes">{{ diff }}</pre>
-	{% include "wiki/revision_table.html" %}
-{% endblock %}
+<pre class="changes">{{ diff }}</pre>
+{% include "wiki/wiki_revision_table.html" %}
+{% endblock wiki_content%}

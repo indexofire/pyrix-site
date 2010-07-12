@@ -1,45 +1,66 @@
 # -*- coding: utf-8 -*-
 import difflib
 
-from django.conf import settings
-from django.shortcuts import render_to_response, get_object_or_404
+from django.http import Http404
+from django.http import HttpResponseRedirect
+from django.http import HttpResponseBadRequest
+from django.http import HttpResponseNotFound
+from django.http import HttpResponseForbidden
+from django.shortcuts import render_to_response
+from django.shortcuts import get_object_or_404
 from django.template.context import RequestContext
-from django.http import Http404, HttpResponseRedirect, HttpResponseBadRequest,\
-    HttpResponseNotFound, HttpResponseForbidden
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
 
-from wiki.forms import WikiPageForm, DeleteWikiPageForm
-from wiki.models import WikiPage, Revision
+from wiki.forms import *
+from wiki.models import *
+from wiki.settings import *
 
+__all__ = [
+    'index',
+    'page',
+    'edit',
+    'revisions',
+    'changes',
+    'revision_list',
+    'page_list',
+]
 
-__all__ = ['index', 'page', 'edit', 'revisions', 'changes', 'revision_list', 'page_list']
+def index(request, template_name='wiki/wiki_page.html'):
+    """Redirects to the default wiki index name.
 
-def index(request, template_name='wiki/page.html'):
-    '''
-    Redirects to the default wiki index name.
-    '''
+    It's the base view function to redirect to wiki pages.
+    """
+
     kwargs = {
-        'slug': getattr(settings, 'WAKAWAKA_DEFAULT_INDEX', 'WikiIndex'),
+        'slug': DEFAULT_INDEX,
     }
+
     # be group aware
     group = getattr(request, "group", None)
+
     if group:
-        redirect_to = request.bridge.reverse('wakawaka_page', group, kwargs=kwargs)
+        redirect_to = request.bridge.reverse('wiki_page', group, kwargs=kwargs)
     else:
-        redirect_to = reverse('wakawaka_page', kwargs=kwargs)
+        redirect_to = reverse('wiki_page', kwargs=kwargs)
     return HttpResponseRedirect(redirect_to)
 
-def page(request, slug, rev_id=None, template_name='wiki/page.html', extra_context=None):
-    '''
-    Displays a wiki page. Redirects to the edit view if the page doesn't exist.
-    '''
+
+def page(request, slug, rev_id=None, template_name='wiki/wiki_page.html',
+    extra_context=None):
+    """Displays a wiki page. Redirects to the edit view if the page doesn't
+    exist.
+    
+    Show the pages.
+    """
+    
     if extra_context is None:
         extra_context = {}
 
     # be group aware
     group = getattr(request, "group", None)
+    
     if group:
         bridge = request.bridge
         group_base = bridge.group_base_template()
@@ -74,9 +95,9 @@ def page(request, slug, rev_id=None, template_name='wiki/page.html', extra_conte
                 'slug': slug,
             }
             if group:
-                redirect_to = bridge.reverse('wakawaka_edit', group, kwargs=kwargs)
+                redirect_to = bridge.reverse('wiki_edit', group, kwargs=kwargs)
             else:
-                redirect_to = reverse('wakawaka_edit', kwargs=kwargs)
+                redirect_to = reverse('wiki_edit', kwargs=kwargs)
             return HttpResponseRedirect(redirect_to)
         raise Http404
     template_context = {
@@ -90,7 +111,7 @@ def page(request, slug, rev_id=None, template_name='wiki/page.html', extra_conte
                               RequestContext(request))
 
 
-def edit(request, slug, rev_id=None, template_name='wiki/edit.html',
+def edit(request, slug, rev_id=None, template_name='wiki/wiki_edit.html',
          extra_context=None, wiki_page_form=WikiPageForm,
          wiki_delete_form=DeleteWikiPageForm):
     '''
@@ -119,7 +140,7 @@ def edit(request, slug, rev_id=None, template_name='wiki/edit.html',
         initial = {'content': page.current.content}
 
         # Do not allow editing wiki pages if the user has no permission
-        if not request.user.has_perms(('wakawaka.change_wikipage', 'wakawaka.change_revision' )):
+        if not request.user.has_perms(('wiki.change_wikipage', 'wiki.change_revision' )):
             return HttpResponseForbidden(ugettext('You don\'t have permission to edit pages.'))
 
         if rev_id:
@@ -136,7 +157,7 @@ def edit(request, slug, rev_id=None, template_name='wiki/edit.html',
     except WikiPage.DoesNotExist:
 
         # Do not allow adding wiki pages if the user has no permission
-        if not request.user.has_perms(('wakawaka.add_wikipage', 'wakawaka.add_revision',)):
+        if not request.user.has_perms(('wiki.add_wikipage', 'wiki.add_revision',)):
             return HttpResponseForbidden(ugettext('You don\'t have permission to add wiki pages.'))
 
         page = WikiPage(slug=slug)
@@ -148,8 +169,8 @@ def edit(request, slug, rev_id=None, template_name='wiki/edit.html',
     # Don't display the delete form if the user has nor permission
     delete_form = None
     # The user has permission, then do
-    if request.user.has_perm('wakawaka.delete_wikipage') or \
-       request.user.has_perm('wakawaka.delete_revision'):
+    if request.user.has_perm('wiki.delete_wikipage') or \
+       request.user.has_perm('wiki.delete_revision'):
         delete_form = wiki_delete_form(request)
         if request.method == 'POST' and request.POST.get('delete'):
             delete_form = wiki_delete_form(request, request.POST)
@@ -183,16 +204,16 @@ def edit(request, slug, rev_id=None, template_name='wiki/edit.html',
                     page.save()
 
                 form.save(request, page)
-                
+
                 kwargs = {
                     'slug': page.slug,
                 }
-                
+
                 if group:
-                    redirect_to = bridge.reverse('wakawaka_page', group, kwargs=kwargs)
+                    redirect_to = bridge.reverse('wiki_page', group, kwargs=kwargs)
                 else:
-                    redirect_to = reverse('wakawaka_page', kwargs=kwargs)
-                
+                    redirect_to = reverse('wiki_page', kwargs=kwargs)
+
                 request.user.message_set.create(message=ugettext('Your changes to %s were saved' % page.slug))
                 return HttpResponseRedirect(redirect_to)
 
@@ -208,7 +229,7 @@ def edit(request, slug, rev_id=None, template_name='wiki/edit.html',
     return render_to_response(template_name, template_context,
                               RequestContext(request))
 
-def revisions(request, slug, template_name='wiki/revisions.html', extra_context=None):
+def revisions(request, slug, template_name='wiki/wiki_revisions.html', extra_context=None):
     '''
     Displays the list of all revisions for a specific WikiPage
     '''
@@ -239,11 +260,11 @@ def revisions(request, slug, template_name='wiki/revisions.html', extra_context=
     return render_to_response(template_name, template_context,
                               RequestContext(request))
 
-def changes(request, slug, template_name='wiki/changes.html', extra_context=None):
+def changes(request, slug, template_name='wiki/wiki_changes.html', extra_context=None):
     '''
     Displays the changes between two revisions.
     '''
-    
+
     if extra_context is None:
         extra_context = {}
 
@@ -297,7 +318,7 @@ def changes(request, slug, template_name='wiki/changes.html', extra_context=None
                               RequestContext(request))
 
 # Some useful views
-def revision_list(request, template_name='wiki/revision_list.html', extra_context=None):
+def revision_list(request, template_name='wiki/wiki_revision_list.html', extra_context=None):
     '''
     Displays a list of all recent revisions.
     '''
@@ -327,7 +348,7 @@ def revision_list(request, template_name='wiki/revision_list.html', extra_contex
     return render_to_response(template_name, template_context,
                               RequestContext(request))
 
-def page_list(request, template_name='wiki/page_list.html', extra_context=None):
+def page_list(request, template_name='wiki/wiki_page_list.html', extra_context=None):
     '''
     Displays all Pages
     '''
@@ -351,7 +372,7 @@ def page_list(request, template_name='wiki/page_list.html', extra_context=None):
 
     template_context = {
         'page_list': page_list,
-        'index_slug': getattr(settings, 'WAKAWAKA_DEFAULT_INDEX', 'WikiIndex'),
+        'index_slug': DEFAULT_INDEX,
         'group': group,
         'group_base': group_base,
     }

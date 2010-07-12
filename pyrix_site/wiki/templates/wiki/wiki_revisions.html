@@ -1,0 +1,13 @@
+{% extends "wiki/wiki_base.html" %}
+
+{% load i18n %}
+
+{% block title %}
+    {% blocktrans with page.slug as slug %}History for {{ slug }}{% endblocktrans %}
+{% endblock %}
+
+{% block wiki_content %}
+<h1>{% blocktrans with page.slug as slug %}History for {{ slug }}{% endblocktrans %}</h1>
+
+{% include "wiki/wiki_revision_table.html" %}
+{% endblock wiki_content %}

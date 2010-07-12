@@ -1,4 +1,4 @@
-{% extends "wiki/base.html" %}
+{% extends "wiki/wiki_base.html" %}
 
 {% load i18n %}
 
@@ -10,7 +10,7 @@
     {% endif %}
 {% endblock %}
 
-{% block content %}
+{% block wiki_content %}
 	<h1>
 	    {% if page.is_initial %}
 	        {% blocktrans with page.slug as slug %}Add {{ slug  }}{% endblocktrans %}
@@ -23,22 +23,22 @@
 	<p class="revert-warning">{% trans "You are editing an revision which is not the latest!" %}</p>
 	{% endif %}
 
-	<form class="wakawaka_edit_form" method="POST" action="">{% csrf_token %}
+	<form class="wiki_edit_form" method="POST" action="">{% csrf_token %}
 		{{ form.as_p }}
 		<p>
-            <input type="submit" value="{% trans "Save changes" %}" />
+            <input type="submit" value="{% trans 'Save changes' %}" />
             {% trans "or" %} <a href="
 			{% if page.is_initial %}
 				javascript:window.history.go(-1);
 			{% else %}
-				{% url wakawaka_page slug=page.slug %}
+				{% url wiki_page slug=page.slug %}
 			{% endif %}
 			">{% trans "Cancel" %}</a>
 		</p>
 	</form>
 
 	{% if not page.is_initial and delete_form %}
-	<form class="wakawaka_delete_form" method="POST" action="" onsubmit="return confirm('{% trans "Please confirm deletion" %}');">
+	<form class="wiki_delete_form" method="POST" action="" onsubmit="return confirm('{% trans 'Please confirm deletion' %}');">{% csrf_token %}
 		{{ delete_form.as_p }}
 		<p>
 			<input type="submit" value="{% trans "Delete" %}" />
@@ -48,5 +48,5 @@
 
 	<h2>{% trans "Revisions for this page" %}</h2>
 
-	{% include "wiki/revision_table.html" %}
-{% endblock %}
+	{% include "wiki/wiki_revision_table.html" %}
+{% endblock wiki_content %}

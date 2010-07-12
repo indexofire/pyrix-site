@@ -1,0 +1,16 @@
+{% extends "wiki/wiki_base.html" %}
+
+{% load i18n %}
+
+{% block title %}
+	{% trans "All wiki pages" %}
+{% endblock %}
+
+{% block wiki_content %}
+<h1>{% trans "All wiki pages" %}</h1>
+<ul>
+{% for page in page_list %}
+  <li><a href="{% url wiki_page slug=page.slug %}">{{ page.slug }}</a>
+{% endfor %}
+</ul>
+{% endblock wiki_content %}

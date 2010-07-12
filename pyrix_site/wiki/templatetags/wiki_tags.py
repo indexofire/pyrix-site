@@ -24,18 +24,18 @@ def replace_wikiwords(value, group=None):
                 'slug': slug,
             }
             if group:
-                url = group.content_bridge.reverse('wakawaka_page', group, kwargs=kwargs)
+                url = group.content_bridge.reverse('wiki_page', group, kwargs=kwargs)
             else:
-                url = reverse('wakawaka_page', kwargs=kwargs)
+                url = reverse('wiki_page', kwargs=kwargs)
             return r'<a href="%s">%s</a>' % (url, slug)
         except ObjectDoesNotExist:
             kwargs = {
                 'slug': slug,
             }
             if group:
-                url = group.content_bridge.reverse('wakawaka_edit', group, kwargs=kwargs)
+                url = group.content_bridge.reverse('wiki_edit', group, kwargs=kwargs)
             else:
-                url = reverse('wakawaka_edit', kwargs=kwargs)
+                url = reverse('wiki_edit', kwargs=kwargs)
             return r'<a class="doesnotexist" href="%s">%s</a>' % (url, slug)
     return mark_safe(WIKI_WORDS_REGEX.sub(replace_wikiword, value))
 
