@@ -9,11 +9,11 @@ from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 
 from wiki.models import WikiPage
-from wiki.urls import WIKI_SLUG
+from wiki.settings import SLUG
 
 
 register = Library()
-WIKI_WORDS_REGEX = re.compile(r'\b%s\b' % WIKI_SLUG)
+WIKI_WORDS_REGEX = re.compile(r'\b%s\b' % SLUG)
 
 def replace_wikiwords(value, group=None):
     def replace_wikiword(m):

@@ -17,6 +17,7 @@ from wiki.forms import *
 from wiki.models import *
 from wiki.settings import *
 
+
 __all__ = [
     'index',
     'page',
@@ -27,10 +28,14 @@ __all__ = [
     'page_list',
 ]
 
+
 def index(request, template_name='wiki/wiki_page.html'):
     """Redirects to the default wiki index name.
 
-    It's the base view function to redirect to wiki pages.
+    It's the base view function to redirect to wiki pages. When the browser 
+    request the wiki root, the urls will call the index function. If there is a
+    group in request, the views.index function will redirect to wiki_page which
+    will call the views.page function.
     """
 
     kwargs = {
@@ -38,12 +43,13 @@ def index(request, template_name='wiki/wiki_page.html'):
     }
 
     # be group aware
-    group = getattr(request, "group", None)
+    #group = getattr(request, "group", None)
 
-    if group:
-        redirect_to = request.bridge.reverse('wiki_page', group, kwargs=kwargs)
-    else:
-        redirect_to = reverse('wiki_page', kwargs=kwargs)
+    #if group:
+    #    redirect_to = request.bridge.reverse('wiki_page', group, kwargs=kwargs)
+    #else:
+    #    redirect_to = reverse('wiki_page', kwargs=kwargs)
+    redirect_to = reverse('wiki_page', kwargs=kwargs)
     return HttpResponseRedirect(redirect_to)
 
 
@@ -229,6 +235,7 @@ def edit(request, slug, rev_id=None, template_name='wiki/wiki_edit.html',
     return render_to_response(template_name, template_context,
                               RequestContext(request))
 
+
 def revisions(request, slug, template_name='wiki/wiki_revisions.html', extra_context=None):
     '''
     Displays the list of all revisions for a specific WikiPage
@@ -259,6 +266,7 @@ def revisions(request, slug, template_name='wiki/wiki_revisions.html', extra_con
     template_context.update(extra_context)
     return render_to_response(template_name, template_context,
                               RequestContext(request))
+
 
 def changes(request, slug, template_name='wiki/wiki_changes.html', extra_context=None):
     '''
@@ -317,6 +325,7 @@ def changes(request, slug, template_name='wiki/wiki_changes.html', extra_context
     return render_to_response(template_name, template_context,
                               RequestContext(request))
 
+
 # Some useful views
 def revision_list(request, template_name='wiki/wiki_revision_list.html', extra_context=None):
     '''
@@ -346,36 +355,41 @@ def revision_list(request, template_name='wiki/wiki_revision_list.html', extra_c
     }
     template_context.update(extra_context)
     return render_to_response(template_name, template_context,
-                              RequestContext(request))
+        RequestContext(request))
 
-def page_list(request, template_name='wiki/wiki_page_list.html', extra_context=None):
-    '''
-    Displays all Pages
-    '''
+
+def page_list(request, template_name='wiki/wiki_page_list.html',
+    extra_context=None):
+    """Displays all Pages
+    
+    Show the page list.
+    """
+    
     if extra_context is None:
         extra_context = {}
 
     # be group aware
-    group = getattr(request, "group", None)
-    if group:
-        bridge = request.bridge
-        group_base = bridge.group_base_template()
-    else:
-        bridge = None
-        group_base = None
+    #group = getattr(request, "group", None)
+    #if group:
+    #    bridge = request.bridge
+    #    group_base = bridge.group_base_template()
+    #else:
+    #    bridge = None
+    #    group_base = None
 
-    if group:
-        page_list = group.content_objects(WikiPage)
-    else:
-        page_list = WikiPage.objects.all()
+    #if group:
+    #    page_list = group.content_objects(WikiPage)
+    #else:
+    #    page_list = WikiPage.objects.all()
+    page_list = WikiPage.objects.all()
     page_list = page_list.order_by('slug')
 
     template_context = {
         'page_list': page_list,
         'index_slug': DEFAULT_INDEX,
-        'group': group,
-        'group_base': group_base,
+        #'group': group,
+        #'group_base': group_base,
     }
     template_context.update(extra_context)
-    return render_to_response(template_name, template_context,
-                              RequestContext(request))
+    return render_to_response(template_name, template_context, 
+        RequestContext(request))

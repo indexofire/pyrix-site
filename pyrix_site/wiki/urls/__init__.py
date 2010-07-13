@@ -1,35 +1,32 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
 from wiki.views import *
+from wiki.settings import SLUG
 
-
-# Wiki slugs must been CamelCase but slashes are fine, if each slug
-# is also a CamelCase/OtherSide
-WIKI_SLUG = r'((([A-Z]+[a-z]+){2,})(/([A-Z]+[a-z]+){2,})*)'
-WIKI_SLUG = getattr(settings, 'WAKAWAKA_SLUG_REGEX', WIKI_SLUG)
 
 urlpatterns = patterns('',
+    # Wiki Index
     url(r'^$', index, name='wiki_index'),
 
     # Revision and Page list
     url(r'^history/$', revision_list, name='wiki_revision_list'),
     url(r'^index/$', page_list, name='wiki_page_list'),
 
-
     # Revision list for page
-    url(r'^(?P<slug>%s)/history/$' % WIKI_SLUG, revisions, name='wiki_revision_list'),
+    url(r'^(?P<slug>%s)/history/$' % SLUG, 
+        revisions, name='wiki_revision_list'),
 
     # Changes between two revisions, revision id's come from GET
-    url(r'^(?P<slug>%s)/changes/$' % WIKI_SLUG, changes, name='wiki_changes'),
+    url(r'^(?P<slug>%s)/changes/$' % SLUG, changes, name='wiki_changes'),
 
     # Edit Form
-    url(r'^(?P<slug>%s)/edit/(?P<rev_id>\d+)/$' % WIKI_SLUG, login_required(edit), name='wiki_edit'),
-    url(r'^(?P<slug>%s)/edit/$' % WIKI_SLUG, login_required(edit), name='wiki_edit'),
+    url(r'^(?P<slug>%s)/edit/(?P<rev_id>\d+)/$' % SLUG,
+        login_required(edit), name='wiki_edit'),
+    url(r'^(?P<slug>%s)/edit/$' % SLUG, login_required(edit), name='wiki_edit'),
 
     # Page
-    url(r'^(?P<slug>%s)/rev(?P<rev_id>\d+)/$' % WIKI_SLUG, page, name='wiki_page'),
-    url(r'^(?P<slug>%s)/$' % WIKI_SLUG, page, name='wiki_page'),
+    url(r'^(?P<slug>%s)/rev(?P<rev_id>\d+)/$' % SLUG, page, name='wiki_page'),
+    url(r'^(?P<slug>%s)/$' % SLUG, page, name='wiki_page'),
 )
