@@ -19,6 +19,7 @@
 {% block wiki_content %}
 <h1>{{ page.slug }}</h1>
 
-<pre class="changes">{{ diff }}</pre>
+<!--<pre class="changes">{{ diff }}</pre>-->
+{{ diff|safe }}
 {% include "wiki/wiki_revision_table.html" %}
 {% endblock wiki_content%}

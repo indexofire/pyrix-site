@@ -328,21 +328,35 @@ def changes(request, slug, template_name='wiki/wiki_changes.html',
     except ObjectDoesNotExist:
         raise Http404
 
+    diff=[]
     if rev_a.content != rev_b.content:
-        d = difflib.unified_diff(
+        d = difflib.HtmlDiff()
+        htmldiff = d.make_table(
+            #rev_b.content.splitlines(),
+            #rev_a.content.splitlines(),
             rev_b.content.splitlines(),
             rev_a.content.splitlines(),
-            'Original',
-            'Current',
-            lineterm='',
+            #'Original',
+            #'Current',
+            #lineterm='',
+            #context=True,
         )
-        difftext = '\n'.join(d)
+        print htmldiff
+        #diff.extend(["--- %s.%s" % (model.__name__, field),
+        #             "+++ %s.%s" % (model.__name__, field)])
+        difftext = '\n'.join(htmldiff)
+        #print difftext
+
+        #for line in d:
+        #    print line
+        #    diff.append(line)
+        #diff = '\n'.join(diff)
     else:
         difftext = _(u'No changes were made between this two files.')
 
     template_context = {
         'page': page,
-        'diff': difftext,
+        'diff': htmldiff,
         'rev_a': rev_a,
         'rev_b': rev_b,
         #'group': group,
