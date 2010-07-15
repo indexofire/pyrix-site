@@ -1,0 +1,29 @@
+table.diff {
+
+}
+
+table.diff tr td {
+
+}
+
+.diff_next {
+    width: 20px;
+    padding: 0px;
+    text-align: center;
+}
+
+.diff_header {
+    padding-right: 4px;
+    text-align: right;
+    width: 20px
+}
+
+.diff_add {
+    background: #CFC;
+    padding: 2px;
+}
+
+.diff_sub {
+    background: #FFA;
+    padding: 2px;
+}

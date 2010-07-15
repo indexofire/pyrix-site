@@ -12,6 +12,10 @@
 	{% endif %}
 {% endblock %}
 
+{% block scripts %}
+  <link href="{{ MEDIA_URL}}wiki/css/wiki_style.css" rel="stylesheet" type="text/css" />
+{% endblock scripts %}
+
 {% block title %}
 	{% blocktrans with page.slug as slug %}Changes for {{ slug  }}{% endblocktrans %}
 {% endblock %}

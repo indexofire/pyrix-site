@@ -341,7 +341,7 @@ def changes(request, slug, template_name='wiki/wiki_changes.html',
             #lineterm='',
             #context=True,
         )
-        print htmldiff
+        #print htmldiff
         #diff.extend(["--- %s.%s" % (model.__name__, field),
         #             "+++ %s.%s" % (model.__name__, field)])
         difftext = '\n'.join(htmldiff)
