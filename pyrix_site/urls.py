@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     #(r'^wiki/', include('wiki.urls')),
     (r'^profiles/', include('user_profile.urls')),
     url(r'^forum/', include('forum.urls')),
+    url(r'^account/', include('account.urls')),
 )
 
 if settings.DEBUG:

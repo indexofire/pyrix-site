@@ -139,6 +139,8 @@ INSTALLED_APPS = (
     'forum',
     'attachments',
     'onlineuser',
+    'simpleavatar',
+    'account',
 )
 
 try:
