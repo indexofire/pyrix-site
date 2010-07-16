@@ -58,7 +58,7 @@ def markitup_preview(request, template_name="forum/markitup_preview.html"):
 
 @login_required
 def new_post(request, forum_id=None, topic_id=None, form_class=NewPostForm, \
-        template_name='forum/post.html'):
+        template_name='forum/forum_post.html'):
     qpost = topic = forum = first_post = preview = None
     show_subject_fld = True 
     post_type = _('topic')

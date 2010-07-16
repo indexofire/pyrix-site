@@ -1,11 +1,6 @@
 /* General colour scheme
  ----------------------------------------------------------------*/
 
-body {
-    background: #fff;
-    color: #333;
-}
-
 .brd a:link, .brd a:visited {
     color: #00579C;
 }

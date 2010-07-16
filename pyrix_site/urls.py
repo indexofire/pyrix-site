@@ -15,9 +15,10 @@ urlpatterns = patterns('',
     (r'^comment/', include('django.contrib.comments.urls')),
     #(r'^wiki/', include('wiki.urls')),
     (r'^profiles/', include('user_profile.urls')),
-    url(r'^forum/', include('forum.urls')),
+    #url(r'^forum/', include('forum.urls')),
     url(r'^account/', include('account.urls')),
     url(r'^attachments/', include('attachments.urls')),
+    url(r'^avatar/', include('simpleavatar.urls')),
 )
 
 if settings.DEBUG:

@@ -10,7 +10,7 @@
 <div id="brd-wrap" class="brd">
   <div id="brd-searchposts" class="brd-page paged-page">
     {% include 'forum/includes/header.html' %}
-    {% include 'lbforum/inc_announce.html' %}
+    {% include 'forum/includes/announce.html' %}
 
     <div class="hr"><hr /></div>
 
@@ -50,7 +50,7 @@
               <span class="post-num">{% page_item_idx page_obj forloop %}</span>
               <span class="post-byline">
                 <span>{% trans "Topic by" %} </span>
-                <a href="{% url user_profile post.posted_by.pk %}">{{post.posted_by.username}}</a>
+                <a href="{% url profiles_profile_detail post.posted_by.pk %}">{{post.posted_by.username}}</a>
               </span>
               <span class="post-link">
                 <a href="{{ post.get_absolute_url }}" title="Permanent link to this post" rel="bookmark" class="permalink">{{ post.created_on|timesince }}</a>
@@ -67,7 +67,7 @@
           <div class="postbody">
 			<div class="post-author">
 			  <ul class="author-ident">
-				<li class="username"> <a href="{% url user_profile post.posted_by.pk %}">{{post.posted_by.username}}</a> </li>
+				<li class="username"> <a href="{% url profiles_profile_detail post.posted_by.pk %}">{{post.posted_by.username}}</a> </li>
               </ul>
 			</div>
 		  <div class="post-entry">
@@ -107,7 +107,7 @@
 
 			<div class="hr"><hr /></div>
 
-			{% include 'lbforum/inc_copyright.html' %}
+			{% include 'forum/includes/copyright.html' %}
 
 		</div>
 	</div>

@@ -1,7 +1,7 @@
-{% extends 'lbforum/base.html' %}
+{% extends 'forum/forum_base.html' %}
 
 {% load i18n %}
-{% load lbforum %}
+{% load forum %}
 {% load avatar_tags %}
 
 {% block title %} {{ LBFORUM_TITLE }} - {{ LBFORUM_SUB_TITLE }} {% endblock %}
@@ -13,8 +13,8 @@
 	</div>
 	<div id="brd-wrap" class="brd">
 		<div id="{% block brd-page-id %}{% endblock %}" class="brd-page menu-page">
-			{% include 'lbforum/inc_header.html' %}
-			{% include 'lbforum/inc_announce.html' %}
+			{% include 'forum/includes/header.html' %}
+			{% include 'forum/includes/announce.html' %}
 			<div class="hr"><hr/></div>
             <div id="brd-crumbs-top" class="crumbs gen-content">
                 <p>
@@ -36,7 +36,7 @@
                             <a href="{% url account_index %}"><span>{% trans "Introduction" %}</span></a>
                             {% endif %}
                             {% if not view_only %}
-                            <a href="{% url user_profile user.pk %}"><span>{% trans "Introduction" %}</span></a>
+                            <a href="{% url profiles_profile_detail user.pk %}"><span>{% trans "Introduction" %}</span></a>
                             {% endif %}
                         </li>
                         {% if not view_only %}
@@ -76,7 +76,7 @@
                 </p>
 			</div>
 			<div class="hr"><hr /></div>
-			{% include 'lbforum/inc_copyright.html' %}
+			{% include 'forum/includes/copyright.html' %}
 		</div>
 	</div>
     {% block content_footer %}{% endblock %}

@@ -1,18 +1,16 @@
-{% extends "lbforum/base.html" %}
+{% extends "forum/forum_base.html" %}
+{% load i18n forum %}
 
-{% load i18n %}
-{% load lbforum %}
 
 {% block title %}{{  block.super }}{% endblock %}
 
 {% block content %}
-    <div id="actionbox">
-    </div>  
+<div id="actionbox"></div>  
 
     <div id="brd-wrap" class="brd">
         <div id="brd-searchtopics" class="brd-page paged-page">
-            {% include 'lbforum/inc_header.html' %}
-            {% include 'lbforum/inc_announce.html' %}
+            {% include 'forum/includes/header.html' %}
+            {% include 'forum/includes/announce.html' %}
 
             <div class="hr"><hr /></div>
 
@@ -45,7 +43,7 @@
                     </h1>
                 </div>
 
-                {% include 'lbforum/inc_topic_list.html' %}
+                {% include 'forum/includes/topic_list.html' %}
 
                 <div class="main-options gen-content">
                     <p class="options"></p>
@@ -73,7 +71,7 @@
 
             <div class="hr"><hr /></div>
 
-            {% include 'lbforum/inc_copyright.html' %}
+            {% include 'forum/includes/copyright.html' %}
 
         </div>
     </div>
