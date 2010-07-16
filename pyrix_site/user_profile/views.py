@@ -15,7 +15,7 @@ def default_success_url(profile):
     return reverse('profiles_profile_detail', kwargs={'username': profile.user.username})
 
 def create_profile(request, form_class=None, success_url=default_success_url,
-                   template_name='profiles/create_profile.html',
+                   template_name='user_profile/create_profile.html',
                    extra_context=None):
     """Create a profile for the current user, if one doesn't already exist.
     
@@ -110,7 +110,7 @@ def create_profile(request, form_class=None, success_url=default_success_url,
 create_profile = login_required(create_profile)
 
 def edit_profile(request, form_class=None, success_url=default_success_url,
-                 template_name='profiles/edit_profile.html',
+                 template_name='user_profile/edit_profile.html',
                  extra_context=None):
     """Edit the current user's profile.
     
@@ -198,7 +198,7 @@ def edit_profile(request, form_class=None, success_url=default_success_url,
 edit_profile = login_required(edit_profile)
 
 def profile_detail(request, username, public_profile_field=None,
-                   template_name='profiles/profile_detail.html',
+                   template_name='user_profile/profile_detail.html',
                    extra_context=None):
     """Detail view of a user's profile.
     
@@ -276,7 +276,7 @@ def profile_detail(request, username, public_profile_field=None,
                               context_instance=context)
 
 def profile_list(request, public_profile_field=None,
-                 template_name='profiles/profile_list.html', **kwargs):
+                 template_name='user_profile/profile_list.html', **kwargs):
     """A list of user profiles.
     
     If no profile model has been specified in the

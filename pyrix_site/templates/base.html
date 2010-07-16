@@ -43,18 +43,15 @@
 {% block body %}
 <!-- main start -->
 <div class="container shadow-box">
-  <div class="span-24 last">
-    <div><ul id="breadcrumb">{% show_breadcrumb %}</ul></div>
+  <div class="span-24 last" style="background:#E5ECF9; border-bottom: 1px dashed #ACACAC; height:36px;">
+    <div><ul id="breadcrumb" style="padding:5px">{% show_breadcrumb %}</ul></div>
   </div>
-</div>
 
-<div style="height:20px"></div>
-
-<div class="container shadow-box">
   <div class="span-24 last">
       {% block content %}
       {% endblock content %}
   </div>
+  
   <div class="span-24 last" style="margin-top:20px;border-top:1px dashed #9c9c9c;">
     <p class="box" style="margin:0px">
     {% block panel %}

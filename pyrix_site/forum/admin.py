@@ -61,7 +61,7 @@ class PostAdmin(admin.ModelAdmin):
     )
     search_fields = ('topic__subject', 'posted_by__username', 'message', )
 
-class LBForumUserProfileAdmin(admin.ModelAdmin):
+class ForumUserProfileAdmin(admin.ModelAdmin):
     list_display = (
         'user', 
         'userrank', 
@@ -75,4 +75,4 @@ admin.site.register(ForumCategory)
 admin.site.register(Forum, ForumAdmin)
 admin.site.register(Topic, TopicAdmin)
 admin.site.register(Post, PostAdmin)
-admin.site.register(LBForumUserProfile, LBForumUserProfileAdmin)
+admin.site.register(ForumUserProfile, ForumUserProfileAdmin)

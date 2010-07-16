@@ -8,22 +8,26 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
 from onlineuser.models import getOnlineInfos
-from forms import EditPostForm, NewPostForm
-from models import Topic, Category, Forum, Post
+from forum.forms import EditPostForm, NewPostForm
+from forum.models import Topic, ForumCategory, Forum, Post
 
-def index(request, template_name="lbforum/index.html"):
-    categories = Category.objects.all()
+def index(request, template_name="forum/index.html"):
+    categories = ForumCategory.objects.all()
     total_topics = Topic.objects.count()
     total_posts = Post.objects.count()
     total_users =  User.objects.count()
     last_registered_user = User.objects.order_by('-date_joined')[0]
-    ext_ctx = {'categories': categories, 'total_topics': total_topics,
-            'total_posts': total_posts, 'total_users': total_users,
-            'last_registered_user': last_registered_user}
-    ext_ctx.update(getOnlineInfos(True))
-    return render_to_response(template_name, ext_ctx, RequestContext(request))
+    extend_context = {
+        'categories': categories, 
+        'total_topics': total_topics,
+        'total_posts': total_posts, 
+        'total_users': total_users,
+        'last_registered_user': last_registered_user,
+    }
+    extend_context.update(getOnlineInfos(True))
+    return render_to_response(template_name, extend_context, RequestContext(request))
 
-def forum(request, forum_slug, template_name="lbforum/forum.html"):
+def forum(request, forum_slug, template_name="forum/forum.html"):
     forum = get_object_or_404(Forum, slug = forum_slug)
     topics = forum.topic_set.order_by('-sticky', '-last_reply_on').select_related()
     ext_ctx = {'forum': forum, 'topics': topics}
@@ -41,7 +45,7 @@ def post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return HttpResponseRedirect(post.get_absolute_url_ext())
 
-def markitup_preview(request, template_name="lbforum/markitup_preview.html"):
+def markitup_preview(request, template_name="forum/markitup_preview.html"):
     return render_to_response(template_name, {'message': request.POST['data']}, \
             RequestContext(request))
 
@@ -83,7 +87,7 @@ def new_post(request, forum_id=None, topic_id=None, form_class=NewPostForm, \
     return render_to_response(template_name, ext_ctx, RequestContext(request))
 
 @login_required
-def edit_post(request, post_id, form_class=EditPostForm, template_name="lbforum/post.html"):
+def edit_post(request, post_id, form_class=EditPostForm, template_name="forum/post.html"):
     preview = None
     post_type = _('topic')
     edit_post = get_object_or_404(Post, id=post_id)
@@ -102,14 +106,14 @@ def edit_post(request, post_id, form_class=EditPostForm, template_name="lbforum/
     return render_to_response(template_name, ext_ctx, RequestContext(request))
 
 @login_required
-def user_topics(request, user_id, template_name='lbforum/user_topics.html'):
+def user_topics(request, user_id, template_name='forum/user_topics.html'):
     view_user = User.objects.get(pk=user_id)
     topics = view_user.topic_set.order_by('-created_on').select_related()
     return render_to_response(template_name, {'topics': topics, 'view_user': view_user}, \
             RequestContext(request))
 
 @login_required
-def user_posts(request, user_id, template_name='lbforum/user_posts.html'):
+def user_posts(request, user_id, template_name='forum/user_posts.html'):
     view_user = User.objects.get(pk=user_id)
     posts = view_user.post_set.order_by('-created_on').select_related()
     return render_to_response(template_name, {'posts': posts, 'view_user': view_user}, \

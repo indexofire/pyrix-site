@@ -136,6 +136,9 @@ INSTALLED_APPS = (
     'registration',
     'user_profile',
     'wiki',
+    'forum',
+    'attachments',
+    'onlineuser',
 )
 
 try:

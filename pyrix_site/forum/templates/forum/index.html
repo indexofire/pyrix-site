@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<div style="padding:10px;">
+<h5>there is: {{ total_topics }} topics in this forum</h5>
+<h5>there is: {{ total_posts }} posts in this forum</h5>
+<h5>there is: {{ total_users }} users in this forum</h5>
+<h5>the last register user is: <a href="/profiles/{{ last_registered_user }}/">{{ last_registered_user }}</a></h5>
+
+<ul>
+{% for category in categories %}
+<li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+{% endfor %}
+</ul>
+</div>
+{% endblock content %}
