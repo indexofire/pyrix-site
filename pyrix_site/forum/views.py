@@ -12,7 +12,7 @@ from onlineuser.models import getOnlineInfos
 from forum.forms import EditPostForm, NewPostForm
 from forum.models import Topic, ForumCategory, Forum, Post
 
-def index(request, template_name="forum/index.html"):
+def index(request, template_name="forum/forum_index.html"):
     categories = ForumCategory.objects.all()
     total_topics = Topic.objects.count()
     total_posts = Post.objects.count()
@@ -28,7 +28,7 @@ def index(request, template_name="forum/index.html"):
     extend_context.update(getOnlineInfos(True))
     return render_to_response(template_name, extend_context, RequestContext(request))
 
-def forum(request, forum_slug, template_name="forum/forum.html"):
+def forum(request, forum_slug, template_name="forum/forum_forum.html"):
     forum = get_object_or_404(Forum, slug = forum_slug)
     topics = forum.topic_set.order_by('-sticky', '-last_reply_on').select_related()
     extend_context = {
@@ -37,7 +37,7 @@ def forum(request, forum_slug, template_name="forum/forum.html"):
     }
     return render_to_response(template_name, extend_context, RequestContext(request))
 
-def topic(request, topic_id, template_name="forum/topic.html"):
+def topic(request, topic_id, template_name="forum/forum_topic.html"):
     topic = get_object_or_404(Topic, id = topic_id)
     topic.num_views += 1
     topic.save()
@@ -101,7 +101,7 @@ def new_post(request, forum_id=None, topic_id=None, form_class=NewPostForm, \
     return render_to_response(template_name, extend_context, RequestContext(request))
 
 @login_required
-def edit_post(request, post_id, form_class=EditPostForm, template_name="forum/post.html"):
+def edit_post(request, post_id, form_class=EditPostForm, template_name="forum/forum_post.html"):
     preview = None
     post_type = _('topic')
     edit_post = get_object_or_404(Post, id=post_id)

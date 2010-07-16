@@ -1,10 +1,11 @@
-{% load i18n %}
-{% load forum %}
+{% load i18n forum %}
+
 <div id="topic{{ topic.pk }}" class="main-item {% cycle 'odd' 'even' %} {% if forloop.first %}main-item1{% endif %} {{topic|topic_state}}">
   <span class="icon mm {{topic|topic_state}}"><!-- --></span>
   
   <div class="item-subject">
-	<h3 class="hn mm"><span class="item-num">1</span>
+	<h3 class="hn mm">
+      <span class="item-num">1</span>
 	  {% if topic.closed %}
 		<strong>({% trans "Closed" %})</strong>
 	  {% endif %}
@@ -14,11 +15,10 @@
 	  {% endif %}		
 	  <a href="{% url lbforum_topic topic.id %}">{{topic.subject}} </a>   
 	</h3>
+    
 	<p>
-		<span class="item-starter">
-			Started {{ topic.created_on|date:"Y-m-d H:i" }} by <cite>{{ topic.posted_by }}</cite>
-		</span>
-		{% post_paginate topic.num_replies %}
+      <span class="item-starter">Started {{ topic.created_on|date:"Y-m-d H:i" }} by <cite>{{ topic.posted_by }}</cite></span>
+      {% post_paginate topic.num_replies %}
 	</p>
   </div>
   

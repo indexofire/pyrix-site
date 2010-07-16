@@ -1,14 +1,14 @@
 {% load i18n %}
 
 <div id="brd-head" class="gen-content">
-    <p id="brd-access"><a href="#brd-main">Skip to forum content</a></p>
-    <p id="brd-title"><a href="{% url lbforum_index %}">{{ LBFORUM_TITLE }}</a></p>
-    <p id="brd-desc">{{ LBFORUM_SUB_TITLE }}</p>
+  <p id="brd-access"><a href="#brd-main">Skip to forum content</a></p>
+  <p id="brd-title"><a href="{% url lbforum_index %}">{{ LBFORUM_TITLE }}</a></p>
+  <p id="brd-desc">{{ LBFORUM_SUB_TITLE }}</p>
 </div>
 
 <div id="brd-navlinks" class="gen-content">
     <ul id="brd-navlinks-left">
-		{% include 'forum/inc_header_left_links.html' %}
+		{% include 'forum/includes/header_left_links.html' %}
     </ul>
     <ul id="brd-navlinks-right">
         <li>
