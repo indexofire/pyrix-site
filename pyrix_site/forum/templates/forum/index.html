@@ -7,12 +7,15 @@
 <h5>there is: {{ total_topics }} topics in this forum</h5>
 <h5>there is: {{ total_posts }} posts in this forum</h5>
 <h5>there is: {{ total_users }} users in this forum</h5>
-<h5>the last register user is: <a href="/profiles/{{ last_registered_user }}/">{{ last_registered_user }}</a></h5>
+<h5>the lastest register user is: <a href="/profiles/{{ last_registered_user }}/">{{ last_registered_user }}</a></h5>
 
-<ul>
+<table>
 {% for category in categories %}
-<li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+<tr>
+  <td><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></td>
+  <td>{{ category.description }}</td>
+</tr>
 {% endfor %}
-</ul>
+</table>
 </div>
 {% endblock content %}

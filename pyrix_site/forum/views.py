@@ -30,16 +30,22 @@ def index(request, template_name="forum/index.html"):
 def forum(request, forum_slug, template_name="forum/forum.html"):
     forum = get_object_or_404(Forum, slug = forum_slug)
     topics = forum.topic_set.order_by('-sticky', '-last_reply_on').select_related()
-    ext_ctx = {'forum': forum, 'topics': topics}
-    return render_to_response(template_name, ext_ctx, RequestContext(request))
+    extend_context = {
+        'forum': forum, 
+        'topics': topics,
+    }
+    return render_to_response(template_name, extend_context, RequestContext(request))
 
 def topic(request, topic_id, template_name="lbforum/topic.html"):
     topic = get_object_or_404(Topic, id = topic_id)
     topic.num_views += 1
     topic.save()
     posts = topic.post_set.order_by('created_on').select_related()
-    ext_ctx = {'topic': topic, 'posts': posts}
-    return render_to_response(template_name, ext_ctx, RequestContext(request))
+    extend_context = {
+        'topic': topic,
+        'posts': posts,
+    }
+    return render_to_response(template_name, extend_context, RequestContext(request))
 
 def post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
@@ -80,11 +86,18 @@ def new_post(request, forum_id=None, topic_id=None, form_class=NewPostForm, \
             qpost = get_object_or_404(Post, id=qid)
             initial['message'] = "[quote=%s]%s[/quote]" % (qpost.posted_by.username, qpost.message)
         form = form_class(initial=initial)
-    ext_ctx = {'forum':forum, 'form':form, 'topic':topic, 'first_post':first_post, \
-            'post_type':post_type, 'preview':preview, 'show_subject_fld': show_subject_fld}
-    ext_ctx['unpublished_attachments'] = request.user.attachment_set.all().filter(activated=False)
-    ext_ctx['is_new_post'] = True
-    return render_to_response(template_name, ext_ctx, RequestContext(request))
+    extend_context = {
+        'forum':forum,
+        'form':form, 
+        'topic':topic, 
+        'first_post':first_post,
+        'post_type':post_type, 
+        'preview':preview, 
+        'show_subject_fld': show_subject_fld,
+    }
+    extend_context['unpublished_attachments'] = request.user.attachment_set.all().filter(activated=False)
+    extend_context['is_new_post'] = True
+    return render_to_response(template_name, extend_context, RequestContext(request))
 
 @login_required
 def edit_post(request, post_id, form_class=EditPostForm, template_name="forum/post.html"):
@@ -99,25 +112,37 @@ def edit_post(request, post_id, form_class=EditPostForm, template_name="forum/po
             return HttpResponseRedirect('../')
     else:
         form = form_class(instance=edit_post)
-    ext_ctx = {'form':form, 'post': edit_post, 'topic':edit_post.topic, \
-            'forum':edit_post.topic.forum, 'post_type':post_type, 'preview':preview}
-    ext_ctx['unpublished_attachments'] = request.user.attachment_set.all().filter(activated=False)
-    ext_ctx['show_subject_fld'] = edit_post.topic_post
-    return render_to_response(template_name, ext_ctx, RequestContext(request))
+    extend_context = {
+        'form':form, 
+        'post': edit_post, 
+        'topic':edit_post.topic,
+        'forum':edit_post.topic.forum, 
+        'post_type':post_type, 
+        'preview':preview,
+    }
+    extend_context['unpublished_attachments'] = request.user.attachment_set.all().filter(activated=False)
+    extend_context['show_subject_fld'] = edit_post.topic_post
+    return render_to_response(template_name, extend_context, RequestContext(request))
 
 @login_required
 def user_topics(request, user_id, template_name='forum/user_topics.html'):
     view_user = User.objects.get(pk=user_id)
     topics = view_user.topic_set.order_by('-created_on').select_related()
-    return render_to_response(template_name, {'topics': topics, 'view_user': view_user}, \
-            RequestContext(request))
+    extend_context = {
+        'topics': topics,
+        'view_user': view_user,
+    }
+    return render_to_response(template_name, extend_context, RequestContext(request))
 
 @login_required
 def user_posts(request, user_id, template_name='forum/user_posts.html'):
     view_user = User.objects.get(pk=user_id)
     posts = view_user.post_set.order_by('-created_on').select_related()
-    return render_to_response(template_name, {'posts': posts, 'view_user': view_user}, \
-            RequestContext(request))
+    extend_context = {
+        'posts': posts,
+        'view_user': view_user,
+    }
+    return render_to_response(template_name, extend_context, RequestContext(request))
 #Feed...
 #Add Post
 #Add Topic
