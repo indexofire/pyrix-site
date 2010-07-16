@@ -69,3 +69,5 @@ AKISMET_API_KEY = '773ea92115d8'
 # django-registration
 ACCOUNT_ACTIVATION_DAYS = 14
 
+# user_profile
+

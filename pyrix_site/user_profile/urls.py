@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
 
-from profiles import views
+from user_profile import views
 
 """
 URLConf for Django user profile management.

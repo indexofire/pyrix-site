@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 from base64 import b64encode, b64decode
 import pickle
 
@@ -11,11 +10,12 @@ from django.db.models import Sum
 
 from attachments.models import Attachment
 
+
 class Config(models.Model):
-    key = models.CharField(max_length = 255)#PK
+    key = models.CharField(max_length = 255)
     value = models.CharField(max_length = 255)
 
-class Category(models.Model):
+class ForumCategory(models.Model):
     name = models.CharField(max_length = 100)
     description = models.TextField(default = '')
     ordering = models.PositiveIntegerField(default = 1)    
@@ -35,7 +35,7 @@ class Forum(models.Model):
     slug = models.SlugField(max_length = 110)#unic...
     description = models.TextField(default = '')
     ordering = models.PositiveIntegerField(default = 1)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(ForumCategory)
     created_on = models.DateTimeField(auto_now_add = True)
     updated_on = models.DateTimeField(blank = True, null = True)
     num_topics = models.IntegerField(default = 0)
@@ -161,7 +161,7 @@ class Post(models.Model):#can't edit...
         page = (post_idx - 1) / 20 + 1
         return '%s?page=%s#p%s' % (topic.get_absolute_url(), page, self.pk)
     
-class LBForumUserProfile(models.Model):
+class ForumUserProfile(models.Model):
     user = models.OneToOneField(User, related_name='lbforum_profile', verbose_name=_('User'))
     last_activity = models.DateTimeField(auto_now_add=True)
     userrank = models.CharField(max_length=30,default="Junior Member")

@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     #(r'^blog/', include('zinnia.urls')),
     (r'^comment/', include('django.contrib.comments.urls')),
     #(r'^wiki/', include('wiki.urls')),
+    (r'^profile/', include('user_profile.urls')),
 )
 
 if settings.DEBUG:

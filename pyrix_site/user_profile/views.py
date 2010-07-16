@@ -8,7 +8,7 @@ from django.views.generic.list_detail import object_list
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from profiles import utils
+from user_profile import utils
 
 
 def default_success_url(profile):
