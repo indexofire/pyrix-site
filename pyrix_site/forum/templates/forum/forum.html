@@ -1,7 +1,7 @@
 {% extends "forum/base.html" %}
 
 {% load i18n %}
-
+{% load forum %}
 {% block title %}{{  block.super }}{% endblock %}
 
 {% block content %}
@@ -37,7 +37,7 @@
         <h1 class="hn"><span><a title="Permanent link to this forum." rel="bookmark" href="{% url lbforum_forum forum.slug %}" class="permalink">{{ forum }}</a> <small></small></span></h1>
 	</div>
 
-    {% include 'lbforum/inc_topic_list.html' %}
+    {% include 'forum/inc_topic_list.html' %}
 
     <div class="main-options gen-content">
         <p class="options"></p>

@@ -140,7 +140,7 @@
 
 .brd {
     overflow: auto;
-    margin: 10px 0px;
+    margin: 10px;
 }
 
 #brd-redirect, #brd-maint, #brd-util {
@@ -209,7 +209,7 @@
 }
 
 .brd .main-head .hn {
-    font-size: 1.084em;
+    font-size: 1.0em;
     padding: 0.462em 10em 0.426em 0;
 }
 
@@ -221,14 +221,14 @@
 }
 
 .brd .main-subhead .hn {
-    font-size: 1.084em;
+    font-size: 1.0em;
     padding: 0.462em 1.417em;
     position: relative;
 }
 
 .brd .main-pagehead {
     float: right;
-    margin: -2.5em 1.5em 0 0;
+    margin: -2.1em 1.5em 0 0;
 }
 
 .brd #brd-admin-uresults .main-pagehead {

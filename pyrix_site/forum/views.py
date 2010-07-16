@@ -37,7 +37,7 @@ def forum(request, forum_slug, template_name="forum/forum.html"):
     }
     return render_to_response(template_name, extend_context, RequestContext(request))
 
-def topic(request, topic_id, template_name="lbforum/topic.html"):
+def topic(request, topic_id, template_name="forum/topic.html"):
     topic = get_object_or_404(Topic, id = topic_id)
     topic.num_views += 1
     topic.save()
@@ -58,7 +58,7 @@ def markitup_preview(request, template_name="forum/markitup_preview.html"):
 
 @login_required
 def new_post(request, forum_id=None, topic_id=None, form_class=NewPostForm, \
-        template_name='lbforum/post.html'):
+        template_name='forum/post.html'):
     qpost = topic = forum = first_post = preview = None
     show_subject_fld = True 
     post_type = _('topic')

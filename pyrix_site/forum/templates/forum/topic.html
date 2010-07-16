@@ -1,8 +1,7 @@
-{% extends 'lbforum/base.html' %}
+{% extends 'forum/base.html' %}
 
 {% load i18n %}
-{% load lbforum %}
-
+{% load forum %}
 {% block title %}
     {{ topic.subject }} - {{ block.super }}
 {% endblock %}
@@ -14,11 +13,11 @@
     </div>
     <div id="brd-wrap" class="brd">
         <div id="brd-viewtopic" class="brd-page paged-page">
-            {% include 'lbforum/inc_header.html' %}
-            {% include 'lbforum/inc_announce.html' %}
+            {% include 'forum/inc_header.html' %}
+            {% include 'forum/inc_announce.html' %}
             <div class="hr"><hr/></div>
             <div id="brd-crumbs-top" class="crumbs gen-content">
-                {% include 'lbforum/inc_topic_brd_crumbs.html' %}
+                {% include 'forum/inc_topic_brd_crumbs.html' %}
             </div>
             <div class="main-wrapper" id="brd-main">
                 <div class="main-pagepost gen-content" id="brd-pagepost-top">
@@ -43,7 +42,7 @@
                 </div>
                 <div class="main-content main-topic" id="forum">
                     {% for post in posts %}     
-                        {% include 'lbforum/inc_post_detail.html' %}
+                        {% include 'forum/inc_post_detail.html' %}
                     {% endfor %}
                 </div>
                 <div class="main-options gen-content">
@@ -63,7 +62,7 @@
                 </div>
             </div>
             <div class="crumbs gen-content" id="brd-crumbs-end">
-                {% include 'lbforum/inc_topic_brd_crumbs.html' %}
+                {% include 'forum/inc_topic_brd_crumbs.html' %}
             </div>
             {% if not topic.closed %} {% if user.is_authenticated %}
                     <div class="main-subhead">
@@ -92,7 +91,7 @@
                     </div>
                 {% endif %} {% endif %}
             <div class="hr"><hr /></div>
-            {% include 'lbforum/inc_copyright.html' %}
+            {% include 'forum/inc_copyright.html' %}
         </div>
     </div>
 {% endblock %}

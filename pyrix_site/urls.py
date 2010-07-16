@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     (r'^profiles/', include('user_profile.urls')),
     url(r'^forum/', include('forum.urls')),
     url(r'^account/', include('account.urls')),
+    url(r'^attachments/', include('attachments.urls')),
 )
 
 if settings.DEBUG:

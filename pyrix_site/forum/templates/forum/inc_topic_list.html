@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load lbforum %}
+{% load forum %}
 <div class="main-pagehead">
     <h2 class="hn"><span><span class="item-info">{% trans "Topics" %} [ {% page_range_info page_obj %} ]</span></span></h2>
 </div>
@@ -15,6 +15,6 @@
 </div>
 <div id="topicslist" class="main-content main-forum forum-views">
     {% for topic in topics %}     
-    {% include 'lbforum/inc_topic_detail.html' %}  
+    {% include 'forum/inc_topic_detail.html' %}  
     {% endfor %}
 </div>

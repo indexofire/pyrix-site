@@ -91,7 +91,7 @@ def page_range_info(page_obj):
 DEFAULT_PAGINATION = getattr(settings, 'PAGINATION_DEFAULT_PAGINATION', 20)
 DEFAULT_WINDOW = getattr(settings, 'PAGINATION_DEFAULT_WINDOW', 4)
 
-@register.inclusion_tag('lbforum/post_paginate.html', takes_context=True)
+@register.inclusion_tag('forum/post_paginate.html', takes_context=True)
 def post_paginate(context, count, paginate_by=DEFAULT_PAGINATION, window=DEFAULT_WINDOW):
     page_count = count / paginate_by
     if count % paginate_by > 0:
