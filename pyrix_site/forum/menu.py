@@ -22,7 +22,6 @@ class ForumMenu(CMSAttachMenu):
             topics = Topic.objects.select_related('forum').filter(forum__pk=forum.pk)
             for topic in topics:
                 url = '/forum/topic/' + str(topic.pk) + '/'
-                print url
                 nodes.append(NavigationNode(topic.subject, url, count, topic.forum_id))
                 count += 1
         return nodes
