@@ -24,7 +24,7 @@
             </ul>
             <ul class="author-info">
                 <li><span>{% trans "Registered" %}: <strong>{{ post.posted_by.date_joined|date:"Y-m-d" }}</strong></span></li>
-                <li><span>{% trans "Posts" %}: <strong>{{ post.posted_by.lbforum_profile.get_total_posts  }}</strong></span></li>
+                <li><span>{% trans "Posts" %}: <strong>{{ post.posted_by.forum_profile.get_total_posts  }}</strong></span></li>
             </ul>
         </div>
         <div class="post-entry">
@@ -46,10 +46,10 @@
                     </ul>
                 </div>
                 {% endif %}
-                {% if post.posted_by.lbforum_profile.signature %}
+                {% if post.posted_by.forum_profile.signature %}
                 <div class="sig-content"> 
                     <span class="sig-line"><!-- --></span>
-                    {{ post.posted_by.lbforum_profile.signature|bbcode|safe }}
+                    {{ post.posted_by.forum_profile.signature|bbcode|safe }}
                 </div>
                 {% endif %}
             </div>
@@ -61,9 +61,9 @@
         <div class="post-options">
             <p class="post-contacts"></p>
             <p class="post-actions">
-                <span class="quote-post"><a href="{% url lbforum_new_replay topic.pk %}?qid={{post.pk}}">{% trans "quote" %}</a></span> 
+                <span class="quote-post"><a href="{% url forum_new_replay topic.pk %}?qid={{post.pk}}">{% trans "quote" %}</a></span> 
                 {% if user == post.posted_by or user.is_staff %}
-                <span class="edit-post"><a href="{% url lbforum_post_edit post.pk %}">{% trans "edit" %}</a></span> 
+                <span class="edit-post"><a href="{% url forum_post_edit post.pk %}">{% trans "edit" %}</a></span> 
                 {% endif %}
             </p>
         </div>

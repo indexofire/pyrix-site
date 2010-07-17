@@ -41,8 +41,8 @@
             <div class="ct-box data-box">
                 <h3 class="ct-legend hn"><span>{% trans "Posts and topics" %}</span></h3>
                 <p class="options">
-                    <span class="item1"><a href="{% url lbforum_user_posts view_user.pk %}">{% blocktrans %}View all {{view_user}}'s posts{% endblocktrans %}</a></span>
-                    <span><a href="{% url lbforum_user_topics view_user.pk %}">{% blocktrans %}View all {{view_user}}'s topics{% endblocktrans %}</a></span>
+                    <span class="item1"><a href="{% url forum_user_posts view_user.pk %}">{% blocktrans %}View all {{view_user}}'s posts{% endblocktrans %}</a></span>
+                    <span><a href="{% url forum_user_topics view_user.pk %}">{% blocktrans %}View all {{view_user}}'s topics{% endblocktrans %}</a></span>
                 </p>
             </div>
         </div>

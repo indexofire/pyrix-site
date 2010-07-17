@@ -8,9 +8,24 @@
  */
 
 body {
-    background: #EFEFEF;
+    background: #F3F1EE;
 }
 
+.banner-box-1 {
+    background: #F1F1F1;
+    border-bottom: 1px dashed #ACACAC;
+    height: 36px;
+}
+
+.banner-box-2 {
+    background: #F1F1F1;
+    border-top: 1px dashed #ACACAC;
+    height: 36px;
+}
+
+.banner-box-2 p {
+    padding: 8px;
+}
 .shadow-box {
     background: #FEFEFE;
     border: 1px solid #9C9C9C;
@@ -130,8 +145,8 @@ ul#breadcrumb li a{
 /* top bar of every pages */
 #top {
     border-bottom: #FFFFFF;
-    background: #6A7B8C;
-    margin-bottom: 15px;
+    background: #7A8B9C;
+    margin-bottom: 20px;
 }
 
 #top .topbar {
@@ -191,7 +206,7 @@ ul#breadcrumb li a{
 #main_menu ul li.selected,
 #main_menu ul li.ancestor {
     float: left;
-    border-bottom: 1px solid #EFEFEF;
+    border-bottom: 1px solid #F3F1EE;
 }
 
 #main_menu ul li a.menu {
@@ -202,15 +217,15 @@ ul#breadcrumb li a{
 
 #main_menu ul li a.menu:hover {
     color: #3C3C3C;
-    background: #FFFFFF;
+    background: #F3F1EE;
 }
 
 #main_menu ul li a.menu.selected,
 #main_menu ul li a.menu.ancestor {
-    border-top: 1px solid #222;
+    border-top: 1px solid #3C3C3C;
     border-left: 1px solid #222;
     border-right: 1px solid #222;
     color: #222;
-    background: #EFEFEF;
+    background: #F3F1EE;
 }
 
