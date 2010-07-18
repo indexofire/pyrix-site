@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'cms_content',
     'debug_toolbar',
     'registration',
+    'pagination',
     'user_profile',
     'wiki',
     'forum',
@@ -142,7 +143,6 @@ INSTALLED_APPS = (
     'onlineuser',
     'simpleavatar',
     'account',
-    'pagination',
     'djangohelper',
 )
 

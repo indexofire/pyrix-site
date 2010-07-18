@@ -3,12 +3,12 @@ from django.utils.translation import ugettext as _
 
 from cms.app_base import CMSApp
 from cms.apphook_pool import apphook_pool
-from cms_content.menu import CMSSectionMenu
+from wiki.menu import WikiPageMenu
 
 
-class Wiki(CMSApp):
-    name = _(u"Wiki Page")
+class WikiApp(CMSApp):
+    name = _(u"Wiki Page App")
     urls = ["wiki.urls"]
-    #menus = [WikiMenu]
+    menus = [WikiPageMenu]
 
-apphook_pool.register(Wiki)
+apphook_pool.register(WikiApp)
