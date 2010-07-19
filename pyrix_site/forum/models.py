@@ -186,7 +186,7 @@ def gen_last_post_info(post):
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        LBForumUserProfile.objects.create(user=instance)
+        ForumUserProfile.objects.create(user=instance)
 
 def update_topic_on_post(sender, instance, created, **kwargs):
     if created:
