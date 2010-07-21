@@ -14,7 +14,7 @@ class ForumMenu(CMSAttachMenu):
     
     def get_nodes(self, request):
         nodes = []
-        forums = Forum.objects.all()
+        forums = Forum.objects.all().select_related()
         count = forums.count()+1
         for forum in forums:
             url = '/forum/forum/' + forum.slug
