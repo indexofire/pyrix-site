@@ -39,6 +39,7 @@ class UserProfile(models.Model):
     mobile = PhoneNumberField(_('mobile'), blank=True)
     mobile_provider = models.ForeignKey('MobileProvider', blank=True, null=True)
     company = models.CharField(_('company'), blank=True, max_length=100)
+    rank = models.CharField(_('rank'),blank=True, max_length=100)
     
     class Meta:
         verbose_name = _('user profile')
