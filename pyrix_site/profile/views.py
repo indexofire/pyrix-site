@@ -5,10 +5,11 @@ from django.http import Http404, HttpResponseRedirect
 from django.views.generic import list_detail
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.core.urlresolvers import reverse
 
-from profiles.models import *
-from profiles.forms import *
+from profile.models import *
+from profile.forms import *
 
 
 def profile_list(request):
@@ -65,3 +66,86 @@ def profile_edit(request, template_name='profiles/profile_form.html'):
             'link_formset': link_formset
         }
     return render_to_response(template_name, context, context_instance=RequestContext(request))
+
+@permission_required('profile.can_create')
+def profile_create(request, form_class=None, success_url=None,
+    template_name='profiles/create_profile.html'):
+    """Create a profile for the current user, if one doesn't already
+    exist.
+    
+    If the user already has a profile, as determined by
+    ``request.user.get_profile()``, a redirect will be issued to the
+    :view:`profiles.views.edit_profile` view. If no profile model has
+    been specified in the ``AUTH_PROFILE_MODULE`` setting,
+    ``django.contrib.auth.models.SiteProfileNotAvailable`` will be
+    raised.
+    
+    To specify the form class used for profile creation, pass it as
+    the keyword argument ``form_class``; if this is not supplied, it
+    will fall back to a ``ModelForm`` for the model specified in the
+    ``AUTH_PROFILE_MODULE`` setting.
+    
+    If you are supplying your own form class, it must define a method
+    named ``save()`` which corresponds to the signature of ``save()``
+    on ``ModelForm``, because this view will call it with
+    ``commit=False`` and then fill in the relationship to the user
+    (which must be via a field on the profile model named ``user``, a
+    requirement already imposed by ``User.get_profile()``) before
+    finally saving the profile object. If many-to-many relations are
+    involved, the convention established by ``ModelForm`` of
+    looking for a ``save_m2m()`` method on the form is used, and so
+    your form class should define this method.
+    
+    To specify a URL to redirect to after successful profile creation,
+    pass it as the keyword argument ``success_url``; this will default
+    to the URL of the :view:`profiles.views.profile_detail` view for
+    the new profile if unspecified.
+    
+    To specify the template to use, pass it as the keyword argument
+    ``template_name``; this will default to
+    :template:`profiles/create_profile.html` if unspecified.
+    
+    Context:
+    
+    form
+        The profile-creation form.
+    
+    Template:
+    
+    ``template_name`` keyword argument, or
+    :template:`profiles/create_profile.html`.
+    
+    """
+    try:
+        profile_obj = request.user.get_profile()
+        return HttpResponseRedirect(reverse('profiles_edit_profile'))
+    except ObjectDoesNotExist:
+        pass
+    
+    #
+    # We set up success_url here, rather than as the default value for
+    # the argument. Trying to do it as the argument's default would
+    # mean evaluating the call to reverse() at the time this module is
+    # first imported, which introduces a circular dependency: to
+    # perform the reverse lookup we need access to profiles/urls.py,
+    # but profiles/urls.py in turn imports this module.
+    #
+    
+    if success_url is None:
+        success_url = reverse('profile_detail', kwargs={'username': request.user.username})
+    if form_class is None:
+        form_class = utils.get_profile_form()
+    if request.method == 'POST':
+        form = form_class(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            profile_obj = form.save(commit=False)
+            profile_obj.user = request.user
+            profile_obj.save()
+            if hasattr(form, 'save_m2m'):
+                form.save_m2m()
+            return HttpResponseRedirect(success_url)
+    else:
+        form = form_class()
+    return render_to_response(template_name,
+                              {'form': form},
+                              context_instance=RequestContext(request))
