@@ -11,6 +11,16 @@ from django.db.models import Sum
 from attachments.models import Attachment
 
 
+__all__ = [
+    'Config',
+    'ForumCategory',
+    'Forum',
+    'ForumUserProfile',
+    'Post',
+    'Topic',
+    'TopicManager',
+]
+
 class Config(models.Model):
     key = models.CharField(max_length = 255)
     value = models.CharField(max_length = 255)
@@ -61,7 +71,7 @@ class Forum(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('lbforum_forum', (), {'forum_slug': self.slug})
+        return ('forum_forum', (), {'forum_slug': self.slug})
 
     def __unicode__(self):
         return self.name 
@@ -104,7 +114,7 @@ class Topic(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('lbforum_topic', (), {'topic_id': self.id})
+        return ('forum_topic', (), {'topic_id': self.id})
     
     def get_last_post(self):
         if not self.last_post:
@@ -153,7 +163,7 @@ class Post(models.Model):#can't edit...
 
     @models.permalink
     def get_absolute_url(self):
-        return ('lbforum_post', (), { 'post_id': self.pk })
+        return ('forum_post', (), { 'post_id': self.pk })
 
     def get_absolute_url_ext(self):
         topic = self.topic
@@ -162,7 +172,7 @@ class Post(models.Model):#can't edit...
         return '%s?page=%s#p%s' % (topic.get_absolute_url(), page, self.pk)
     
 class ForumUserProfile(models.Model):
-    user = models.OneToOneField(User, related_name='lbforum_profile', verbose_name=_('User'))
+    user = models.OneToOneField(User, related_name='forum_profile', verbose_name=_('User'))
     last_activity = models.DateTimeField(auto_now_add=True)
     userrank = models.CharField(max_length=30,default="Junior Member")
     last_posttime = models.DateTimeField(auto_now_add=True)

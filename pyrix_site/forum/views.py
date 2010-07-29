@@ -12,6 +12,8 @@ from onlineuser.models import getOnlineInfos
 from forum.forms import EditPostForm, NewPostForm
 from forum.models import Topic, ForumCategory, Forum, Post
 
+
+
 def index(request, template_name="forum/forum_index.html"):
     categories = ForumCategory.objects.all()
     total_topics = Topic.objects.count()
@@ -79,7 +81,7 @@ def new_post(request, forum_id=None, topic_id=None, form_class=NewPostForm, \
             if topic:
                 return HttpResponseRedirect(post.get_absolute_url_ext())
             else:
-                return HttpResponseRedirect(reverse("lbforum_forum", args=[forum.slug]))
+                return HttpResponseRedirect(reverse("forum_forum", args=[forum.slug]))
     else:
         initial={}
         qid = request.GET.get('qid', '')

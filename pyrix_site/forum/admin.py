@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from forum.models import ForumCategory, Forum, Topic, Post, ForumUserProfile
+from forum.models import *
 
 
 def update_topic_num_replies(modeladmin, request, queryset):
