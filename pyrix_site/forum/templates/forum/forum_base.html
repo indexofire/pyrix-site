@@ -3,9 +3,7 @@
 
 {% block title %} {{ LBFORUM_TITLE }} - {{ LBFORUM_SUB_TITLE }} {% endblock %}
 
-{% block scripts %}
-{% include 'forum/includes/styles.html' %}
-{% endblock %}
+{% block extra_head %}{% include "forum/includes/styles.html" %}{% endblock extra_head %}
 
 {% block content %}
 {% endblock %}
