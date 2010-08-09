@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'simpleavatar',
     'account',
     'djangohelper',
+    'haystack',
 )
 
 try:

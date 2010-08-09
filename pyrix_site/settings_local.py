@@ -71,3 +71,8 @@ ACCOUNT_ACTIVATION_DAYS = 14
 
 # user_profile
 AUTH_PROFILE_MODULE = 'forum.ForumUserProfile'
+
+# haystack
+HAYSTACK_SITECONF = 'pyrix.search_site'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = 'search_index'

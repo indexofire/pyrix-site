@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^account/', include('account.urls')),
     url(r'^attachments/', include('attachments.urls')),
     url(r'^avatar/', include('simpleavatar.urls')),
+    url(r'^search/', include('haystack.urls')),
 )
 
 if settings.DEBUG:
