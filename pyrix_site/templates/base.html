@@ -41,7 +41,7 @@
 
 <div class="container shadow-box">
   <div class="span-24 last banner-box-1">
-    <div><ul id="breadcrumb" style="padding: 5px">{% show_breadcrumb %}</ul></div>
+    <div><ul id="breadcrumb" style="padding: 5px">{% block breadcrumb %}{% show_breadcrumb %}{% endblock breadcrumb %}</ul></div>
   </div>
 
   <div class="span-24 last">

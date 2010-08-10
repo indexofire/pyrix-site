@@ -13,7 +13,6 @@ from forum.forms import EditPostForm, NewPostForm
 from forum.models import Topic, ForumCategory, Forum, Post
 
 
-
 def index(request, template_name="forum/forum_index.html"):
     categories = ForumCategory.objects.all()
     total_topics = Topic.objects.count()
