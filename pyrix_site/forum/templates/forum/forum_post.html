@@ -1,25 +1,26 @@
 {% extends "forum/forum_base.html" %}
 {% load i18n forum %}
 
-{% block title %}{{  block.super }}{% endblock %}
+{% block title %}{{ block.super }}{% endblock %}
 
-{% block extra_header %}
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}scripts/markitup/skins/markitup/style.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}scripts/markitup/bbcode/style.css" />
-{% endblock %}
+{% block extra_head %}
+{{ block.super }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}cms_content/js/markitup/skins/markitup/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}forum/js/markitup/sets/bbcode/style.css" />
+{% endblock extra_head %}
 
 {% block content %}
 <div id="actionbox"></div>  
 
 <div id="brd-wrap" class="brd">
   <div id="brd-viewforum" class="brd-page paged-page">
-    {% include 'forum/includes/header.html' %}
-    {% include 'forum/includes/announce.html' %}
+  {% comment %}{% include 'forum/includes/header.html' %}{% endcomment %}
+  {% comment %}{% include 'forum/includes/announce.html' %}{% endcomment %}
 
     <div class="hr"><hr /></div>
 
     <div class="crumbs gen-content" id="brd-crumbs-top">
-      {% include 'forum/includes/post_brd_crumbs.html' %}
+      {% comment %}{% include 'forum/includes/forum_brd_crumbs.html' %}{% endcomment %}
     </div>
     
     <div class="main-wrapper" id="brd-main">
@@ -127,21 +128,14 @@
       {% endif %}
       
     </div>
-    
-    <div class="crumbs gen-content" id="brd-crumbs-end">{% include 'forum/includes/post_brd_crumbs.html' %}</div>
-    
-    <div class="hr"><hr /></div>
-      {% include 'forum/includes/copyright.html' %}
-    </div>
   </div>
-
-    <script type="text/javascript" src="{{ MEDIA_URL }}scripts/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}scripts/markitup/jquery.markitup.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}scripts/markitup/bbcode/set.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}scripts/ajaxupload.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}scripts/simple_tpl.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}scripts/upload_attachment.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}scripts/common.js"></script>
+</div>
+    <script type="text/javascript" src="{{ MEDIA_URL }}cms_content/js/markitup/jquery.markitup.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/markitup/sets/bbcode/set.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/ajaxupload.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/simple_tpl.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/upload_attachment.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/common.js"></script>
     <script type="text/javascript">
         mySettings['previewParserPath']='{% url markitup_preview %}';
         mySettings['previewAutoRefresh']=false;

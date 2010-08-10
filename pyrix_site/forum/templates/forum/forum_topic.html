@@ -12,11 +12,11 @@
 
 <div id="brd-wrap" class="brd">
   <div id="brd-viewtopic" class="brd-page paged-page">
-    {% include 'forum/includes/header.html' %}
-    {% include 'forum/includes/announce.html' %}
+  {% comment %}{% include 'forum/includes/header.html' %}{% endcomment %}
+  {% comment %}{% include 'forum/includes/announce.html' %}{% endcomment %}
     <div class="hr"><hr/></div>
     <div id="brd-crumbs-top" class="crumbs gen-content">
-      {% include 'forum/includes/topic_brd_crumbs.html' %}
+      {% comment %}{% include 'forum/includes/forum_brd_crumbs.html' %}{% endcomment %}
     </div>
     <div class="main-wrapper" id="brd-main">
       <div class="main-pagepost gen-content" id="brd-pagepost-top">
@@ -34,10 +34,9 @@
         </p>
       </div>
       <div class="main-head">
-        <h1 class="hn"><span><a title="Permanent link to this topic" rel="bookmark" href="{{ topic.get_absolute_url }}" class="permalink">{{ topic }}</a></span></h1>
-      </div>
-      <div class="main-pagehead">
-        <h2 class="hn"><span><span class="item-info">{% trans "Posts" %} [ {% page_range_info page_obj %} ]</span></span></h2>
+        <h1 class="hn">
+          <span><a title="Permanent link to this topic" rel="bookmark" href="{{ topic.get_absolute_url }}" class="permalink">{{ topic }}</a></span>
+          <span>{% trans "Posts" %} [ {% page_range_info page_obj %} ]</span></h1>
       </div>
       <div class="main-content main-topic" id="forum">
         {% for post in posts %}     
@@ -101,9 +100,6 @@
         </div>
         {% endif %}
       {% endif %}
-      
-    <div class="hr"><hr /></div>
-    {% include 'forum/includes/copyright.html' %}
   </div>
 </div>
 {% endblock %}

@@ -8,11 +8,11 @@
 
 <div id="brd-wrap" class="brd">
   <div id="brd-viewforum" class="brd-page paged-page">
-    {% include 'forum/includes/header.html' %}
-    {% include 'forum/includes/announce.html' %}
+  {% comment %}{% include 'forum/includes/header.html' %}{% endcomment %}
+  {% comment %}{% include 'forum/includes/announce.html' %}{% endcomment %}
     <div class="hr"><hr /></div>
     <div class="crumbs gen-content" id="brd-crumbs-top">
-      {% include 'forum/includes/forum_brd_crumbs.html' %}
+      {% comment %}{% include 'forum/includes/forum_brd_crumbs.html' %}{% endcomment %}
     </div>
 
     <!-- brd-main begin -->
@@ -51,15 +51,6 @@
 	  </div>
     </div>
     <!-- brd-main ends -->
-
-    <div class="crumbs gen-content" id="brd-crumbs-end">
-      {% include 'forum/includes/forum_brd_crumbs.html' %}
-    </div>
-
-    <div class="hr"><hr /></div>
-
-    {% include 'forum/includes/copyright.html' %}
-
   </div>
 </div>
 {% endblock %}

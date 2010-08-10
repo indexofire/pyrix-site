@@ -11,9 +11,9 @@
 		{% include 'forum/includes/header_left_links.html' %}
     </ul>
     <ul id="brd-navlinks-right">
-        <li>
+        <!--<li>
             <a href="#">{% trans "Search" %}</a>
-        </li>
+        </li>-->
         {% if user.is_authenticated %}
         <li id="navprofile"><a href="{% url account_index %}">{% trans "My profile" %}</a></li>
         <li id="navlogout"><a href="{% url auth_logout %}?next={% url forum_index %}">{% trans "Logout" %}</a></li>
@@ -37,3 +37,4 @@
     <p id="visit-links" class="options">
     </p>
 </div> 
+
