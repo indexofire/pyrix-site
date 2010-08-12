@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from django import settings
+from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.models import User
@@ -46,9 +46,9 @@ def signature(request, form_class=SignatureForm, template_name="account/signatur
     ext_ctx = {'form': form}
     return render_to_response(template_name, ext_ctx, RequestContext(request))
 
-
+"""
 def create(request, template_name='accounts/create.html',
-    redirect_field_name=REDIRECT_FIELD_NAME):
+    redirect_field_name='redirect_to'):
 
     user_form = None
     captcha_error = ""
@@ -75,3 +75,4 @@ def create(request, template_name='accounts/create.html',
         'captcha_error': captcha_error,
         'user_form': user_form},
         context_instance=RequestContext(request))
+"""

@@ -15,3 +15,5 @@ if enable reCapture:
 * recaptcha-client
 * pycrypto
 
+if enable forum:
+* Postmarkup

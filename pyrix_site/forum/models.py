@@ -3,6 +3,7 @@ from base64 import b64encode, b64decode
 import pickle
 
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
@@ -62,7 +63,7 @@ class Forum(models.Model):
         return self.topic_set.all().count()
 
     def count_nums_post(self):
-        return self.topic_set.all().aggregate(Sum('num_replies'))['num_replies__sum']
+        return self.topic_set.all().aggregate(Sum('num_replies'))['num_replies__sum'] or 0
 
     def get_last_post(self):
         if not self.last_post:
@@ -168,7 +169,7 @@ class Post(models.Model):#can't edit...
     def get_absolute_url_ext(self):
         topic = self.topic
         post_idx = topic.post_set.filter(created_on__lte=self.created_on).count()
-        page = (post_idx - 1) / 20 + 1
+        page = (post_idx - 1) / settings.CTX_CONFIG['TOPIC_PAGE_SIZE'] + 1
         return '%s?page=%s#p%s' % (topic.get_absolute_url(), page, self.pk)
     
 class ForumUserProfile(models.Model):

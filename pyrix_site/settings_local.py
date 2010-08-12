@@ -79,3 +79,11 @@ HAYSTACK_WHOOSH_PATH = 'search_index'
 
 # reCapture
 RECAPTCHA_PRIVATE_KEY = '6LfIO7wSAAAAAPPt4nVtrUIzFc49_FQoM1MT_i0r'
+
+# forum
+CTX_CONFIG = {
+    'LBFORUM_TITLE': 'LBForum',
+    'LBFORUM_SUB_TITLE': '',
+    'FORUM_PAGE_SIZE': 50,
+    'TOPIC_PAGE_SIZE': 20,
+}

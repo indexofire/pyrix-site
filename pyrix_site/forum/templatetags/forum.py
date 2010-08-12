@@ -76,6 +76,27 @@ def online(user):
         pass
     return _('Offline')
 
+@register.filter
+def lbtimesince(d, now=None):
+    # Convert datetime.date to datetime.datetime for comparison.
+    if not d:
+        return ''
+    if not isinstance(d, datetime.datetime):
+        d = datetime.datetime(d.year, d.month, d.day)
+    if now and not isinstance(now, datetime.datetime):
+        now = datetime.datetime(now.year, now.month, now.day)
+    if not now:
+        if d.tzinfo:
+            now = datetime.datetime.now(LocalTimezone(d))
+        else:
+            now = datetime.datetime.now()
+    # ignore microsecond part of 'd' since we removed it from 'now'
+    delta = now - (d - datetime.timedelta(0, 0, d.microsecond))
+    since = delta.days * 24 * 60 * 60 + delta.seconds
+    if since // (60 * 60 * 24) < 3:
+        return _("%s ago") % _timesince(d)
+    return _date(d, "Y-m-d H:i")
+
 @register.simple_tag
 def page_item_idx(page_obj, forloop):
     return page_obj.start_index() + forloop['counter0']
@@ -93,6 +114,10 @@ DEFAULT_WINDOW = getattr(settings, 'PAGINATION_DEFAULT_WINDOW', 4)
 
 @register.inclusion_tag('forum/post_paginate.html', takes_context=True)
 def post_paginate(context, count, paginate_by=DEFAULT_PAGINATION, window=DEFAULT_WINDOW):
+    if not isinstance(paginate_by, int):
+        paginate_by = template.Variable(paginate_by)
+    if not isinstance(window, int):
+        window = template.Variable(paginate_by)
     page_count = count / paginate_by
     if count % paginate_by > 0:
         page_count += 1
