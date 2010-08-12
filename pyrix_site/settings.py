@@ -101,6 +101,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.csrf',
     'cms.context_processors.media',
+    'forum.context_processors.page_size',
     #'cms_content.context_processors.content_page',
 )
 
