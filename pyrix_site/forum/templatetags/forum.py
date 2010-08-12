@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
+import datetime
+
 from django import template
 from django.utils.safestring import mark_safe
 from django.utils.encoding import force_unicode
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import date as _date
+from django.template.defaultfilters import timesince as _timesince
 from django.conf import settings
 
 from postmarkup import create, QuoteTag, PostMarkup
