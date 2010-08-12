@@ -39,15 +39,40 @@ def forum(request, forum_slug, template_name="forum/forum_forum.html"):
     return render_to_response(template_name, extend_context, RequestContext(request))
 
 def topic(request, topic_id, template_name="forum/forum_topic.html"):
-    topic = get_object_or_404(Topic, id = topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
     topic.num_views += 1
-    topic.save()
+    #topic.save()
     posts = topic.post_set.order_by('created_on').select_related()
     extend_context = {
         'topic': topic,
         'posts': posts,
     }
     return render_to_response(template_name, extend_context, RequestContext(request))
+
+def topic_new(request, topic_id, template_name="forum/forum_topic.html"):
+    topic = get_object_or_404(Topic, id=topic_id)
+    topic.num_views += 1
+    #topic.save()
+    
+    qs = Topic.objects.filter(pk=topic_id)
+    obj_dict = dict([(obj.id, obj) for obj in qs])
+    objects = Post.objects.filter(topic__in=qs).select_related()
+    relation_dict = {}
+    for obj in objects:
+        relation_dict.setdefault(obj.topic_id,[]).append(obj)
+    print relation_dict
+    for id, related in relation_dict.items():
+        obj_dict[id]._related = related
+
+    extend_context = {
+        'topic': topic,
+        #'posts': objects,
+        'posts': objects,
+    }
+    return render_to_response(template_name, extend_context, RequestContext(request))
+
+
+
 
 def post(request, post_id):
     post = get_object_or_404(Post, id=post_id)

@@ -20,11 +20,11 @@
                 <li class="useravatar"><a href="{% url profiles_profile_detail post.posted_by.pk %}">{% avatar post.posted_by %}</a></li>
                 <li class="username"> <a href="{% url profiles_profile_detail post.posted_by.pk %}">{{post.posted_by.username}}</a> </li>
                 <li class="usertitle"><span>{% trans "Member" %}</span></li>
-                <li class="userstatus"><span>{{post.posted_by|online}}</span></li>
+                <li class="userstatus"><span>{{post.posted_by|online}}<!--here are n*posts waste queries--></span></li>
             </ul>
             <ul class="author-info">
                 <li><span>{% trans "Registered" %}: <strong>{{ post.posted_by.date_joined|date:"Y-m-d" }}</strong></span></li>
-                <li><span>{% trans "Posts" %}: <strong>{{ post.posted_by.forum_profile.get_total_posts  }}</strong></span></li>
+                <li><span>{% trans "Posts" %}: <strong><!--here are 2n*posts waste queries-->{{ post.posted_by.forum_profile.get_total_posts  }}</strong></span></li>
             </ul>
         </div>
         <div class="post-entry">
@@ -33,6 +33,7 @@
                 {% if post.edited_by %}
                 <p class="postedit"><em>Last edited by {{post.edited_by}} ({{post.updated_on|date:"Y-m-d H:i"}})</em></p>
                 {% endif %}
+                <!--here are n*posts waste queries-->
                 {% if post.attachments.all %}
                 <div class="entry-attachments">
                     <b>{% trans "Attachments" %}:</b>

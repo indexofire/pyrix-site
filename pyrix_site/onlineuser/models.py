@@ -1,4 +1,4 @@
-from  datetime  import datetime, timedelta
+from datetime import datetime, timedelta
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -11,10 +11,10 @@ class OnlineManager(models.Manager):
         now = datetime.now()
         return Online.objects.filter(\
                 updated_on__gte = now - timedelta(seconds = last_online_duration)\
-                )
+                ).select_related()
 
     def online_users(self):
-        return self.onlines().filter(user__isnull=False)
+        return self.onlines().filter(user__isnull=False).select_related()
 
 class Online(models.Model):
     user = models.OneToOneField(User, related_name='online', blank=True, null=True)

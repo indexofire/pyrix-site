@@ -2,6 +2,10 @@
 Dependencies:
 ===================================
 
+basic dependencies:
+* PIL
+
+
 if enable registration:
 * django-registration
 
