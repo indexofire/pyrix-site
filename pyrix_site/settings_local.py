@@ -76,3 +76,6 @@ AUTH_PROFILE_MODULE = 'forum.ForumUserProfile'
 HAYSTACK_SITECONF = 'pyrix.search_site'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = 'search_index'
+
+# reCapture
+RECAPTCHA_PRIVATE_KEY = '6LfIO7wSAAAAAPPt4nVtrUIzFc49_FQoM1MT_i0r'

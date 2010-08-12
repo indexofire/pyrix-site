@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
+from django import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.models import User
@@ -44,3 +45,33 @@ def signature(request, form_class=SignatureForm, template_name="account/signatur
         form = form_class(instance=profile)
     ext_ctx = {'form': form}
     return render_to_response(template_name, ext_ctx, RequestContext(request))
+
+
+def create(request, template_name='accounts/create.html',
+    redirect_field_name=REDIRECT_FIELD_NAME):
+
+    user_form = None
+    captcha_error = ""
+    redirect_to = request.REQUEST.get(redirect_field_name, '')
+
+    if request.method == "POST":
+        captcha_response = captcha.submit(
+            request.POST.get("recaptcha_challenge_field", None),
+            request.POST.get("recaptcha_response_field", None),
+            settings.RECAPTCHA_PRIVATE_KEY,
+            request.META.get("REMOTE_ADDR", None))
+
+        if not captcha_response.is_valid:
+            captcha_error = "&error=%s" % captcha_response.error_code
+        else:
+            # perform other registration checks as needed...
+            # success!
+            return HttpResponseRedirect(redirect_to)
+
+    if not user_form:
+        user_form = UserForm(prefix="user")
+
+    return render_to_response(template_name, {
+        'captcha_error': captcha_error,
+        'user_form': user_form},
+        context_instance=RequestContext(request))
