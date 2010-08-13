@@ -4,6 +4,7 @@ Dependencies:
 
 basic dependencies:
 * PIL
+* south
 
 
 if enable registration:

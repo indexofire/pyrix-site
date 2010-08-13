@@ -7,14 +7,11 @@
 
 <!-- brd-index begins -->
 <div id="brd-index" class="brd-page basic-page">
-  {% comment %}{% include 'forum/includes/header.html' %}{% endcomment %}
-  {% comment %}{% include 'forum/includes/announce.html' %}{% endcomment %}
-  <p></p>
   <div class="hr"><hr /></div>
   <!-- brd-main begins -->
   <div id="brd-main">
     <div class="main-head">
-      <h1 class="hn"><span>{{ LBFORUM_TITLE }}</span></h1>
+      <h1 class="hn"><span>{{ FORUM_TITLE }}</span></h1>
     </div>
     {% for category in categories %}
     <div class="main-subhead">
@@ -88,7 +85,8 @@
         {% trans "Currently online" %} <strong> {{ total_onlines }} </strong> ( <strong> {{ total_onlines_guest }} </strong> {% trans "guests" %}, <strong>{{ total_onlines_user }}</strong> {% trans "registered user" %} )
       </span>
     </h3>
-    <p>{% for o in online_users %} <a href="{% url user_profile o.user_id %}">{{o.username}}</a> {% endfor %}</p>
+    
+    <p>{% for o in online_users %}<a href="{% url profile_detail o.user.username %}">{{o.username}}</a>{% endfor %}</p>
   </div>
   </div>
   <!-- brd-index ends -->

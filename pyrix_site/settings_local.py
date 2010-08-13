@@ -14,7 +14,7 @@ CMS_MENU_TITLE_OVERWRITE = True
 CMS_HIDE_UNTRANSLATED = False
 CMS_URL_OVERWRITE = True
 LANGUAGES = (
-    ('en', gettext('English')),
+    #('en', gettext('English')),
     ('zh-cn', gettext("Chinese")),
 )
 CMS_TEMPLATES = (

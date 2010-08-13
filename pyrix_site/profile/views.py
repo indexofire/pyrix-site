@@ -20,7 +20,18 @@ def profile_list(request):
     )
 profile_list.__doc__ = list_detail.object_list.__doc__
 
-
+"""
+def profile_detail(request, user_id):
+    try:
+        user = User.objects.get(id=user_id)
+    except User.DoesNotExist:
+        raise Http404
+    profile = UserProfile.objects.get(user=user)
+    context = {
+        'object': profile,
+    }
+    return render_to_response('profiles/profile_detail.html', context, context_instance=RequestContext(request))
+"""
 def profile_detail(request, username):
     try:
         user = User.objects.get(username__iexact=username)

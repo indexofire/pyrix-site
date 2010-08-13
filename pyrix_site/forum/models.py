@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from base64 import b64encode, b64decode
-import pickle
+try:
+    import cPickle as pickle
+except:
+    import pickle
 
 from django.db import models
 from django.conf import settings
@@ -10,7 +13,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import Sum
 
 from forum.settings import *
-
 from attachments.models import Attachment
 
 
@@ -31,9 +33,9 @@ class Config(models.Model):
 class ForumCategory(models.Model):
     name = models.CharField(max_length = 100)
     description = models.TextField(default = '')
-    ordering = models.PositiveIntegerField(default = 1)    
-    created_on = models.DateTimeField(auto_now_add = True)
-    updated_on = models.DateTimeField(blank = True, null = True)
+    ordering = models.PositiveIntegerField(default=1)    
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(blank=True, null=True)
     
     class Meta:
         verbose_name = _("Category")
@@ -45,7 +47,7 @@ class ForumCategory(models.Model):
     
 class Forum(models.Model):
     name = models.CharField(max_length = 100)
-    slug = models.SlugField(max_length = 110)#unic...
+    slug = models.SlugField(max_length = 110)
     description = models.TextField(default = '')
     ordering = models.PositiveIntegerField(default = 1)
     category = models.ForeignKey(ForumCategory)
@@ -53,8 +55,7 @@ class Forum(models.Model):
     updated_on = models.DateTimeField(blank = True, null = True)
     num_topics = models.IntegerField(default = 0)
     num_posts = models.IntegerField(default = 0)
-
-    last_post = models.CharField(max_length = 255, blank = True)#pickle obj
+    last_post = models.CharField(max_length = 255, blank = True)
     
     class Meta:
         verbose_name = _("Forum")
