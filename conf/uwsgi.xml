@@ -1,0 +1,6 @@
+<uwsgi>
+    <pythonpath>/usr/local/www</pythonpath>
+    <app mountpoint="/">
+        <script>dj_project.django_wsgi</script>
+    </app>
+</uwsgi>
