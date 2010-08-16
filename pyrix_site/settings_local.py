@@ -3,6 +3,7 @@
 gettext = lambda s: s
 
 # django-cms-2.0 Settings:
+CMS_CACHE_PREFIX = 'cms'
 APPEND_SLASH = True
 CMS_SOFTROOT = True
 CMS_MODERATOR = False
