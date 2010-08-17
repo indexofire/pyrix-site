@@ -18,10 +18,13 @@
 
 <body>
 <div id="top" class="clearfix">
-  <h2 class="site_name"><a href="/" target="_self"><b>HZCDC.Labs</b></a></h2>
+  <h2 class="site_name"><a href="/" target="_self">HZCDC.Labs</a></h2>
   <ul id="top_menu">{% show_menu 0 0 0 0 %}</ul>
 </div>
 
+<div id="panel" class="clearfix">
+  <div><ul id="breadcrumb">{% block breadcrumb %}{% show_breadcrumb %}{% endblock breadcrumb %}</ul></div>
+</div>
 <div id="main" class="clearfix">
 {% block content %}
 {% endblock content %}
@@ -52,7 +55,7 @@
 
 <div class="container shadow-box">
   <div class="span-24 last banner-box-1">
-    <div><ul id="breadcrumb" style="padding: 5px">{% block breadcrumb %}{% show_breadcrumb %}{% endblock breadcrumb %}</ul></div>
+
   </div>
 
   <div class="span-24 last">

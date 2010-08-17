@@ -1,0 +1,85 @@
+/* menu_tree of cms_content */
+#menu_tree ul {
+    margin:0px;
+    padding:0px;
+    list-style-type:none;
+    border-bottom: 1px solid #CCC;
+}
+
+#menu_tree li {
+    background:#f7f7f7;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    position: relative;
+}
+
+#menu_tree ul li.title {
+    background: #ccc;
+    color: #333333;
+}
+
+#menu_tree ul li.ancestor,
+#menu_tree ul li.selected {
+    background: #E8E8E8;
+    color: #333;
+}
+
+#menu_tree ul li a:hover{
+    background: #CCC url(http://img.ifeng.com/tres/phoenix/icon2.gif) no-repeat 186px -303px;
+    color: #FFF;
+}
+
+#menu_tree ul li a {
+    display: block;
+}
+#menu_tree ul li ul{
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+}
+#menu_tree ul li ul li{
+    background: #ffffe1;
+
+}
+#menu_tree ul li ul li a:hover{
+    background: #ffffe1;
+}
+
+/* cms_content category table */
+.cms_category {
+    border:1px solid #E3E3E3; 
+    border-spacing:0px 0px; 
+    border-collapse:separate;
+}
+
+.cms_category tr.title {
+    background: #F5F5F5 url(/media/cms_content/img/table_title_bg.jpg) repeat-x scroll center bottom;
+}
+
+.cms_category tr.row1 {
+
+}
+
+.cms_category tr.row2 {
+    background: #E5ECF9;
+}
+
+.cms_article_table_list {
+    border: 1px solid #E3E3E3; 
+    border-spacing: 0px 0px; 
+    border-collapse: separate;
+}
+
+.cms_article_table_list tr.title {
+    background: #F5F5F5 url(/media/cms_content/img/table_title_bg.jpg) repeat-x scroll center bottom;
+}
+
+.cms_article_table_list tr.row1 {
+    background: #FFFFFF;
+}
+
+.cms_article_table_list tr.row2 {
+    background: #E5ECF9;
+}

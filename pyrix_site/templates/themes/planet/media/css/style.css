@@ -103,20 +103,20 @@ a:hover {
 }
 
 /* Breadcrumb Settings */
-ul#breadcrumb {
+#breadcrumb {
     float: left;
     list-style-type: none;
     margin: 0px;
     padding: 0px;
 }
 
-ul#breadcrumb li {
+#breadcrumb li {
     float: left;
 
     padding: 4px;
 }
 
-ul#breadcrumb li a{
+#breadcrumb li a{
     text-decoration: none;
     float: left;
     color: #E99D01;
@@ -171,7 +171,7 @@ ul#breadcrumb li a{
 
 #top ul li {
     float: left;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
 }
 
@@ -270,7 +270,7 @@ ul#breadcrumb li a{
     border: 0px;
     border-bottom-left-radius: 6px 6px;
     border-bottom-right-radius: 6px 6px;
-    padding-bottom: 6px;
+    padding-bottom: 10px;
 }
 
 
@@ -280,20 +280,40 @@ ul#breadcrumb li a{
     padding: 5px;
 }
 
-.col_left {
+.three_left {
     width: 22.2%;
     margin-right: 10px;
     float: left;
 }
 
-.col_center {
+.three_center {
     width: 48.2%;
     margin-right: 10px;
     float: left;
 }
 
-.col_right {
+.three_right {
     width: 27.7%;
     margin-right: 0px;
     float: left;
+}
+
+.two_left {
+    width: 24%;
+    margin-right: 10px;
+    float: left;
+}
+
+.two_right {
+    width: 74%;
+    margin-right: 0px;
+    float: left;
+}
+
+#panel {
+    background-color: #E8E8E8;
+    height: 32px;
+    line-height: 24px;
+    padding: 0px 20px;
+    border-bottom: 1px solid #CACACA;
 }
