@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n cms_tags %}
+
+{% block tpl_id %}
+  tpl_col_two
+{% endblock tpl_id %}
+
+{% block content %}
+<div id="col1" class="span-6">
+  <div id="menutree">
+    <ul>{% include "sidebar_submenu.html" %}</ul>
+    {% block col_sidebar %}
+      {% placeholder col_sidebar %}
+    {% endblock %}
+  </div>
+</div>
+
+<div id="col2" class="span-18 last">
+  <div style="padding:20px;">
+  {% block page_title %}<h2>{% page_attribute title %}</h2>{% endblock %}
+  {% block col_left %}
+    {% placeholder col_left %}
+  {% endblock col_left %}
+  </div>
+</div>
+{% endblock content %}

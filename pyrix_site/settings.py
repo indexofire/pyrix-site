@@ -107,11 +107,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 ROOT_URLCONF = 'pyrix.urls'
-
 INTERNAL_IPS = ('127.0.0.1',)
 
+THEME_PATH = 'themes/planet/templates/'
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, 'templates/'),
+    os.path.join(PROJECT_PATH, 'templates/%s' % THEME_PATH),
 )
 
 INSTALLED_APPS = (

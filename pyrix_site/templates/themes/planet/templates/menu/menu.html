@@ -1,0 +1,16 @@
+{% load menu_tags cache %}
+
+{% for child in children %}
+<li{% if child.selected %} class="selected"{% endif %}{% if child.ancestor %} class="ancestor"{% endif %}>
+  <a href="{{ child.get_absolute_url }}" class="menu{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}">
+    {{ child.get_menu_title }}{% if not child.is_leaf_node %}{% endif %}
+  </a>
+
+  {% if child.children %}
+    <ul>
+      {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+    </ul>
+  {% endif %}
+</li>
+
+{% endfor %}

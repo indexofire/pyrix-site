@@ -3,7 +3,7 @@
 gettext = lambda s: s
 
 # django-cms-2.0 Settings:
-CMS_CACHE_PREFIX = 'cms'
+#CMS_CACHE_PREFIX = 'cms'
 APPEND_SLASH = True
 CMS_SOFTROOT = True
 CMS_MODERATOR = False
@@ -20,6 +20,7 @@ LANGUAGES = (
 )
 CMS_TEMPLATES = (
     ('base.html', gettext('default')),
+    ('index.html', gettext('index')),
     ('col_two.html', gettext('two columns')),
     ('col_three.html', gettext('three columns')),
     ('nav_playground.html', gettext('navigation examples')),
