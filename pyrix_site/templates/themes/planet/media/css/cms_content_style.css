@@ -49,8 +49,8 @@
 
 /* cms_content category table */
 .cms_category {
-    border:1px solid #E3E3E3; 
-    border-spacing:0px 0px; 
+    border:1px solid #E3E3E3;
+    border-spacing:0px 0px;
     border-collapse:separate;
 }
 
@@ -67,8 +67,8 @@
 }
 
 .cms_article_table_list {
-    border: 1px solid #E3E3E3; 
-    border-spacing: 0px 0px; 
+    border: 1px solid #E3E3E3;
+    border-spacing: 0px 0px;
     border-collapse: separate;
 }
 
@@ -82,4 +82,44 @@
 
 .cms_article_table_list tr.row2 {
     background: #E5ECF9;
+}
+
+.accordion_title {
+    width: 100%;
+    float: left;
+    _float: none;  /* Float works in all browsers but IE6 */
+    background: #FFF;
+    cursor: pointer;
+    padding: 10px 0px;
+    border-top: 1px solid #CCC;
+}
+
+.accordion_title h3 {
+    display: block;
+    padding: 0px 10px;
+}
+
+.accordion_content {
+    width: 100%;
+    float: left;
+    _float: none; /* Float works in all browsers but IE6 */
+    background: #F8F8F8;
+    padding: 10px 0px;
+}
+
+.accordion_content div.content {
+    padding: 10px;
+}
+.on {
+    background: #CCCCCC;
+}
+	
+.over {
+    background: #CCCCCC;
+}
+
+.accordion {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }

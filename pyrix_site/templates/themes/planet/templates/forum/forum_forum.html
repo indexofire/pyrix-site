@@ -1,0 +1,56 @@
+{% extends "forum/forum_base.html" %}
+{% load i18n forum %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block content %}
+<div id="actionbox"></div>  
+
+<div id="brd-wrap" class="brd">
+  <div id="brd-viewforum" class="brd-page paged-page">
+  {% comment %}{% include 'forum/includes/header.html' %}{% endcomment %}
+  {% comment %}{% include 'forum/includes/announce.html' %}{% endcomment %}
+    <div class="hr"><hr /></div>
+    <div class="crumbs gen-content" id="brd-crumbs-top">
+      {% comment %}{% include 'forum/includes/forum_brd_crumbs.html' %}{% endcomment %}
+    </div>
+
+    <!-- brd-main begin -->
+    <div id="brd-main">
+	  <div class="main-pagepost gen-content" id="brd-pagepost-top">
+		{% load pagination_tags %}
+		{% autopaginate topics FORUM_PAGE_SIZE %}
+		{% paginate %}
+        <p class="posting">
+        {% if user.is_authenticated %}
+          <a class="newpost" href="{% url forum_new_topic forum.pk %}"><span>{% trans "Post new topic" %}</span></a>
+        {% else %}
+          {% trans "You must" %} <a href="{% url auth_login %}">{% trans "Login" %}</a> {% trans "or" %} <a href="{% url registration_register %}">{% trans "register" %}</a> {% trans "to post a topic" %}
+        {% endif %} 
+        </p>
+	  </div>
+	  <div class="main-head">
+        <h1 class="hn"><span><a title="Permanent link to this forum." rel="bookmark" href="{% url forum_forum forum.slug %}" class="permalink">{{ forum }}</a> <small></small></span>
+
+
+      {% include 'forum/includes/topic_list.html' %}
+
+      <div class="main-options gen-content">
+        <p class="options"></p>
+      </div>
+
+	  <div class="main-pagepost gen-content" id="brd-pagepost-end">
+        {% paginate %}	
+		<p class="posting">
+        {% if user.is_authenticated %}
+          <a class="newpost" href="{% url forum_new_topic forum.pk %}"><span>{% trans "Post new topic" %}</span></a>
+        {% else %}
+          {% trans "You must" %} <a href="{% url auth_login %}">{% trans "Login" %}</a> {% trans "or" %} <a href="{% url registration_register %}">{% trans "register" %}</a> {% trans "to post a topic" %}
+        {% endif %} 
+        </p>
+	  </div>
+    </div>
+    <!-- brd-main ends -->
+  </div>
+</div>
+{% endblock %}

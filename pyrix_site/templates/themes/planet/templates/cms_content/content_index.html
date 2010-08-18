@@ -2,7 +2,8 @@
 {% load i18n menu_tags %}
 
 {% block extra_head %}
-<link href="{{ MEDIA_URL }}css/cms_content_style.css" rel="stylesheet" type="text/css" />
+  <link href="{{ MEDIA_URL }}css/cms_content_style.css" rel="stylesheet" type="text/css" />
+  <script src="{{ MEDIA_URL }}js/accordion.js" type="text/javascript"></script>
 {% endblock extra_head %}
 
 {% block content %}
@@ -19,13 +20,20 @@
   <div class="block">
   <h3 class="title_block">{% trans "CMS Content" %}</h3>
   <div class="content_block">
-  <div style="padding:10px">
+    <div style="padding:10px; display: inline;">
     <h2>CMS Content</h2>
+    <div class="block">
+    <div class="accordion">
     {% for article in articles %}
-    <div><a href="{{ article.get_absolute_url }}" target="_self"><h3>{{ article.title }}</h3></a></div>
-    <div>{{ article.content|safe|truncatewords_html:10 }}</div>
+      <div class="accordion_title"><h3>{{ article.title }} - {{ article.created_by }}:{{ article.created_date }}</h3></div>
+      <div class="accordion_content">
+        <div class="content">{{ article.content|safe|truncatewords_html:50 }}</div>
+        <br><a href="{{ article.get_absolute_url }}" target="_self">read</a>
+      </div>
     {% endfor %}
-  </div>
+    </div>
+    </div>
+    </div>
   </div>
   </div>
 </div>

@@ -1,0 +1,74 @@
+{% load i18n %}
+{% load forum %}
+{% load avatar_tags %}
+<div class="post {% cycle 'odd' 'even' %} {{forloop|post_style}}" id="p{{post.pk}}">
+    <div class="posthead">
+        <h3 class="hn post-ident">
+            <span class="post-num">{% page_item_idx page_obj forloop %}</span>
+            <span class="post-byline">
+                <span>{% trans "Topic by" %}</span>
+                <a href="{% url profiles_profile_detail post.posted_by.pk %}">{{post.posted_by.username}}</a>
+            </span>
+            <span class="post-link">
+                {{ post.created_on|lbtimesince }}
+            </span>
+        </h3>
+    </div>
+    <div class="postbody">
+        <div class="post-author">
+            <ul class="author-ident">
+                <li class="useravatar"><a href="{% url profiles_profile_detail post.posted_by.pk %}">{% avatar post.posted_by %}</a></li>
+                <li class="username"> <a href="{% url profiles_profile_detail post.posted_by.pk %}">{{post.posted_by.username}}</a> </li>
+                <li class="usertitle"><span>{% trans "Member" %}</span></li>
+                <li class="userstatus"><span>{{post.posted_by|online}}<!--here are n*posts waste queries--></span></li>
+            </ul>
+            <ul class="author-info">
+                <li><span>{% trans "Registered" %}: <strong>{{ post.posted_by.date_joined|date:"Y-m-d" }}</strong></span></li>
+                <li><span>{% trans "Posts" %}: <strong><!--here are 2n*posts waste queries-->{{ post.posted_by.forum_profile.get_total_posts  }}</strong></span></li>
+            </ul>
+        </div>
+        <div class="post-entry">
+            <div class="entry-content">
+                <p>{{ post.message|bbcode|safe }}</p>
+                {% if post.edited_by %}
+                <p class="postedit"><em>Last edited by {{post.edited_by}} ({{post.updated_on|date:"Y-m-d H:i"}})</em></p>
+                {% endif %}
+                <!--here are n*posts waste queries-->
+                {% if post.attachments.all %}
+                <div class="entry-attachments">
+                    <b>{% trans "Attachments" %}:</b>
+                    <ul>
+                        {% for attachment in post.attachments.all %}
+                        <li>
+                            <a href="{{attachment.file.url}}" target="_blank">{{ attachment.org_filename }}</a>
+                            <span>{{ attachment.description }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if post.posted_by.forum_profile.signature %}
+                <div class="sig-content"> 
+                    <span class="sig-line"><!-- --></span>
+                    {{ post.posted_by.forum_profile.signature|bbcode|safe }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="postfoot">
+        <div class="post-options">
+            <p class="post-contacts"></p>
+            <p class="post-actions">
+                <span class="quote-post"><a href="{% url forum_new_replay topic.pk %}?qid={{post.pk}}">{% trans "quote" %}</a></span> 
+                {% if user == post.posted_by or user.is_staff %}
+                <span class="edit-post"><a href="{% url forum_post_edit post.pk %}">{% trans "edit" %}</a></span> 
+                {% endif %}
+            </p>
+        </div>
+    </div>
+    {% endif %}
+    
+</div>
