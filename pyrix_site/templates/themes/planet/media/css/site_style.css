@@ -253,8 +253,8 @@ a:hover {
     -moz-box-shadow:  #9CA5A5 0px 1px 4px;
 }
 
-.title_block {
-    background: #EEE;
+.block_title {
+    background: #E8E8E8;
     border-bottom: 1px solid #DDD;
     border-top-left-radius: 6px 6px;
     border-top-right-radius: 6px 6px;
@@ -265,7 +265,7 @@ a:hover {
     padding: 7px 10px;
 }
 
-.content_block {
+.block_content {
     background: #F8F8F8;
     border: 0px;
     border-bottom-left-radius: 6px 6px;
@@ -274,7 +274,7 @@ a:hover {
 }
 
 
-.content_block .item_list {
+.block_content .item_list {
     background: #FFF;
     border-bottom: 1px solid #DDD;
     padding: 5px;
@@ -299,13 +299,19 @@ a:hover {
 }
 
 .two_left {
-    width: 24%;
+    width: 29.4%;
     margin-right: 10px;
     float: left;
 }
 
 .two_right {
-    width: 74%;
+    width: 70%;
+    margin-right: 0px;
+    float: left;
+}
+
+.one_center {
+    width: 100%;
     margin-right: 0px;
     float: left;
 }

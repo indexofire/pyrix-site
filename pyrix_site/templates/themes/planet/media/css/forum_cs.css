@@ -1,0 +1,406 @@
+/* General colour scheme
+ ----------------------------------------------------------------*/
+
+.forum a:link,
+.forum a:visited {
+    color: #00579C;
+}
+
+.forum a:hover,
+.forum a:active,
+.forum a:focus {
+    color: #b42000;
+    text-decoration: none;
+}
+
+.forum .main_pagepost a:link,
+.forum .main_pagepost a:visited,
+.forum .crumbs a:link,
+.forum .crumbs a:visited {
+    text-decoration: none;
+}
+
+.forum .main_pagepost a:hover,
+.forum .main_pagepost a:active,
+.forum .main_pagepost a:focus,
+.forum .crumbs a:hover,
+.forum .crumbs a:active,
+.forum .crumbs a:focus {
+    text-decoration: underline;
+}
+
+.forum .gen-content,
+.forum .main_content {
+    background: #FBFBFB;
+    border-color: #EEEEEE;
+    border-bottom-color: #EEEEEE;
+}
+
+.forum .main_pagepost {
+    background: #FFF;
+    border-color: #EEE;
+}
+
+.forum .crumbs {
+    background: #fff;
+    border-color: #fff;
+}
+
+
+.forum .main_item, .forum .main_item li, .forum .main_item div, .forum td {
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE
+}
+
+.forum .main_item li.info-posts,
+.forum .main_item li.info-replies,
+.forum .main_item li.info-views,
+.forum .main_item li.info-topics {
+}
+
+.forum .main_content .main_item .item_nav {
+    color: #888;
+}
+
+.forum .main_content .sticky {
+    background: #F2F4FA;
+}
+
+.forum .main_content .main_item .hn .item_status em.sticky {
+    color: #314B60;
+    font-weight: bold;
+}
+
+.forum .main_content .main_item .hn .item_status em.closed {
+    color: #314B60;
+    font-weight: bold;
+}
+
+.forum .main_content .main_item .hn .item_status em.moved {
+    color: #314B60;
+    font-weight: bold;
+}
+
+.forum .post * {
+    border-color: #DDE4EB
+}
+
+.forum .post {
+    border-color: #DDE4EB;
+    border-top-color: #fff;
+    border-bottom-color: #ccc;
+}
+
+#topic-review .firstpost, .forum .singlepost {
+    border-top-color: #DDE4EB;
+    border-bottom-color: #DDE4EB;
+}
+
+.forum .post {
+    background: #EDF1F5;
+}
+
+.forum .posthead, .forum .postbody, .forum .post-options {
+    background: #f9f9f9;
+}
+
+.forum .posthead .hn {
+    background: #E9EBEE;
+}
+
+.forum .online .userstatus span {
+    border-color: #517CA1;
+}
+
+.forum .ct-box, .forum .ct-set, .forum .ct-group, .forum .user-box {
+    background: #EDF1F5;
+    border-color: #DBE0E4;
+}
+
+.forum #forum_announcement .user-box {
+    background: transparent;
+}
+
+.forum .warn-group, .forum .warn-set, .forum .warn-box, .forum .error-box {
+    background: #FEFFE6;
+    border-color: #F4EBCE;
+}
+
+.forum .warn-group, .forum .warn-set, .forum .warn-box, .forum .error-box {
+    border-color: #E6D190;
+}
+
+
+.forum ul.info-list li {
+    color: #6A97BF;
+}
+
+.forum ul.info-list li span {
+    color: #666;
+}
+
+.forum ul li strong {
+    font-weight: normal;
+    color: #333;
+}
+
+.forum .post-entry ul li strong {
+    font-weight: bold;
+}
+
+.forum .ct-box .hn {
+    border-color: #DBE0E4;
+}
+
+.forum .help-box {
+    background: #f4f4f4;
+}
+
+.forum .frm-group, .forum .mf-set, .forum .sf-set, .forum .sf-box, .forum .mf-box, .forum .txt-set, .forum .txt-box {
+    background: #F2F5F8;
+    border-color: #DBE0E4;
+}
+
+
+.forum .frm-buttons {
+    border-color: #DBE0E4;
+}
+
+.forum .checklist {
+    background: #fff;
+    border-color: #ccc;
+}
+
+.forum label, .forum .aslabel, .forum .mf-set legend, .forum .ct-legend * {
+    color: #294F6E;
+}
+
+.forum .paging * {
+    border-color: #dedfdf;
+}
+
+
+#forum_wrap .required label em, #forum_wrap #req-msg em {
+    color: #b42000;
+}
+
+#forum_wrap .entry-content .quotebox, #forum_wrap .entry-content .codebox {
+    background: #fff;
+    border-color: #ddd;
+}
+
+.forum .main_options span.feed {
+    background: url(feed-icon.png) center left no-repeat;
+}
+
+/* Menus
+ ----------------------------------------------------------------*/
+
+#forum_navlinks {
+    background: #313D47;
+    border-color: #313D47;
+    color: #ddd;
+}
+
+#forum_navlinks a:link, #forum_navlinks a:visited {
+    color: #ddd;
+}
+
+#forum_navlinks a:hover, #forum_navlinks a:active, #forum_navlinks a:focus {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.forum .main_options, .forum .main_options span {
+    border-color: #CBD1D8;
+    background: #DDE4EB;
+}
+
+.forum .options span {
+    border-color: #dedfdf;
+}
+
+.forum .main_options .options span {
+    border-color: #ABAFB6
+}
+
+.forum .main_menu, .forum .admin-menu {
+    background: #294F6E;
+}
+
+.forum .main_menu ul, .forum .admin-menu ul {
+    border-right-color: #1A4566;
+}
+
+.forum .main_menu li, .forum .admin-menu li {
+    border-left-color: #1A4566;
+    border-right-color: #426482;
+}
+
+.forum .admin-submenu {
+    background: #DFE6ED;
+    border-color: #CBD1D8;
+}
+
+#forum_wrap .main_menu a:link, #forum_wrap .main_menu a:visited, #forum_wrap .admin-menu a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+#forum_wrap .main_menu a:hover, #forum_wrap .main_menu a:active, #forum_wrap .main_menu a:focus,
+#forum_wrap .admin-menu a:hover, #forum_wrap .admin-menu a:active, #forum_wrap .admin-menu a:focus {
+    text-decoration: underline;
+    color: #fff;
+}
+
+#forum_wrap .main_menu li.active a:hover, #forum_wrap .main_menu li.active a:active, #forum_wrap .main_menu li.active a:focus,
+#forum_wrap .admin-menu li.active a:hover, #forum_wrap .admin-menu li.active a:active, #forum_wrap .admin-menu li.active a:focus {
+    text-decoration: none;
+}
+
+
+#forum_wrap .main_menu li.active a, #forum_wrap .admin-menu li.active a {
+    background: url(tab.png) bottom center no-repeat;
+    color: #fff;
+}
+
+#forum_admod #alert a {
+    color: #F6F8C7;
+}
+
+#forum_access a:hover, #forum_access a:active, #forum_access a:focus {
+    background: #000;
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Logo and Headings
+ ----------------------------------------------------------------*/
+
+#forum_head {
+    background: #517CA1;
+    color: #ddd;
+    border-color: #517CA1;
+}
+
+#forum_head a, #forum_head a:link, #forum_head a:visited {
+    color: #fff;
+}
+
+.forum .main_head, .forum .main_pagehead {
+    background: #294F6E;
+    color: #ddd;
+    border-color: #1f537b;
+}
+
+/* .forum #forum_admin-uresults .main_pagehead {
+ background: none;
+ color: #333;
+    } */
+
+.forum .main_subhead {
+    border-color: #DFE6ED #DFE6ED #CBD1D8 #DFE6ED;
+    background: #DFE6ED;
+}
+
+.forum .content_head, .forum th {
+    background: #EDF1F5;
+    border-bottom-color: #fff;
+    border-top-color: #ddd;
+}
+
+.forum .group-head {
+    background: #EDF1F5;
+    border-color: #DBE0E4;
+}
+
+.forum .content_head .hn {
+    border-bottom-color: #ddd;
+}
+
+.forum .main_head a:link, .forum .main_head a:visited {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.forum .main_head a:hover, .forum .main_head a:active, .forum .main_head a:focus {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.forum th {
+    background: #DDE4EB;
+}
+
+.forum td {
+    background: #f5f5f5;
+}
+
+/* Status indicators
+ ----------------------------------------------------------------*/
+
+.forum .main_content .main_item .icon {
+    border-color: #EDF1F5 #DDE0E4 #C6CBD3 #BABFC6
+}
+
+.forum .main_content .redirect .icon {
+    border-color: #f4f4f4 #f4f4f4 #f4f4f4 #f4f4f4
+}
+
+.forum .main_content .sticky .icon {
+    border-color: #D7E5F3 #C3CFDC #9FB3C7 #90A2B4
+}
+
+.forum .main_content .closed .icon {
+    border-color: #ACACAC #979797 #898989 #7A7A7A
+}
+
+.forum .main_content .sticky .closed {
+    border-color: #D7E5F3 #C3CFDC #898989 #7A7A7A
+}
+
+.forum .main_content .new .icon {
+    border-color: #2B75AD #235E8C #1F537B #266799
+}
+
+/* Announcement box
+ ----------------------------------------------------------------*/
+
+#forum_announcement {
+    background-color: #f4f9fd;
+}
+
+#forum_announcement .msg-head {
+    border-bottom: 1px dashed #bbb;
+    color: #113c5e;
+}
+
+/* by vicalloy
+ -------------------------------------------------------------*/
+.forum .pagination * {
+    border-color:#DEDFDF;
+}
+
+.forum .posthead .post-link {
+    color:#006699;
+}
+
+.forum .errornote {
+    color:#B42000;
+}
+
+.forum #uploaded_files .descn {
+    background: url(../img/note_edit.png) center left no-repeat;
+}
+.forum #uploaded_files .remove {
+    background: url(../img/delete.png) center left no-repeat;
+}
+.forum #uploaded_files .insert {
+    background: url(../img/arrow_up.png) center left no-repeat;
+}
+.forum #uploaded_files .removed-fn {
+    text-decoration:line-through;
+}
+.forum .ajax-loader {
+    background: url(../img/ajax-loader.gif) center left no-repeat;
+}
