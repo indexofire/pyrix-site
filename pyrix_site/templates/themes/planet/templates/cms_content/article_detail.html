@@ -35,7 +35,9 @@
   Created Time: {{ article.created_date|date:"Y.m.d" }}</h5>
   
   {{ article.content|code_highlight }}
-
+  
+  <h3>Tags:</h3><span>{{ article.tags.name }}</span>
+  <hr/>
   <h3>comments:</h3>
   <p>There are {% get_comment_count for article as comment_count %}{{ comment_count }} comments</p>
   {% get_comment_list for article as comment_list %}

@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     'account',
     'djangohelper',
     'haystack',
+    'taggit',
 )
 
 try:
