@@ -1,0 +1,55 @@
+<!-- main wrapper: flickr_photobar -->
+<div class="flickr_photobar">		
+
+	<!-- overlay for the full image view -->
+	<div id="flickr_overlay" class="overlay" style="display:none;"></div>
+
+	<!-- full image view -->
+	<div id="flickr_photopreview" class="photopreview" style="display:none;">
+		<div class="preview_wrapper">
+			<div class="preview">
+				<div class="loading"></div>
+				<div id="preview_close" class="close"></div>
+				<span id="large_phototitle"></span>
+				<!-- here we will insert the image-->
+				<a href="#" class="img_next"></a>
+				<a href="#" class="img_prev"></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- the bottom photobar -->
+	<div id="photobar" class="photobar">	
+
+		<!-- the thumbnail view of the albums/sets -->
+		<div class="thumbs albums" id="sets">
+			<a href="#" class="prev"></a>
+			<div class="thumbsWrapper">
+				<ul></ul>
+			</div>
+			<a href="#" class="next"></a>
+		</div>
+
+		<!-- the thumbnail view of the images of a set -->
+		<div class="thumbs images" id="images" style="bottom:-125px;">
+			<a href="#" class="prev"></a>
+			<div class="thumbsWrapper">
+				<ul></ul>
+			</div>
+			<a href="#" class="next"></a>
+			<!-- the right handle for the info-->
+			<span class="images_toggle">
+				Set:
+				<span id="setName"></span>
+				<a id="images_toggle">Back to Sets</a>
+			</span>
+		</div>
+
+		<!-- the left handle for the main photobar -->
+		<a id="flickr_toggle" class="toggle">
+			Flickr Photostream
+			<span style="visibility:hidden;" class="loading_small"></span>
+		</a>
+	</div>
+
+</div>
