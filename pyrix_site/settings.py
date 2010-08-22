@@ -5,18 +5,12 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 ADMINS = (
-    ('Mark Renton', 'indexofire@gmail.com'),
+    ('WebMaster', 'webmaster@localhost.com'),
 )
 
 #CACHE_BACKEND = 'locmem://127.0.0.1:11211/'
 
 MANAGERS = ADMINS
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'indexofire@gmail.com'
-EMAIL_HOST_PASSWORD = '7810018uvs'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
 
 DATABASE_FILE = os.path.join(PROJECT_PATH, 'database/data.sql')
 
