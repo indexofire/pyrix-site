@@ -8,25 +8,10 @@
  */
 
 body {
-    background: #D0DDDD;
-    font-family:"Helvetica Neue", Arial, Helvetica, simsun, 宋体, sans-serif;
+    background: #D0DADF url(../img/main_bg.png) no-repeat 100% 0%;
+    font-family:"Helvetica Neue", Arial, Helvetica, 雅黑, simsun, 宋体, sans-serif;
 }
 
-.banner-box-1 {
-    background: #F1F1F1;
-    border-bottom: 1px dashed #ACACAC;
-    height: 36px;
-}
-
-.banner-box-2 {
-    background: #F1F1F1;
-    border-top: 1px dashed #ACACAC;
-    height: 36px;
-}
-
-.banner-box-2 p {
-    padding: 8px;
-}
 .shadow-box {
     background: #FEFEFE;
     border: 1px solid #9C9C9C;
@@ -36,32 +21,7 @@ body {
     -webkit-box-shadow: 0px 0px 1px #AAABAC;
     -moz-border-radius: 2px;
     -moz-box-shadow: 0px 0px 1px #AAABAC;
-    /* behavior: url(/media/global/css/ie-css3.htc); */
-}
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
-#header {
-    height: 60px;
-    line-height: 60px;
-    margin: 10px auto 5px;
-    padding: 5px 0px;
-    width: 950px;
-}
-
-#logo {
-    /* background: url("../img/logo.png") no-repeat; */
-    cursor: pointer;
-    float: left;
-    height: 60px;
-    width: 200px;
-    text-shadow: 1px 1px 1px black;
+    behavior: url(../css/PIE.htc);
 }
 
 /* the settings of article's readmore link's */
@@ -112,7 +72,6 @@ a:hover {
 
 #breadcrumb li {
     float: left;
-
     padding: 4px;
 }
 
@@ -183,6 +142,7 @@ a:hover {
     border-bottom-right-radius: 8px 8px;
     border-top-left-radius: 8px 8px;
     border-top-right-radius: 8px 8px;
+    behavior: url(../css/PIE.htc);
 }
 
 #top ul li a.selected,
@@ -251,6 +211,7 @@ a:hover {
     border-top-right-radius: 6px 6px;
     -webkit-box-shadow: #9CA5A5 0px 1px 4px;
     -moz-box-shadow:  #9CA5A5 0px 1px 4px;
+    behavior: url(../css/PIE.htc);
 }
 
 .block_title {
@@ -263,6 +224,7 @@ a:hover {
     text-transform: uppercase;
     margin: 0px;
     padding: 7px 10px;
+    behavior: url(../css/PIE.htc);
 }
 
 .block_content {
@@ -271,6 +233,7 @@ a:hover {
     border-bottom-left-radius: 6px 6px;
     border-bottom-right-radius: 6px 6px;
     padding-bottom: 10px;
+    behavior: url(../css/PIE.htc);
 }
 
 
@@ -366,18 +329,20 @@ a:hover {
 	-moz-box-shadow:0px 0px 1px #777 inset;
 	-webkit-box-shadow:0px 0px 1px #777 inset;
 	box-shadow:0px 0px 1px #777 inset;
+    behavior: url(PIE.htc);
 }
+
 .thumbs a.prev:hover,
 .thumbs a.next:hover{
 	background-color:#404040;
 }
 .thumbs a.prev{
 	left:0px;
-	background:#333 url(../prev.png) no-repeat center center;
+	background:#333 url(../img/prev.png) no-repeat center center;
 }
 .thumbs a.next{
 	right:0px;
-	background:#333 url(../next.png) no-repeat center center;
+	background:#333 url(../img/next.png) no-repeat center center;
 }
 
 .thumbs .thumbsWrapper{
@@ -415,12 +380,14 @@ a:hover {
 	-moz-box-shadow:1px 1px 3px #000;
 	-webkit-box-shadow:1px 1px 3px #000;
 	box-shadow:1px 1px 3px #000;
+    behavior: url(PIE.htc);
 }
 .images ul li a img{
 	border:3px solid #f9f9f9;
 	-moz-box-shadow:1px 1px 3px #000;
 	-webkit-box-shadow:1px 1px 3px #000;
 	box-shadow:1px 1px 3px #000;
+    behavior: url(PIE.htc);
 }
 
 .thumbs a span{
@@ -439,6 +406,7 @@ a:hover {
 	max-height:70px;
 	opacity:0.8;
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+    behavior: url(PIE.htc);
 }
 
 .thumbs a:hover span{
@@ -466,6 +434,7 @@ span.images_toggle{
 	-webkit-border-top-right-radius:5px;
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
+    behavior: url(PIE.htc);
 }
 span.images_toggle a{
 	background-color:#222;
@@ -476,6 +445,7 @@ span.images_toggle a{
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
+    behavior: url(PIE.htc);
 }
 span.images_toggle a:hover{
 	background-color:#000;
@@ -504,7 +474,7 @@ span.images_toggle a:hover{
 	cursor:pointer;
 }
 span.loading_small{
-	background:transparent url(../loading_small.gif) no-repeat center center;
+	background:transparent url(../img/loading_small.gif) no-repeat center center;
 	position:absolute;
 	right:10px;
 	top:0px;
@@ -591,12 +561,12 @@ span.loading_small{
 	-moz-border-radius:10px;
 	-webkit-border-radius:20px;
 	border-radius:10px;
-	background:#000 url(../loading.gif) no-repeat center center;
+	background:#000 url(../img/loading.gif) no-repeat center center;
 	opacity:0.8;
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);
 }
 .close{
-	background:#000 url(../close.png) no-repeat center center;
+	background:#000 url(../img/close.png) no-repeat center center;
 	cursor:pointer;
 	height:20px;
 	position:fixed;
