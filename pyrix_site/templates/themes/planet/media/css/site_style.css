@@ -262,15 +262,21 @@ a:hover {
 }
 
 .two_left {
-    width: 29%;
+    width: 230px;
     margin-right: 10px;
     float: left;
+    display: inline;
 }
 
 .two_right {
-    width: 70%;
+    width: 100%;
+    margin-left: -240px;
     margin-right: 0px;
-    float: left;
+    float: right;
+}
+
+.two_right_content {
+    margin-left: 240px;
 }
 
 .one_center {

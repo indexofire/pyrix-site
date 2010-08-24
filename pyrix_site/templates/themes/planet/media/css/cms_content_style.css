@@ -1,37 +1,33 @@
-/* menu_tree of cms_content */
+/* menu_tree */
 #menu_tree ul {
     margin:0px;
     padding:0px;
     list-style-type:none;
-    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #CCC;
 }
-
 #menu_tree li {
-    background:#f7f7f7;
+    background:#F8F8F8;
     height: 24px;
     line-height: 24px;
-    text-align: center;
     position: relative;
+    border-bottom: 1px solid #CCC;
 }
-
 #menu_tree ul li.title {
-    background: #ccc;
+    background: #CCC;
     color: #333333;
 }
-
 #menu_tree ul li.ancestor,
 #menu_tree ul li.selected {
     background: #E8E8E8;
     color: #333;
 }
-
-#menu_tree ul li a:hover{
-    background: #CCC url(http://img.ifeng.com/tres/phoenix/icon2.gif) no-repeat 186px -303px;
-    color: #FFF;
-}
-
 #menu_tree ul li a {
     display: block;
+    padding: 0px 10px;
+}
+#menu_tree ul li a:hover{
+    background: #ACACAC;
+    color: #FFF;
 }
 #menu_tree ul li ul{
     display:none;
@@ -40,11 +36,10 @@
     left:0;
 }
 #menu_tree ul li ul li{
-    background: #ffffe1;
-
+    background: #FFFFE1;
 }
 #menu_tree ul li ul li a:hover{
-    background: #ffffe1;
+    background: #FFFFE1;
 }
 
 /* cms_content category table */

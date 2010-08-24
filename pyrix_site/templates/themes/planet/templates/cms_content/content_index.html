@@ -11,31 +11,33 @@
   <div class="block">
     <h3 class="block_title">{% trans "cms menu" %}</h3>
     <div class="block_content">
-      <div id="menu_tree"><ul>{% show_menu_below_id "cms" %}</ul></div>
+      <div id="menu_tree"><ul>{% show_menu 1 2 1 2 %}</ul></div>
     </div>
   </div>
 </div>
 
 <div class="two_right last">
+<div class="two_right_content">
   <div class="block">
   <h3 class="block_title">{% trans "CMS Content" %}</h3>
   <div class="block_content">
-    <div style="padding:10px; display: inline;">
-    <h2>CMS Content</h2>
-    <div class="block">
-    <div class="accordion">
-    {% for article in articles %}
-      <div class="accordion_title"><h3>{{ article.title }} - {{ article.created_by }}:{{ article.created_date }}</h3></div>
-      <div class="accordion_content">
-        <div class="content">{{ article.content|code_highlight|truncatewords_html:200 }}</div>
-        <br><a href="{{ article.get_absolute_url }}" target="_self">read</a>
+    <div style="padding:10px;display:inline;">
+      <h2 style="padding:10px;">CMS Content</h2>
+      <div class="block">
+      <div class="accordion">
+      {% for article in articles %}
+        <div class="accordion_title"><h3>{{ article.title }} - {{ article.created_by }}:{{ article.created_date }}</h3></div>
+        <div class="accordion_content">
+          <div class="content">{{ article.content|code_highlight|truncatewords_html:200 }}</div>
+          <br><a href="{{ article.get_absolute_url }}" target="_self">read</a>
+        </div>
+      {% endfor %}
       </div>
-    {% endfor %}
-    </div>
-    </div>
+      </div>
     </div>
   </div>
   </div>
+</div>
 </div>
 {% endblock content%}
 

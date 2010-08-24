@@ -16,6 +16,7 @@
 </div>
 
 <div class="two_right last">
+<div class="two_right_content">
   <div class="block">
   <h3 class="block_title">{% trans "CMS Content" %}</h3>
   <div class="block_content">
@@ -33,14 +34,14 @@
   </tr>
   {% endfor %}
   </table>
-  {{ page }} | current page:{{ request_page }}
   </div>
   </div>
   </div>
 </div>
+</div>
 {% endblock content%}
 
-{% block panel %}
+{% block control %}
 <a href="{% url cms_content_article_add %}">add article</a> | 
 <a href="../delete/">delete article</a>
-{% endblock panel %}
+{% endblock control %}
