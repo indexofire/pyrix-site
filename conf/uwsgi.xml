@@ -2,7 +2,7 @@
     <pythonpath>/home/mark/www/hzcdclabs/</pythonpath>
     <pythonpath>/home/mark/www/hzcdclabs/pyrix/</pythonpath>
     <pythonpath>/home/mark/www/</pythonpath>
-    <app mountpoint=”/”>
+    <app mountpoint="/">
         <script>django_wsgi</script>
     </app>
 </uwsgi>
