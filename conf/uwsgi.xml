@@ -1,6 +1,8 @@
 <uwsgi>
-    <pythonpath>/usr/local/www</pythonpath>
-    <app mountpoint="/">
-        <script>dj_project.django_wsgi</script>
+    <pythonpath>/home/mark/www/hzcdclabs/</pythonpath>
+    <pythonpath>/home/mark/www/hzcdclabs/pyrix/</pythonpath>
+    <pythonpath>/home/mark/www/</pythonpath>
+    <app mountpoint=”/”>
+        <script>django_wsgi</script>
     </app>
 </uwsgi>
