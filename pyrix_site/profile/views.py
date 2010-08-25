@@ -15,15 +15,16 @@ from profile.forms import *
 def profile_list(request):
     return list_detail.object_list(
         request,
+        template_name='profile/profile_list.html',
         queryset=UserProfile.objects.all(),
         paginate_by=20,
     )
 profile_list.__doc__ = list_detail.object_list.__doc__
 
 """
-def profile_detail(request, user_id):
+def profile_detail(request, id):
     try:
-        user = User.objects.get(id=user_id)
+        user = User.objects.get(id=id)
     except User.DoesNotExist:
         raise Http404
     profile = UserProfile.objects.get(user=user)
@@ -39,11 +40,11 @@ def profile_detail(request, username):
         raise Http404
     profile = UserProfile.objects.get(user=user)
     context = { 'object':profile }
-    return render_to_response('profiles/profile_detail.html', context, context_instance=RequestContext(request))
+    return render_to_response('profile/profile_detail.html', context, context_instance=RequestContext(request))
 
 
 @login_required
-def profile_edit(request, template_name='profiles/profile_form.html'):
+def profile_edit(request, template_name='profile/profile_form.html'):
     """Edit profile."""
 
     if request.POST:
@@ -80,7 +81,7 @@ def profile_edit(request, template_name='profiles/profile_form.html'):
 
 @permission_required('profile.can_create')
 def profile_create(request, form_class=None, success_url=None,
-    template_name='profiles/create_profile.html'):
+    template_name='profile/profile_create.html'):
     """Create a profile for the current user, if one doesn't already
     exist.
     
@@ -129,7 +130,7 @@ def profile_create(request, form_class=None, success_url=None,
     """
     try:
         profile_obj = request.user.get_profile()
-        return HttpResponseRedirect(reverse('profiles_edit_profile'))
+        return HttpResponseRedirect(reverse('profile_edit'))
     except ObjectDoesNotExist:
         pass
     

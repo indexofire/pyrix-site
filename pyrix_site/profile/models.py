@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 import datetime
-from dateutil import relativedelta
+#from dateutil import relativedelta
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -53,7 +53,8 @@ class UserProfile(models.Model):
     def age(self):
         TODAY = datetime.date.today()
         if self.birth_date:
-            return u"%s" % relativedelta.relativedelta(TODAY, self.birth_date).years
+            #return u"%s" % relativedelta.relativedelta(TODAY, self.birth_date).years
+            return u"%s" % self.birth_date
         else:
             return None
 
