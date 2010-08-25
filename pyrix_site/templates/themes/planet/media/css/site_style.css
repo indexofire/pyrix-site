@@ -8,7 +8,7 @@
  */
 
 body {
-    background: #D0DADF url(../img/main_bg.png) no-repeat 100% 0%;
+    background: #D0DADF;
     font-family:"Helvetica Neue", Arial, Helvetica, 雅黑, simsun, 宋体, sans-serif;
 }
 
@@ -25,6 +25,9 @@ body {
 }
 
 /* the settings of article's readmore link's */
+h1,h2,h3,h4,h5,h6,p,a {
+    text-align: left;
+}
 a {
     text-decoration: none;
 }
@@ -156,9 +159,17 @@ a:hover {
 #main {
     margin: 0px;
     padding: 10px 20px;
+    background: #D0DADF url(../img/main_bg.png) no-repeat 100% 0%;
 }
 
+#login_div div label {
+    width: 60px;
+    display: inline-block;
+}
 
+#login_div div input {
+    width: 140px;
+}
 
 /* Main Menu Settings */
 #main_menu {
@@ -204,6 +215,7 @@ a:hover {
 
 /* block */
 .block {
+    margin-bottom: 10px;
     border: 0px;
     border-bottom-left-radius: 6px 6px;
     border-bottom-right-radius: 6px 6px;
@@ -229,36 +241,48 @@ a:hover {
 
 .block_content {
     background: #F8F8F8;
-    border: 0px;
     border-bottom-left-radius: 6px 6px;
     border-bottom-right-radius: 6px 6px;
     padding-bottom: 10px;
+    border-top: 1px solid #FFF; 
     behavior: url(../css/PIE.htc);
 }
 
 
 .block_content .item_list {
-    background: #FFF;
+    background: #F8F8F8;
     border-bottom: 1px solid #DDD;
+}
+
+.block_content .item_list a {
     padding: 5px;
+    display: block;
+}
+
+.block_content .item_list a:hover{
+    background: #CCC;
 }
 
 .three_left {
-    width: 22.2%;
+    width: 24%;
     margin-right: 10px;
     float: left;
 }
 
 .three_center {
-    width: 48.2%;
+    width: 50%;
     margin-right: 10px;
     float: left;
 }
 
 .three_right {
-    width: 27.7%;
+    width: 24%;
     margin-right: 0px;
     float: left;
+}
+
+.three_right_content {
+    width: 230px;
 }
 
 .two_left {

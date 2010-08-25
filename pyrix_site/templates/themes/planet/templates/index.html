@@ -1,34 +1,30 @@
 {% extends "base.html" %}
 {% load i18n cms_tags %}
 
+{% block title %}{% trans "main page" %}{% endblock title %}
+
 {% block content %}
 <div class="three_left">
-  <div class="block">
-    <h3 class="block_title">Links</h3>
-    <div class="block_content">
-
-    {% block col_sidebar %}
-    {% placeholder col_sidebar %}
-    {% endblock %}
-    </div>
-  </div>
-{% include "sidebar_submenu.html" %}
+  {% include "login_out_panel.html" %}
+  {% block col_sidebar %}{% placeholder col_sidebar %}{% endblock %}
+  {% include "sidebar_submenu.html" %}
 </div>
 
 <div class="three_center">
   <div class="block">
     <h3 class="block_title">Site</h3>
-    <div class="block_content" style="padding: 10px;">
+    <div class="block_content">
+      <div style="padding: 10px;">
       {% block page_title %}<h1>{% page_attribute title %}</h1>{% endblock %}
       {% block col_left %}
         {% with "340" as width %}
           {% placeholder col_left %}
         {% endwith %}
       {% endblock %}
+      </div>
     </div>
   </div>
 </div>
-
 
 <div class="three_right">
   <div class="block">
@@ -39,6 +35,13 @@
           {% placeholder col_right %}
         {% endwith %}
       {% endblock %}
+    </div>
+  </div>
+  
+  <div class="block">
+    <h3 class="block_title">Test</h3>
+    <div class="block_content" >
+      <span style="padding:10px;">what's this?</span>
     </div>
   </div>
 </div>

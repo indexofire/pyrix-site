@@ -30,7 +30,7 @@
   <h3 class="block_title">{% trans "CMS Content" %}</h3>
   <div class="block_content">
   <div style="padding:10px">
-  <h1>Section:{{ section }} - Category:{{ category }}<h1>
+  <h1>Section:{{ section }} - Category:{{ category }}</h1>
   <h2>{{ article.title }}</h2>
   <h5>{% trans 'Author' %}: <a href="{% url profiles_profile_detail article.created_by %}">{{ article.created_by }}</a> | 
   Created Time: {{ article.created_date|date:"Y.m.d" }} | Pub Status: {{ article.pub_status }} | Start Pub From: {{ article.pub_start_date }} | End Pub To: {{ article.pub_end_date }} | Last Modified By: {{ article.last_modified_by }} | Last Modified Date: {{ article.last_modified_date }}</h5>
