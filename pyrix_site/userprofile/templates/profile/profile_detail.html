@@ -6,7 +6,7 @@
 {% block content %}
 <h2 id="user_name">{{ object.user }}<em id="user_city">{{ object.city }}, {{ object.state }}</em></h2>
 <h3 id="user_age_and_gender">{{ object.get_gender_display }}{% if object.age %}, {{ object.age }}{% endif %}</h3>
-
+<img src="{{ MEDIA_URL }}/{{ object.mugshot }}" />
 {% if object.user.service_set.all %}
 <h3 class="list_title">Services</h3>
 <ul class="link_list">

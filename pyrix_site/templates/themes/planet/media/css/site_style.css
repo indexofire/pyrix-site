@@ -641,3 +641,24 @@ span.loading_small{
 	border-bottom-right-radius:20px;
 	left:0px;
 }
+
+
+
+/* box */
+.block_plain {
+    -webkit-box-shadow: #9CA5A5 0px 1px 3px;
+    -moz-box-shadow: #9CA5A5 0p 1px 3px;
+    background-color: #FFF;
+    border: 0;
+    border-bottom-left-radius: 6px 6px;
+    border-bottom-right-radius: 6px 6px;
+    border-top-left-radius: 6px 6px;
+    border-top-right-radius: 6px 6px;
+}
+
+.block_plain .cell {
+    border-bottom: 1px solid #E2E2E2;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 10px;
+}

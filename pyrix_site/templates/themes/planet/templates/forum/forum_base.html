@@ -6,12 +6,13 @@
 {% block extra_head %}{% include "forum/includes/styles.html" %}{% endblock extra_head %}
 
 {% block content %}
-<div class="one_center clearfix">
+<div class="span-12">
+{% block latest_topics %}{% endblock latest_topics %}
+</div>
+<div class="span-12">
 <div class="block">
-  <h3 class="block_title">Forum</h3>
-  <div class="block_content" style="padding:10px">
-  {% block forum %}{% endblock forum %}
-  </div>
+  <h3 class="block_title">{% trans "Forum" %}</h3>
+  <div class="block_content">{% block forum %}{% endblock forum %}</div>
 </div>
 </div>
 {% endblock %}

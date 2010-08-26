@@ -1,9 +1,11 @@
 {% extends 'forum/forum_base.html' %}
 {% load i18n forum %}
 
-{% block title %}
-{{ topic.subject }} - {{ block.super }}
-{% endblock %}
+{% block title %}{{ topic.subject }} - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+{{ block.super }}
+{% endblock breadcrumb %}
 
 {% block content %}
 <div id="replybox">

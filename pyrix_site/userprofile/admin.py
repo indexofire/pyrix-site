@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from profile.models import *
+from userprofile.models import *
 
 
 class UserProfileAdmin(admin.ModelAdmin):

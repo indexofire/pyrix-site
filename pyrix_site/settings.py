@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     'registration',
     'pagination',
     #'user_profile',
-    'profile',
+    'userprofile',
     'wiki',
     'forum',
     'attachments',

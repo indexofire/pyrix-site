@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
 
-from profile.views import *
+from userprofile.views import *
 
 urlpatterns = patterns('',
     url(r'^$', profile_list, name='profile_list'),

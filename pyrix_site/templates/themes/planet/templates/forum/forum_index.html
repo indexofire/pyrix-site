@@ -1,5 +1,30 @@
 {% extends "forum/forum_base.html" %}
-{% load i18n forum %}
+{% load i18n forum avatar_tags %}
+
+{% block latest_topics %}
+<div class="block_plain">
+  {% for topic in topics %}
+  <div class="cell">
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tbody>
+        <tr>
+          <td valign="top" class="avatar"><a href="{% url profile_detail topic.posted_by.username %}">{% avatar topic.posted_by 48 %}</a></td>
+          <td style="padding-left: 12px" valign="top">
+	        <div class="sep3"></div>
+		    <span class="bigger" style="font-size: 16px"><a href="{% url forum_topic topic.id %}">{{ topic.subject }}</a></span>
+		    <div class="sep5"></div>
+		    <span class="fade" style="font-size: 10px;">By <strong><a href="{% url profile_detail topic.posted_by.username %}" class="dark">{{ topic.posted_by }}</a></strong> in <strong><a href="/go/babel" class="dark">{{ topic.forum }}</a></strong><br>
+            <span class="created">{{ topic.created_on }}</span>
+	        </span>
+          </td>
+          <td>{{ topic.num_replies }} | {{ topic.num_views }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+</div>
+{% endblock latest_topics %}
 
 {% block forum %}
 <!-- forum-wrap begins -->
@@ -66,7 +91,7 @@
       </li>
       <li class="st_users">
         <span>{% trans "Newest registered user" %}: 
-          <strong><a href="{% url profiles_profile_detail last_registered_user.pk %}">{{ last_registered_user.username }}</a></strong>
+          <strong><a href="{% url profile_detail last_registered_user.username %}">{{ last_registered_user.username }}</a></strong>
         </span>
       </li>
       <li class="st_activity">

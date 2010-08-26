@@ -23,12 +23,12 @@ form p label {
       <label for="id_password">{% trans "password" %}:</label>
       <input type="password" name="password" id="id_password">
     </div>
-    <hr/>
-    <div>
-      <a href="{% url django.contrib.auth.views.password_reset %}">reset password</a>
-    </div>
     <input type="submit" value="{% trans 'Login' %}" />
     <input type="hidden" name="next" value="{{ next }}" />
+    <p></p>
+    <div>
+      <a href="{% url django.contrib.auth.views.password_reset %}">{% trans "Forget Password?" %}</a>
+    </div>
     </form>
   </div>
   </div>

@@ -8,8 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.core.urlresolvers import reverse
 
-from profile.models import *
-from profile.forms import *
+from userprofile.models import *
+from userprofile.forms import *
 
 
 def profile_list(request):
@@ -39,6 +39,7 @@ def profile_detail(request, username):
     except User.DoesNotExist:
         raise Http404
     profile = UserProfile.objects.get(user=user)
+    print profile.mugshot
     context = { 'object':profile }
     return render_to_response('profile/profile_detail.html', context, context_instance=RequestContext(request))
 

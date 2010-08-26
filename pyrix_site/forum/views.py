@@ -15,15 +15,17 @@ from forum.models import Topic, ForumCategory, Forum, Post
 
 def index(request, template_name="forum/forum_index.html"):
     categories = ForumCategory.objects.all()
-    total_topics = Topic.objects.count()
-    total_posts = Post.objects.count()
-    total_users =  User.objects.count()
+    latest_topics = Topic.objects.all()[:10]
+    #total_topics = Topic.objects.count()
+    #total_posts = Post.objects.count()
+    #total_users =  User.objects.count()
     last_registered_user = User.objects.order_by('-date_joined')[0]
     extend_context = {
-        'categories': categories, 
-        'total_topics': total_topics,
-        'total_posts': total_posts, 
-        'total_users': total_users,
+        'categories': categories,
+        'topics': latest_topics,
+        #'total_topics': total_topics,
+        #'total_posts': total_posts, 
+        #'total_users': total_users,
         'last_registered_user': last_registered_user,
     }
     extend_context.update(getOnlineInfos(True))
@@ -60,7 +62,7 @@ def topic_new(request, topic_id, template_name="forum/forum_topic.html"):
     relation_dict = {}
     for obj in objects:
         relation_dict.setdefault(obj.topic_id,[]).append(obj)
-    print relation_dict
+    #print relation_dict
     for id, related in relation_dict.items():
         obj_dict[id]._related = related
 
