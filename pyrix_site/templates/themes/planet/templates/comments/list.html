@@ -1,9 +1,13 @@
-<ul id="comments">
+{% load avatar_tags %}
+
+<div id="comments">
 {% for comment in comment_list %}
-<li id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
-  <span>{{ comment.name|escape }}</span>
-  <div>{{ comment.comment|escape|linebreaksbr }}</div>
-  <span>{{ comment.submit_date|date:"Y.m.d" }}</span>
-</li>
+  <li id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
+    <div class="commenter">{% avatar comment.user 48 %}</div>
+    <div class="comment">
+      <p>{{ comment.comment|escape|linebreaksbr }}</p>
+      <span>{{ comment.submit_date|date:"Y.m.d" }}</span>
+    </div>
+  </li>
 {% endfor %}
-</ul>
+</div>

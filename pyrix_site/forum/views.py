@@ -43,7 +43,7 @@ def forum(request, forum_slug, template_name="forum/forum_forum.html"):
 def topic(request, topic_id, template_name="forum/forum_topic.html"):
     topic = get_object_or_404(Topic, id=topic_id)
     topic.num_views += 1
-    #topic.save()
+    topic.save()
     posts = topic.post_set.order_by('created_on').select_related()
     extend_context = {
         'topic': topic,
@@ -54,7 +54,7 @@ def topic(request, topic_id, template_name="forum/forum_topic.html"):
 def topic_new(request, topic_id, template_name="forum/forum_topic.html"):
     topic = get_object_or_404(Topic, id=topic_id)
     topic.num_views += 1
-    #topic.save()
+    topic.save()
     
     qs = Topic.objects.filter(pk=topic_id)
     obj_dict = dict([(obj.id, obj) for obj in qs])
@@ -62,7 +62,6 @@ def topic_new(request, topic_id, template_name="forum/forum_topic.html"):
     relation_dict = {}
     for obj in objects:
         relation_dict.setdefault(obj.topic_id,[]).append(obj)
-    #print relation_dict
     for id, related in relation_dict.items():
         obj_dict[id]._related = related
 

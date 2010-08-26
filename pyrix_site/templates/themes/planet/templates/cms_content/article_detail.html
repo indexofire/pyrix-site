@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n menu_tags cms_tags content_tags comments %}
+{% load i18n menu_tags cms_tags content_tags comments avatar_tags %}
 
 {% block title %}
 {{ article.title }}
@@ -42,11 +42,25 @@
   <h3>comments:</h3>
   <p>There are {% get_comment_count for article as comment_count %}{{ comment_count }} comments</p>
   {% get_comment_list for article as comment_list %}
+  <div id="comments">
+  <ul>
+  {% for comment in comment_list %}
+    <li id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
+      <div class="commenter">{% avatar comment.user 48 %}</div>
+      <div class="comment">
+        <p>{{ comment.comment|escape|linebreaksbr }}</p>
+        <span>{{ comment.submit_date|date:"Y.m.d" }}</span>
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
+  </div>
+  <!--
   {% for comment in comment_list %}
   <p>Posted by: {{ comment.user_name }} on {{ comment.submit_date }}</p>
   <p>Comment: {{ comment.comment }}</p>
-  {% endfor %}
-<!--{% render_comment_list for article %}-->
+  {% endfor %}-->
+  <!--{% render_comment_list for article %}-->
   {% render_comment_form for article %}
   </div>
   </div>

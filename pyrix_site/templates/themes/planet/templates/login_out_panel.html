@@ -1,4 +1,5 @@
 {% load i18n %}
+
 <style>
 form p label {
     display: block;
@@ -8,28 +9,31 @@ form p label {
 <div class="block">
   <h3 class="block_title">{% trans "Login" %}</h3>
   <div class="block_content">
-  
-  {% if form.errors %}
-    <p>{% trans "Your username and password didn't match. Please try again." %}</p>
+  {% if request.user.is_authenticated %}
+    <p style="padding: 10px"><a href="{% url profile_detail request.user.username %}">{% trans "My Profile" %}</a></p>
+    <p style="padding: 10px"><a href="/account/logout/">logout</a></p>
+  {% else %}
+    {% if form.errors %}
+      <p>{% trans "Your username and password didn't match. Please try again." %}</p>
+    {% endif %}
+    <div id="login_div" style="padding:10px;">
+      <form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+      <div>
+        <label for="id_username">{% trans "username" %}:</label>
+        <input id="id_username" type="text" name="username" maxlength="30">
+      </div>
+      <div>
+        <label for="id_password">{% trans "password" %}:</label>
+        <input type="password" name="password" id="id_password">
+      </div>
+      <input type="submit" value="{% trans 'Login' %}" />
+      <input type="hidden" name="next" value="{{ next }}" />
+      <p></p>
+      <div>
+        <a href="{% url django.contrib.auth.views.password_reset %}">{% trans "Forget Password?" %}</a>
+      </div>
+      </form>
+    </div>
   {% endif %}
-
-  <div id="login_div" style="padding:10px;">
-    <form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
-    <div>
-      <label for="id_username">{% trans "username" %}:</label>
-      <input id="id_username" type="text" name="username" maxlength="30">
-    </div>
-    <div>
-      <label for="id_password">{% trans "password" %}:</label>
-      <input type="password" name="password" id="id_password">
-    </div>
-    <input type="submit" value="{% trans 'Login' %}" />
-    <input type="hidden" name="next" value="{{ next }}" />
-    <p></p>
-    <div>
-      <a href="{% url django.contrib.auth.views.password_reset %}">{% trans "Forget Password?" %}</a>
-    </div>
-    </form>
-  </div>
   </div>
 </div>

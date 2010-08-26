@@ -160,6 +160,7 @@ a:hover {
     margin: 0px;
     padding: 10px 20px;
     background: #D0DADF url(../img/main_bg.png) no-repeat 100% 0%;
+    min-height: 480px;
 }
 
 #login_div div label {
@@ -648,7 +649,7 @@ span.loading_small{
 .block_plain {
     -webkit-box-shadow: #9CA5A5 0px 1px 3px;
     -moz-box-shadow: #9CA5A5 0p 1px 3px;
-    background-color: #FFF;
+    background-color: #F8F8F8;
     border: 0;
     border-bottom-left-radius: 6px 6px;
     border-bottom-right-radius: 6px 6px;
@@ -661,4 +662,61 @@ span.loading_small{
     font-size: 12px;
     line-height: 16px;
     padding: 10px;
+}
+
+.block_plain .cell table {
+    margin-bottom: 4px;
+}
+
+.avatar {
+    padding: 10px 0px;
+    margin: 0px;
+    width: 48px;
+    vertical-align: top;
+}
+.avatar a img {
+    border: 3px solid #E8E8E8;
+}
+.forum_title {
+    margin: 3px 0px;
+    padding: 3px 0px;
+}
+
+.forum_title a:hover {
+    background: #CECECE;
+    border-bottom: 2px solid #939393;
+}
+.fade {
+    color: #999;
+    font-size: 0.8em;
+}
+.fade a:hover {
+    border-bottom: 1px solid #636363;
+}
+
+.info_block{
+    position: relative;
+}
+
+.info_block .replies {
+    font-size: 2em;
+    padding: 0 5px;
+}
+
+.info_block .views {
+    display: block;
+    background: url(rating_bg.gif) no-repeat;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    font-size: 2em;
+    width: 25px;
+    height: 30px;
+    padding: 20px 0 0 25px;
+}
+
+.num {
+    float: right;
+    padding: 20px;
+    vertical-align: baseline;
 }
