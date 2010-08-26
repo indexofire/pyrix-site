@@ -72,9 +72,6 @@ def topic_new(request, topic_id, template_name="forum/forum_topic.html"):
     }
     return render_to_response(template_name, extend_context, RequestContext(request))
 
-
-
-
 def post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return HttpResponseRedirect(post.get_absolute_url_ext())
@@ -171,6 +168,3 @@ def user_posts(request, user_id, template_name='forum/user_posts.html'):
         'view_user': view_user,
     }
     return render_to_response(template_name, extend_context, RequestContext(request))
-#Feed...
-#Add Post
-#Add Topic
