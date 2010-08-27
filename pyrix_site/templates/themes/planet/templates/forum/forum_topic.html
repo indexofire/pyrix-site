@@ -3,43 +3,39 @@
 
 {% block title %}{{ topic.subject }} - {{ block.super }}{% endblock %}
 
-{% block breadcrumb %}
-{{ block.super }}
-{% endblock breadcrumb %}
+{% block breadcrumb %}{{ block.super }}&gt;{% include 'forum/includes/topic_brd_crumbs.html' %}{% endblock breadcrumb %}
 
 {% block content %}
-
-{% load pagination_tags %}
-{% autopaginate posts TOPIC_PAGE_SIZE %}
-{% paginate %}
+  {% load pagination_tags %}
+  {% autopaginate posts TOPIC_PAGE_SIZE %}
+  {% paginate %}
 
 <div class="block">
-  <h3 class="block_title">{% trans "Topic" %}</h3>
+  <h3 class="block_title">{% trans "Topic" %}: {{ topic.subject }}</h3>
   <div class="block_content">
-    <div class="topic">
-      <h3 style="padding: 10px">
-        <span><a title="Permanent link to this topic" rel="bookmark" href="{{ topic.get_absolute_url }}">{{ topic.subject }}</a></span>
-        <span>{% trans "Posts" %} [ {% page_range_info page_obj %} ]</span>
-      </h3>
-      <hr/>
-      <div>
-        {% include 'forum/includes/topic_detail.html' %}
-      </div>
-    </div>
+    {% include 'forum/includes/topic_detail.html' %}
   </div>
 </div>
 
-<div class="block_plain">
-{% for post in posts %}
+<div class="block_plain" style="margin-bottom:10px">
+{% for post in posts reversed %}
   <div class="cell">
-    {% include 'forum/includes/post_detail.html' %}
+    {% if not forloop.first %}
+      {% if forloop.count = 1 %}
+        <div>No Reply Still</div>
+        
+      {% else %}
+        {% include 'forum/includes/post_detail.html' %}
+      {% endif %}
+    {% endif %}
   </div>
 {% endfor %}
+<div style="padding:5px 15px;">Page: {% paginate %}</div>
 </div>
-
 
 {% if not topic.closed %}
   {% if user.is_authenticated %}
+  <div class="block_plain" style="padding: 10px;margin-bottom:10px">
   <div class="main-subhead">
     <h2 class="hn"><span>{% trans "Quick reply to this topic" %}</span></h2>
   </div>
@@ -69,8 +65,10 @@
       </div>
     </form>
   </div>
+  </div>
   {% endif %}
 {% endif %}
+
 {% endblock content%}
 
 {% block other %}

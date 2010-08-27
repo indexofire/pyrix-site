@@ -1,26 +1,22 @@
-{% load i18n forum %}
+{% load i18n forum avatar_tags %}
 
-<div id="topic{{ topic.pk }}" class="main-item {% cycle 'odd' 'even' %} {% if forloop.first %}main-item1{% endif %} {{topic|topic_state}}">
-  <span class="icon mm {{topic|topic_state}}"><!-- --></span>
-  
-  <div class="item-subject">
-	<h3 class="hn mm">
-      <span class="item-num">1</span>
+<div id="topic{{ topic.pk }}" class="main_item {% cycle 'odd' 'even' %}{% if forloop.first %} main_item1{% endif %} {{ topic|topic_state }}" style="padding:10px">
+  <div class="span-2">{% avatar topic.posted_by 64 %}<br/><center>{{ topic.posted_by }}</center></div>
+	<h3>
 	  {% if topic.closed %}
-		<strong>({% trans "Closed" %})</strong>
+		<strong>[{% trans "Closed" %}]</strong>
 	  {% endif %}
-	  
 	  {% if topic.sticky %}
-		<strong>({% trans "Sticky" %})</strong>
+		<strong>[{% trans "Sticky" %}]</strong>
 	  {% endif %}		
-	  <a href="{% url forum_topic topic.id %}">{{topic.subject}} </a>   
+	  <a href="{% url forum_topic topic.id %}">{{ topic.subject }}</a>   
 	</h3>
     
 	<p>
       <span class="item-starter">Started {{ topic.created_on|date:"Y-m-d H:i" }} by <cite>{{ topic.posted_by }}</cite></span>
       {% post_paginate topic.num_replies TOPIC_PAGE_SIZE %}
 	</p>
-  </div>
+
   
   <ul class="item-info">
 	<li class="info-replies">
@@ -37,6 +33,10 @@
 	  <cite>by {{topic.get_last_post.posted_by}}</cite>
 	</li>
   </ul>
-
+  <div>
+    {% for post in posts %}
+      {% if forloop.first %}{{ post.message }}{% endif %}
+    {% endfor %}
+  </div>
 </div>
 

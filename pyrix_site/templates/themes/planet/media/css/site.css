@@ -1,29 +1,18 @@
-/* ----------
+/* ------------------
  * Django-CMS Style
- * ----------
- * Theme: Pyrix
- * ----------
+ * ------------------
+ * Theme: Planet v0.1
+ * ------------------
  * Author: Mark Renton <indexofire@gmail.com>
  * ------------------------------------------
  */
 
 body {
-    background: #D0DADF;
+    background: #D0DADF url(../img/main_bg.png) no-repeat 100% 92px;
     font-family:"Helvetica Neue", Arial, Helvetica, 雅黑, simsun, 宋体, sans-serif;
 }
 
-.shadow-box {
-    background: #FEFEFE;
-    border: 1px solid #9C9C9C;
-    border-radius: 2px;
-    box-shadow: 0px 0px 1px #AAABAC;
-    -webkit-border-radius: 2px;
-    -webkit-box-shadow: 0px 0px 1px #AAABAC;
-    -moz-border-radius: 2px;
-    -moz-box-shadow: 0px 0px 1px #AAABAC;
-}
-
-/* the settings of article's readmore link's */
+/* reset text-align in IE6 */
 h1,h2,h3,h4,h5,h6,p,a {
     text-align: left;
 }
@@ -31,14 +20,10 @@ a {
     text-decoration: none;
 }
 a:link,
-a:visited {
-    color: #222;
-}
+a:visited,
 a:hover {
     color: #222;
 }
-
-/* border-bottom: 3px solid #5D5D57; */
 
 /* Header Background */
 #header_bg {
@@ -49,12 +34,6 @@ a:hover {
     display: block;
     position: absolute;
     z-index: -1;
-}
-
-
-/* Login Menu */
-#login {
-
 }
 
 #head_icon {
@@ -107,27 +86,27 @@ a:hover {
 /* page's top */
 #top {
     border-bottom: 1px solid #FFF;
-    background: #222;
+    background: #333;
     height: 40px;
     line-height: 40px;
     padding: 10px 20px;
     overflow: hidden;
-    /*margin-bottom: 10px;*/
 }
 
 #top a {
     color: #FFF;
 }
 
+#site_name {
+    display: inline;
+}
 #top ul {
     height: 20px;
     line-height: 20px;
     padding: 10px 0px;
-    margin: 0px;
+    margin: 0px -5px 0px 0px;
     list-style: none;
-    position: absolute;
-    top: 10px;
-    right: 20px;
+    float: right;
 }
 
 #top ul li {
@@ -139,7 +118,7 @@ a:hover {
 #top ul li a {
     display: block;
     margin: 0px 5px;
-    padding: 4px 10px;
+    padding: 4px 5px;
     border-radius: 8px 8px;
     -moz-border-radius: 8px 8px;
 }
@@ -153,9 +132,6 @@ a:hover {
 
 /* Main */
 #main {
-    margin: 0px;
-    padding: 10px 20px;
-    background: #D0DADF url(../img/main_bg.png) no-repeat 100% 0%;
     min-height: 480px;
 }
 
@@ -313,6 +289,7 @@ a:hover {
     line-height: 24px;
     padding: 0px 20px;
     border-bottom: 1px solid #CACACA;
+    margin-bottom: 10px;
 }
 
 /* panel */

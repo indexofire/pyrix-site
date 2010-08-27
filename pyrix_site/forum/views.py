@@ -44,10 +44,13 @@ def topic(request, topic_id, template_name="forum/forum_topic.html"):
     topic = get_object_or_404(Topic, id=topic_id)
     topic.num_views += 1
     topic.save()
-    posts = topic.post_set.order_by('created_on').select_related()
+    posts = list(topic.post_set.order_by('-created_on').select_related())
+    print posts
+    print message
     extend_context = {
         'topic': topic,
         'posts': posts,
+        'message': message,
     }
     return render_to_response(template_name, extend_context, RequestContext(request))
 
@@ -67,7 +70,6 @@ def topic_new(request, topic_id, template_name="forum/forum_topic.html"):
 
     extend_context = {
         'topic': topic,
-        #'posts': objects,
         'posts': objects,
     }
     return render_to_response(template_name, extend_context, RequestContext(request))

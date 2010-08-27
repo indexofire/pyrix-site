@@ -4,13 +4,13 @@
 {% block title %}{% trans "main page" %}{% endblock title %}
 
 {% block content %}
-<div class="three_left">
+<div class="span-6">
   {% include "login_out_panel.html" %}
   {% block col_sidebar %}{% placeholder col_sidebar %}{% endblock %}
   {% include "sidebar_submenu.html" %}
 </div>
 
-<div class="three_center">
+<div class="span-12">
   <div class="block">
     <h3 class="block_title">Site</h3>
     <div class="block_content">
@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div class="three_right">
+<div class="span-6 last">
   <div class="block">
     <h3 class="block_title">Help</h3>
     <div class="block_content">
