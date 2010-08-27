@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load i18n menu_tags content_tags %}
 
+{% block title %}内容管理{% endblock title %}
+
 {% block extra_head %}
   <link href="{{ MEDIA_URL }}css/cms_content_style.css" rel="stylesheet" type="text/css" />
   <script src="{{ MEDIA_URL }}js/accordion.js" type="text/javascript"></script>

@@ -10,18 +10,17 @@
 {% endblock extra_head %}
 
 {% block content %}
+<div class="span-16">
+<div class="block">
+  <h3 class="block_title">{% if is_new_post %}{% trans "Post new" %}{% else %}{% trans "Edit" %}{% endif %} {{ post_type }}</h3>
+  <div class="block_content">
+
+
 <div id="actionbox"></div>  
 
 <div id="brd-wrap" class="brd">
   <div id="brd-viewforum" class="brd-page paged-page">
-  {% comment %}{% include 'forum/includes/header.html' %}{% endcomment %}
-  {% comment %}{% include 'forum/includes/announce.html' %}{% endcomment %}
 
-    <div class="hr"><hr /></div>
-
-    <div class="crumbs gen-content" id="brd-crumbs-top">
-      {% comment %}{% include 'forum/includes/forum_brd_crumbs.html' %}{% endcomment %}
-    </div>
     
     <div class="main-wrapper" id="brd-main">
       <div class="main-head">
@@ -165,4 +164,7 @@
         <span class="ext">&nbsp;</span>
         </li>
     </script>
+</div>
+</div>
+</div>
 {% endblock %}

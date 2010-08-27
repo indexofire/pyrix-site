@@ -3,7 +3,7 @@
 
 {% block title %}{{ topic.subject }} - {{ block.super }}{% endblock %}
 
-{% block breadcrumb %}{{ block.super }}&gt;{% include 'forum/includes/topic_brd_crumbs.html' %}{% endblock breadcrumb %}
+{% block breadcrumb %}{{ block.super }}{% include 'forum/includes/topic_brd_crumbs.html' %}{% endblock breadcrumb %}
 
 {% block content %}
   {% load pagination_tags %}
@@ -11,7 +11,16 @@
   {% paginate %}
 
 <div class="block">
-  <h3 class="block_title">{% trans "Topic" %}: {{ topic.subject }}</h3>
+  <h3 class="block_title">
+    <span>{% trans "Topic" %}: </span>
+    {% if topic.closed %}
+      <strong>[{% trans "Closed" %}]</strong>
+    {% endif %}
+    {% if topic.sticky %}
+      <strong>[{% trans "Sticky" %}]</strong>
+    {% endif %}		
+    <a href="{% url forum_topic topic.id %}">{{ topic.subject }}</a>   
+  </h3>
   <div class="block_content">
     {% include 'forum/includes/topic_detail.html' %}
   </div>
@@ -19,11 +28,10 @@
 
 <div class="block_plain" style="margin-bottom:10px">
 {% for post in posts reversed %}
-  <div class="cell">
+  <div class="cell abc">
     {% if not forloop.first %}
       {% if forloop.count = 1 %}
         <div>No Reply Still</div>
-        
       {% else %}
         {% include 'forum/includes/post_detail.html' %}
       {% endif %}

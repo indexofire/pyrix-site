@@ -2,11 +2,11 @@
 {% load forum %}
 {% load avatar_tags %}
 
-<div class="cell">
+
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tbody>
   <tr>
-    <td class="avatar"><a href="{% url profile_detail topic.posted_by.username %}">{% avatar topic.posted_by 48 %}</a></td>
+    <td class="avatar"><a href="{% url profile_detail topic.posted_by.username %}">{% avatar topic.posted_by 48 %}</a><br/>{{ post.posted_by }}</td>
     <td style="padding-left: 12px">
       <h3 class="forum_title"><a href="{% url forum_topic topic.id %}">{{ post.message|bbcode|safe }}</a></h3>
       <span class="fade">By <strong><a href="{% url profile_detail post.posted_by.username %}" class="dark">{{ post.posted_by.username }}</a></strong> in <strong><a href="{% url forum_forum topic.forum.slug %}" class="dark">{{ topic.forum }}</a></strong><br>
@@ -77,4 +77,4 @@
     </div>
   </div>
   {% endif %}
-</div>
+

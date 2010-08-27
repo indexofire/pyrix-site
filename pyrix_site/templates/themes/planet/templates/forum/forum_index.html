@@ -3,14 +3,29 @@
 
 {% block latest_topics %}
 <div class="block_plain">
-<div class="cell">{% trans "Latest Topic" %}</div>
-<div style="height:1px;background:#FFF"></div>
-{% include "forum/includes/topic_list.html" %}
-<div style="padding:5px 15px;">Read More</div>
+  <div class="cell">{% trans "Latest Topic" %}</div>
+  <div style="height:1px;background:#FFF"></div>
+  {% include "forum/includes/topic_list.html" %}
+  <div style="padding:5px 15px;">Read More</div>
 </div>
 {% endblock latest_topics %}
 
 {% block forum %}
+<div>
+{% for category in categories %}
+  <div style="border-bottom:1px solid #CCC;padding:5px 10px">
+    <h3>{{ category }}:</h3>
+    {% for forum in category.forum_set.all %}
+      <span class="forum_name"><a href="{% url forum_forum forum.slug %}">{{ forum.name }}</a></span> | 
+    {% endfor %}
+  </div>
+{% endfor %}
+</div>
+{% endblock forum %}
+
+
+
+{% block forums %}
 <!-- forum-wrap begins -->
 <div id="forum_wrap" class="forum">
 
@@ -39,7 +54,7 @@
       <div id="forum" class="main-item {% cycle 'odd' 'even' %} {% if forloop.first %}main_item1{% endif %}">
         <span class="icon "><!-- --></span>
         <div class="item_subject">
-          <h3 class="hn"><a href="{% url forum_forum forum.slug %}"><span> {{forum}} </span></a></h3>
+          <h3 class="hn"><a href="{% url forum_forum forum.slug %}"><span>{{ forum }}</span></a></h3>
           <p>{{ forum.description }}</p>
         </div>
         <ul class="item_info">
@@ -100,4 +115,4 @@
 </div>
 <!-- forum-wrap ends -->
 
-{% endblock forum %}
+{% endblock forums %}

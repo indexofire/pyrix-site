@@ -72,15 +72,13 @@ a:hover {
 
 /* Page Footer Settings */
 #footer {
-    background: #ABAAA1;
-    height: 200px;
-    display: block;
-    padding-top: 30px;
+    background: #FFF;
+    margin-top: 50px;
+    border-top: 1px solid #CCC;
 }
 
-#footer div.det {
-    color: #797971;
-    display: block;
+#footer .con {
+    padding: 20px 10px;
 }
 
 /* page's top */
@@ -132,7 +130,7 @@ a:hover {
 
 /* Main */
 #main {
-    min-height: 480px;
+    min-height: 680px;
 }
 
 #login_div div label {
@@ -288,8 +286,9 @@ a:hover {
     height: 32px;
     line-height: 24px;
     padding: 0px 20px;
-    border-bottom: 1px solid #CACACA;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: rgba(0,0,0,0.3) 0px 1px 3px;
+    -moz-box-shadow:  rgba(0,0,0,0.3) 0px 1px 3px;
 }
 
 /* panel */
@@ -630,14 +629,15 @@ span.loading_small{
     -moz-box-shadow: rgba(0,0,0,0.4) 0px 1px 3px;
 }
 
-.block_plain .cell {
+.cell {
+    border-top: 1px solid #FFF;
     border-bottom: 1px solid #E2E2E2;
     font-size: 12px;
     line-height: 16px;
     padding: 10px;
 }
 
-.block_plain .cell table {
+.cell table {
     margin-bottom: 4px;
 }
 
