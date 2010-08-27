@@ -53,21 +53,24 @@ a:hover {
 
 #breadcrumb li {
     float: left;
-    padding: 4px;
+    padding: 0px;
+    margin: 0px;
+    height: 32px;
+}
+#breadcrumb li a {
+    color: #5F7CAA;
+    background: url(../img/chevron.png) no-repeat 100% 50%;
+}
+#breadcrumb li a,
+#breadcrumb li span {
+    float: left;
+    margin: 0px;
+    padding: 0px 20px 0px 10px;
+    line-height: 32px;
 }
 
-#breadcrumb li a{
-    text-decoration: none;
-    float: left;
-    color: #E99D01;
-}
-
-#breadcrumb .menu span {
-    color: #F5F5EE;
-    text-shadow: black 1px 1px 0px;
-    display: block;
-    float: left;
-    display: block;
+#breadcrumb li a:hover {
+    text-decoration: underline;
 }
 
 /* Page Footer Settings */

@@ -5,51 +5,45 @@
 
 {% block extra_head %}
 {{ block.super }}
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}cms_content/js/markitup/skins/markitup/style.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}forum/js/markitup/sets/bbcode/style.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}cms_content/js/markitup/skins/markitup/style.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}forum/js/markitup/sets/bbcode/style.css" />
+<script type="text/javascript" src="{{ MEDIA_URL }}cms_content/js/markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}forum/js/markitup/sets/bbcode/set.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}forum/js/ajaxupload.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}forum/js/simple_tpl.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}forum/js/upload_attachment.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}forum/js/common.js"></script>
 {% endblock extra_head %}
 
 {% block content %}
-<div class="span-16">
+<div class="span-24 last">
 <div class="block">
-  <h3 class="block_title">{% if is_new_post %}{% trans "Post new" %}{% else %}{% trans "Edit" %}{% endif %} {{ post_type }}</h3>
+  <h3 class="block_title">{% if is_new_post %}{% trans "Post new" %}{% else %}{% trans "Edit" %}{% endif %}{{ post_type }}</h3>
   <div class="block_content">
-
-
-<div id="actionbox"></div>  
-
-<div id="brd-wrap" class="brd">
-  <div id="brd-viewforum" class="brd-page paged-page">
-
-    
-    <div class="main-wrapper" id="brd-main">
-      <div class="main-head">
-        <h1 class="hn"><span>{% if is_new_post %}{% trans "Post new" %}{% else %}{% trans "Edit" %}{% endif %} {{ post_type }}</span></h1>
-      </div>
-      {% if preview %}
-      <div class="main-subhead">
-        <h2 class="hn"><span>{% trans "Preview your" %} {% if is_new_post %}{% trans "new" %}{% else %}{% trans "edited" %}{% endif %} {{ post_type }}</span></h2>
-      </div>
-      <div class="main-content main-frm" id="post-preview">
-        <div class="post singlepost">
-          <div class="posthead">
-            <h3 class="hn"><span class="post-num">#</span> <span class="post-byline"><span>{% trans "Topic by" %} </span><strong>{{ user.username }}</strong></span> <span class="post-link">{% now "Y-m-d H:i" %}</span></h3>
-          </div>
-          <div class="postbody">
-            <div class="post-entry">
-              <div class="entry-content"><p>{{form.cleaned_data.message|bbcode|safe}}</p></div>
-            </div>
+    {% if preview %}
+    <div class="main-subhead">
+      <h3><span>{% trans "Preview your" %} {% if is_new_post %}{% trans "new" %}{% else %}{% trans "edited" %}{% endif %} {{ post_type }}</span></h3>
+    </div>
+    <div class="main-content main-frm" id="post-preview">
+      <div class="post singlepost">
+        <div class="posthead">
+          <h3 class="hn"><span class="post-num">#</span> <span class="post-byline"><span>{% trans "Topic by" %} </span><strong>{{ user.username }}</strong></span> <span class="post-link">{% now "Y-m-d H:i" %}</span></h3>
+        </div>
+        <div class="postbody">
+          <div class="post-entry">
+            <div class="entry-content"><p>{{form.cleaned_data.message|bbcode|safe}}</p></div>
           </div>
         </div>
       </div>
-      {% endif %}
+    </div>
+    {% endif %}
       
-      <div class="main-subhead">
-        <h2 class="hn"><span>{% trans "Compose and post your" %} {% if is_new_post %}{% trans "new" %}{% else %}{% trans "edited" %}{% endif %} {{ post_type }}</span></h2>
-      </div>
+    <div class="main-subhead">
+      <h3><span>{% trans "Compose and post your" %} {% if is_new_post %}{% trans "new" %}{% else %}{% trans "edited" %}{% endif %} {{ post_type }}</span></h3>
+    </div>
       
-      <div class="main-content main-frm" id="post-form">
-        <p class="ct-options options">{% trans "You may use" %}: <span class="item1"><a title="Help with: BBCode" href="http://fluxbb.org/forums/help/bbcode/" class="exthelp">BBCode</a></span> <span><a title="Help with: Images" href="http://fluxbb.org/forums/help/img/" class="exthelp">Images</a></span> <span><a title="Help with: Smilies" href="http://fluxbb.org/forums/help/smilies/" class="exthelp">Smilies</a></span></p>
+    <div class="main-content main-frm" id="post-form">
+      <p class="ct-options options">{% trans "You may use" %}: <span class="item1"><a title="Help with: BBCode" href="http://fluxbb.org/forums/help/bbcode/" class="exthelp">BBCode</a></span> <span><a title="Help with: Images" href="http://fluxbb.org/forums/help/img/" class="exthelp">Images</a></span> <span><a title="Help with: Smilies" href="http://fluxbb.org/forums/help/smilies/" class="exthelp">Smilies</a></span></p>
         {% if form.errors %}
         <div class="ct-box error-box" id="req-msg">
           <p class="errornote"> {% trans "Please correct the errors below." %}  </p>
@@ -125,46 +119,39 @@
         </div>
       </div>
       {% endif %}
-      
+<script type="text/javascript">
+mySettings['previewParserPath']='{% url markitup_preview %}';
+mySettings['previewAutoRefresh']=false;
+$("#id_message").markItUp(mySettings);
+url_attachments_ajax_change_descn = "{% url attachments_ajax_change_descn %}";
+url_attachments_ajax_delete = "{% url attachments_ajax_delete %}";
+url_attachments_ajax_upload = "{% url attachments_ajax_upload %}";
+$().ready(function() {
+    {% for o in unpublished_attachments %}
+    add_attachment({'id': '{{o.id}}','url': '{{o.file.url}}','fn': '{{o.org_filename}}','descn':'{{o.description}}'});
+    {% endfor %}
+    {% for o in post.attachments.all %}
+    add_attachment({'id': '{{o.id}}','url': '{{o.file.url}}','fn': '{{o.org_filename}}','descn':'{{o.description}}'});
+    {% endfor %}
+});
+</script>
+<script type="text/html" id="attachment_li_tmpl">
+<li id="attachment_<%=id%>" class="nb">
+<a class="filename" href="<%=url%>" target="_blank"><%=fn%></a>
+<span class="icon descn" style="">&nbsp;</span>
+<span style="display: none;">
+<input class="fld-descn" value="<%=descn%>"/>
+<a class="submit-descn" href="#">submit</a>
+</span>
+<span class="icon remove">&nbsp;</span>
+<span class="icon insert">&nbsp;</span>
+<span class="ext">&nbsp;</span>
+</li>
+</script>
     </div>
   </div>
 </div>
-    <script type="text/javascript" src="{{ MEDIA_URL }}cms_content/js/markitup/jquery.markitup.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/markitup/sets/bbcode/set.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/ajaxupload.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/simple_tpl.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/upload_attachment.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}forum/js/common.js"></script>
-    <script type="text/javascript">
-        mySettings['previewParserPath']='{% url markitup_preview %}';
-        mySettings['previewAutoRefresh']=false;
-	    $("#id_message").markItUp(mySettings);
-        url_attachments_ajax_change_descn = "{% url attachments_ajax_change_descn %}";
-        url_attachments_ajax_delete = "{% url attachments_ajax_delete %}";
-        url_attachments_ajax_upload = "{% url attachments_ajax_upload %}";
-        $().ready(function() {
-            {% for o in unpublished_attachments %}
-            add_attachment({'id': '{{o.id}}','url': '{{o.file.url}}','fn': '{{o.org_filename}}','descn':'{{o.description}}'});
-            {% endfor %}
-            {% for o in post.attachments.all %}
-            add_attachment({'id': '{{o.id}}','url': '{{o.file.url}}','fn': '{{o.org_filename}}','descn':'{{o.description}}'});
-            {% endfor %}
-        });
-    </script>
-    <script type="text/html" id="attachment_li_tmpl">
-        <li id="attachment_<%=id%>" class="nb">
-        <a class="filename" href="<%=url%>" target="_blank"><%=fn%></a>
-        <span class="icon descn" style="">&nbsp;</span>
-        <span style="display: none;">
-        <input class="fld-descn" value="<%=descn%>"/>
-        <a class="submit-descn" href="#">submit</a>
-        </span>
-        <span class="icon remove">&nbsp;</span>
-        <span class="icon insert">&nbsp;</span>
-        <span class="ext">&nbsp;</span>
-        </li>
-    </script>
-</div>
-</div>
+
+
 </div>
 {% endblock %}
