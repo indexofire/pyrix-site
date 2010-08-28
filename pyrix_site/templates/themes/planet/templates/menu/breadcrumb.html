@@ -3,7 +3,7 @@
 {% if not forloop.last %}
   <strong><a href="{{ ance.get_absolute_url }}">{{ ance.get_menu_title }}</a></strong>
 {% else %}
-  <span>{{ ance.get_menu_title }}</span>
+  <strong><a href="{{ ance.get_absolute_url }}">{{ ance.get_menu_title }}</a></strong>
 {% endif %}
 </li>
 {% endfor %}

@@ -3,7 +3,7 @@
 
 {% block title %}{{ topic.subject }} - {{ block.super }}{% endblock %}
 
-{% block breadcrumb %}{{ block.super }}{% endblock breadcrumb %}
+{% block breadcrumb %}{{ block.super }}{% include "forum/includes/topic_brd_crumbs.html" %}{% endblock breadcrumb %}
 
 {% block content %}
   {% load pagination_tags %}

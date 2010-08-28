@@ -1,12 +1,24 @@
 {% extends "forum/forum_base.html" %}
 {% load i18n forum avatar_tags %}
 
+{% block breadcrumb %}{{ block.super}}<li><span>{% trans "Forum Index" %}</span></li>{% endblock breadcrumb %}
+
 {% block latest_topics %}
+<style type="text/css">
+.trancate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 430px;
+    height:32px;
+    line-height:32px;
+}
+</style>
+
 <div class="block_plain">
-  <div class="cell">{% trans "Latest Topic" %}</div>
-  <div style="height:1px;background:#FFF"></div>
+  <div class="cell_head">{% trans "Latest Topic" %}</div>
   {% include "forum/includes/topic_list.html" %}
-  <div style="padding:5px 15px;">Read More</div>
+  <div class="cell_foot">Read More</div>
 </div>
 {% endblock latest_topics %}
 
