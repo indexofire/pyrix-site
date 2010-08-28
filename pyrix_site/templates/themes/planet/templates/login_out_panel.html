@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<style>
+<style type="text/css">
 form p label {
     display: block;
 }
@@ -20,11 +20,11 @@ form p label {
       <form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
       <div>
         <label for="id_username">{% trans "username" %}:</label>
-        <input id="id_username" type="text" name="username" maxlength="30">
+        <input id="id_username" type="text" name="username" maxlength="30" />
       </div>
       <div>
         <label for="id_password">{% trans "password" %}:</label>
-        <input type="password" name="password" id="id_password">
+        <input type="password" name="password" id="id_password" />
       </div>
       <input type="submit" value="{% trans 'Login' %}" />
       <input type="hidden" name="next" value="{{ next }}" />

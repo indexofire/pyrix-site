@@ -9,7 +9,7 @@
     <td class="avatar">
       <a href="{% url profile_detail topic.posted_by.username %}">{% avatar topic.posted_by 48 %}</a><br/>{{ post.posted_by }}
     </td>
-    <td style="padding-left: 12px">
+    <td style="padding:10px 5px 0px 12px;vertical-align:top">
       <p class="post_message">{{ post.message|bbcode|safe }}</p>
     </td>
   </tr>
