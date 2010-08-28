@@ -19,7 +19,14 @@
     {% if topic.sticky %}
       <strong>[{% trans "Sticky" %}]</strong>
     {% endif %}		
-    <a href="{% url forum_topic topic.id %}">{{ topic.subject }}</a>   
+    <a href="{% url forum_topic topic.id %}">{{ topic.subject }}</a>  
+    <span style="float:right">
+      {% if user.is_authenticated %}
+        <a class="post" href="{% url forum_new_topic topic.forum.pk %}"><span>{% trans "Post new topic" %}</span></a>
+      {% else %}
+        {% trans "You must" %} <a href="{% url auth_login %}">{% trans "Login" %}</a> {% trans "or" %} <a href="{% url registration_register %}">{% trans "register" %}</a> {% trans "to post a topic" %}
+      {% endif %}
+    </span> 
   </h3>
   <div class="block_content">
     {% include 'forum/includes/topic_detail.html' %}
@@ -27,18 +34,22 @@
 </div>
 
 <div class="block_plain" style="margin-bottom:10px">
-{% for post in posts reversed %}
-  <div class="cell abc">
-    {% if not forloop.first %}
-      {% if forloop.count = 1 %}
-        <div>No Reply Still</div>
-      {% else %}
-        {% include 'forum/includes/post_detail.html' %}
-      {% endif %}
+<div class="cell_head">
+  <span>{% trans "replies" %}: {{ topic.num_replies|add:"-1"}} | {% trans "views" %}: {{ topic.num_views }}</span>
+  <span style="float:right">
+    {% if user.is_authenticated %}
+      <a class="reply" href="{% url forum_new_replay topic.pk %}"><span>{% trans "Post a reply" %}</span></a>
+    {% else %}
+      {% trans "You must" %} <a href="{% url auth_login %}">{% trans "Login" %}</a> {% trans "or" %} <a href="{% url registration_register %}">{% trans "register" %}</a> {% trans "to post a reply" %}
     {% endif %}
-  </div>
+  </span>
+</div>
+{% for reply in replies %}
+        <!--<div class="cell">No Reply Still</div>-->
+        <div class="cell">{% include 'forum/includes/reply_detail.html' %}</div>
+
 {% endfor %}
-<div style="padding:5px 15px;">Page: {% paginate %}</div>
+<div class="cell_foot">Page: {% paginate %}</div>
 </div>
 
 {% if not topic.closed %}

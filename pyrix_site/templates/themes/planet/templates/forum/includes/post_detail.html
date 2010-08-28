@@ -7,7 +7,7 @@
 <tbody>
   <tr>
     <td class="avatar">
-      <a href="{% url profile_detail topic.posted_by.username %}">{% avatar topic.posted_by 48 %}</a><br/>{{ post.posted_by }}
+      <a href="{% url profile_detail topic.posted_by.username %}">{% avatar post.posted_by 48 %}</a><br/>{{ post.posted_by }}
     </td>
     <td style="padding:10px 5px 0px 12px;vertical-align:top">
       <p class="post_message">{{ post.message|bbcode|safe }}</p>
@@ -63,20 +63,22 @@
     </div>
   </div>
 -->
-  {% if user.is_authenticated %}
+
   <div class="postfoot">
     <div class="post-options">
       <p class="post-contacts"></p>
       <p class="post-actions" style="margin:0px">
         <span class="fade">By <strong><a href="{% url profile_detail post.posted_by.username %}" class="dark">{{ post.posted_by.username }}</a></strong> in <strong><a href="{% url forum_forum topic.forum.slug %}" class="dark">{{ topic.forum }}</a></strong>
         <span class="created">{{ post.created_on }}</span>
+        {% if user.is_authenticated %}
         <span class="quote-post"><a href="{% url forum_new_replay topic.pk %}?qid={{post.pk}}">{% trans "quote" %}</a></span> 
         {% if user == post.posted_by or user.is_staff %}
         <span class="edit-post"><a href="{% url forum_post_edit post.pk %}">{% trans "edit" %}</a></span> 
         {% endif %}
-      </span>
+        </span>
+        {% endif %}
       </p>
     </div>
   </div>
-  {% endif %}
+
 
