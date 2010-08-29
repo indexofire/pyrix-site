@@ -56,7 +56,6 @@ def topic_new(request, topic_id, template_name="forum/forum_topic.html"):
     topic.num_views += 1
     topic.save()
     objects = list(topic.post_set.order_by('created_on').select_related())
-    print objects[1:]
     #qs = Topic.objects.filter(pk=topic_id)
     #obj_dict = dict([(obj.id, obj) for obj in qs])
     #objects = Post.objects.filter(topic__in=qs).select_related()

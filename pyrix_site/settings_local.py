@@ -87,5 +87,5 @@ FORUM_CTX_CONFIG = {
     'FORUM_TITLE': 'HZCDCLabs Forum',
     'FORUM_SUB_TITLE': '',
     'FORUM_PAGE_SIZE': 50,
-    'TOPIC_PAGE_SIZE': 30,
+    'TOPIC_PAGE_SIZE': 2,
 }

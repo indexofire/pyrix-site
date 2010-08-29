@@ -6,10 +6,8 @@
 {% block breadcrumb %}{{ block.super }}{% include "forum/includes/topic_brd_crumbs.html" %}{% endblock breadcrumb %}
 
 {% block content %}
-  {% load pagination_tags %}
-  {% autopaginate posts TOPIC_PAGE_SIZE %}
-  {% paginate %}
-
+{% load pagination_tags %}
+{% autopaginate replies TOPIC_PAGE_SIZE %}
 <div class="block">
   <h3 class="block_title">
     <span>{% trans "Topic" %}: </span>
@@ -49,7 +47,7 @@
         <div class="cell">{% include 'forum/includes/reply_detail.html' %}</div>
 
 {% endfor %}
-<div class="cell_foot">Page: {% paginate %}</div>
+<div class="cell_foot">{% paginate %}</div>
 </div>
 
 {% if not topic.closed %}
