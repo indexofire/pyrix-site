@@ -44,17 +44,6 @@ def topic(request, topic_id, template_name="forum/forum_topic.html"):
     topic = get_object_or_404(Topic, id=topic_id)
     topic.num_views += 1
     topic.save()
-    posts = list(topic.post_set.order_by('-created_on').select_related())
-    extend_context = {
-        'topic': topic,
-        'posts': posts,
-    }
-    return render_to_response(template_name, extend_context, RequestContext(request))
-
-def topic_new(request, topic_id, template_name="forum/forum_topic.html"):
-    topic = get_object_or_404(Topic, id=topic_id)
-    topic.num_views += 1
-    topic.save()
     objects = list(topic.post_set.order_by('created_on').select_related())
     #qs = Topic.objects.filter(pk=topic_id)
     #obj_dict = dict([(obj.id, obj) for obj in qs])
@@ -77,19 +66,17 @@ def post(request, post_id):
     return HttpResponseRedirect(post.get_absolute_url_ext())
 
 def markitup_preview(request, template_name="forum/markitup_preview.html"):
-    return render_to_response(template_name, {'message': request.POST['data']}, \
-            RequestContext(request))
+    return render_to_response(template_name, {'message': request.POST['data']}, RequestContext(request))
 
 @login_required
-def new_post(request, forum_id=None, topic_id=None, form_class=NewPostForm, \
-        template_name='forum/forum_post.html'):
+def new_post(request, forum_id=None, topic_id=None, form_class=NewPostForm, template_name='forum/forum_post.html'):
     qpost = topic = forum = first_post = preview = None
     show_subject_fld = True 
-    post_type = _('topic')
+    post_type = _(u'topic')
     if forum_id:
         forum = get_object_or_404(Forum, pk=forum_id)
     if topic_id:
-        post_type = _('reply')
+        post_type = _(u'reply')
         topic = get_object_or_404(Topic, pk=topic_id)
         forum = topic.forum
         first_post = topic.post_set.order_by('created_on').select_related()[0]

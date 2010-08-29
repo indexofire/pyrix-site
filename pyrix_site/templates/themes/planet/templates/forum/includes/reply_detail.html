@@ -7,30 +7,26 @@
 <tbody>
   <tr>
     <td class="avatar">
-      <a href="{% url profile_detail reply.posted_by.username %}">{% avatar reply.posted_by 48 %}</a><br/>{{ reply.posted_by }}
+      <a href="{% url profile_detail reply.posted_by.username %}" alt="{{ reply.posted_by.username }}">{% avatar reply.posted_by 48 %}</a>
     </td>
     <td style="padding:10px 5px 0px 12px;vertical-align:top">
-      <p class="post_message">{{ reply.message|bbcode|safe }}</p>
-    </td>
-  </tr>
-</tbody>
-</table>
-
-  <div class="postfoot">
-    <div class="post-options">
-      <p class="post-contacts"></p>
+      <p class="post_message">{{ reply.message|bbcode|safe }}</p>   
+      <div class="postfoot">
       <p class="post-actions" style="margin:0px">
         <span class="fade">By <strong><a href="{% url profile_detail reply.posted_by.username %}" class="dark">{{ reply.posted_by.username }}</a></strong> in <strong><a href="{% url forum_forum topic.forum.slug %}" class="dark">{{ topic.forum }}</a></strong>
         <span class="created">{{ reply.created_on }}</span>
         {% if user.is_authenticated %}
-        <span class="quote-post"><a href="{% url forum_new_replay topic.pk %}?qid={{post.pk}}">{% trans "quote" %}</a></span> 
+        <span class="quote-post"><a href="{% url forum_new_replay topic.pk %}?qid={{ reply.pk }}">{% trans "quote" %}</a></span> 
         {% if user == reply.posted_by or user.is_staff %}
         <span class="edit-post"><a href="{% url forum_post_edit reply.pk %}">{% trans "edit" %}</a></span> 
         {% endif %}
         </span>
         {% endif %}
       </p>
-    </div>
-  </div>
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table>
 
 

@@ -739,3 +739,8 @@ span.loading_small{
 	color:#D7D7D7;
 	cursor:default;
 }
+
+/* topic */
+.topic_message {
+    padding: 10px 0px 0px 80px;
+}
