@@ -30,7 +30,8 @@ form p label {
       <input type="hidden" name="next" value="{{ next }}" />
       <p></p>
       <div>
-        <a href="{% url django.contrib.auth.views.password_reset %}">{% trans "Forget Password?" %}</a>
+        <a href="{% url django.contrib.auth.views.password_reset %}">{% trans "Forget Password?" %}</a> | 
+        <a href="/account/register/">{% trans "Join" %}</a>
       </div>
       </form>
     </div>

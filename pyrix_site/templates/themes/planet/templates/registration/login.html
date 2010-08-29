@@ -9,9 +9,12 @@ form p label {
 </style>
 
 {% if form.errors %}
-
 <p>{% trans "Your username and password didn't match. Please try again." %}</p>
 {% endif %}
+
+<div class="block">
+<h3 class="block_title">{% trans "Login" %}</h3>
+<div class="block_content">
 <div style="padding: 10px">
 <div id="login_div">
 <form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
@@ -27,9 +30,11 @@ form p label {
 <a href="{% url django.contrib.auth.views.password_reset %}">reset password</a>
 </p>
 
-<input type="submit" value="login" />
+<input type="submit" value="{% trans 'login' %}" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
+</div>
+</div>
 </div>
 </div>
 {% endblock content %}
