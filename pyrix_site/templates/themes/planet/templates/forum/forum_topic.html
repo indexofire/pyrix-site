@@ -43,9 +43,7 @@
   </span>
 </div>
 {% for reply in replies %}
-        <!--<div class="cell">No Reply Still</div>-->
-        <div class="cell">{% include 'forum/includes/reply_detail.html' %}</div>
-
+  <div class="cell">{% include 'forum/includes/reply_detail.html' %}</div>
 {% endfor %}
 <div class="cell_foot">{% paginate %}</div>
 </div>
