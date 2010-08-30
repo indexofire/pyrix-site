@@ -1,11 +1,8 @@
 {% extends 'account/base.html' %}
-
-{% load i18n %}
-{% load forum %}
-{% load avatar_tags %}
+{% load i18n forum avatar_tags %}
 
 {% block title %}
-	{{ LBFORUM_TITLE }} - {% blocktrans %}{{ view_user }}'s profile{% endblocktrans %}
+{% blocktrans %}{{ view_user }}'s profile{% endblocktrans %}
 {% endblock %}
 
 {% block brd-page-id %}brd-profile-about{% endblock %}

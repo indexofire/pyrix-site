@@ -11,14 +11,14 @@
   <link href="{{ MEDIA_URL }}css/site.css" rel="stylesheet" type="text/css" />
   <!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA_URL }}css/ie.css" type="text/css" media="screen, projection"><![endif]-->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
-  <script src="{{ MEDIA_URL }}js/panel.js" type="text/javascript"></script>
+  <!--<script src="{{ MEDIA_URL }}js/panel.js" type="text/javascript"></script>-->
 {% block extra_head %}
   <!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>-->
 {% endblock extra_head %}
 </head>
 
 <body>
-{% block panel %}{% include "menu/panel.html" %}{% endblock panel %}
+{% block panel %}{% endblock panel %}
 
 <div id="top" class="clearfix">
   <div class="container">

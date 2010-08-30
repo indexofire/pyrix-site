@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block extra_head %}
-<link href="{{ MEDIA_URL }}css/cms_content_style.css" rel="stylesheet" type="text/css" />
+<link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
 {% endblock extra_head %}
 
 
@@ -15,7 +15,7 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-<div class="two_left">
+<div class="span-6">
   <div class="block">
     <h3 class="block_title">{% trans "cms menu" %}</h3>
     <div class="block_content">
@@ -24,8 +24,7 @@
   </div>
 </div>
 
-<div class="two_right last">
-<div class="two_right_content">
+<div class="span-18 last">
   <div class="block">
   <h3 class="block_title">{% trans "CMS Content" %}</h3>
   <div class="block_content">
@@ -38,6 +37,7 @@
   {{ article.content|code_highlight }}
   
   <h3>Tags:</h3><span>{{ article.tags.name }}</span>
+  {% if request.user.is_authenticated %}
   <hr/>
   <h3>comments:</h3>
   <p>There are {% get_comment_count for article as comment_count %}{{ comment_count }} comments</p>
@@ -55,6 +55,7 @@
   {% endfor %}
   </ul>
   </div>
+
   <!--
   {% for comment in comment_list %}
   <p>Posted by: {{ comment.user_name }} on {{ comment.submit_date }}</p>
@@ -62,10 +63,10 @@
   {% endfor %}-->
   <!--{% render_comment_list for article %}-->
   {% render_comment_form for article %}
+  {% endif %}
   </div>
   </div>
   </div>
-</div>
 </div>
 {% endblock %}
 

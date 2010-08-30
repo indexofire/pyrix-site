@@ -26,14 +26,15 @@ class SignatureForm(forms.Form):
 
       return data
 
-
+@login_required
 def profile(request, user_id=None, template_name="account/profile.html"):
-    view_user = request.user
-    if user_id:
-        view_user = get_object_or_404(User, pk = user_id)
-    view_only = view_user != request.user
-    ext_ctx = {'view_user':view_user, 'view_only':view_only }
-    return render_to_response(template_name, ext_ctx, RequestContext(request))
+    user = get_object_or_404(User, pk=user_id)
+    view_only = user != request.user
+    context = {
+        'view_user': user, 
+        'view_only': view_only,
+    }
+    return render_to_response(template_name, context, RequestContext(request))
 
 @login_required
 def signature(request, form_class=SignatureForm, template_name="account/signature.html"):

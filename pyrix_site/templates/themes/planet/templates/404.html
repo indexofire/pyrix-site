@@ -1,11 +1,14 @@
-{% extends "col_two.html" %}
+{% extends "base.html" %}
 {% load i18n cms_tags %}
 
 {% block tpl_id %}tpl_404{% endblock %}
 
 {% block content %}
-<div class="span-24 last">
-	<h1>404</h1>
-	<p>Page not found!</p>
+<div class="block">
+  <h3 class="block_title">{% trans "Error" %}</h3>
+  <div class="block_conent">
+	<p>{% trans "You meet a error! The page is not found!" %}
+    </p>
+    <p>{% trans "That what we called" %}<h2>404</h2></p>
 </div>
 {% endblock %}
