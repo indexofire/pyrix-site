@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n menu_tags content_tags %}
 
-{% block title %}内容管理{% endblock title %}
+{% block title %}{% trans "CMS Content" %}{% endblock title %}
 
 {% block extra_head %}
   <link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
@@ -22,15 +22,15 @@
   <div class="block">
   <h3 class="block_title">{% trans "CMS Content" %}</h3>
   <div class="block_content">
-    <div style="padding:10px;display:inline;">
-      <h2 style="padding:10px;">CMS Content</h2>
+    <div class="content_body">
+      <h3 class="content_title">CMS Content</h3>
       <div class="block">
       <div class="accordion">
       {% for article in articles %}
         <div class="accordion_title"><h3>{{ article.title }} - {{ article.created_by }}:{{ article.created_date }}</h3></div>
         <div class="accordion_content">
-          <div class="content">{{ article.content|code_highlight|truncatewords_html:200 }}</div>
-          <br><a href="{{ article.get_absolute_url }}" target="_self">read</a>
+          <div class="content">{{ article.content|code_highlight|truncatewords_html:200 }}
+          <span class="read_more"><h4><a href="{{ article.get_absolute_url }}" target="_self">{% trans "read more" %}</a></h4></span></div>
         </div>
       {% endfor %}
       </div>

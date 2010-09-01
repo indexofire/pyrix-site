@@ -21,26 +21,20 @@ def profile_list(request):
     )
 profile_list.__doc__ = list_detail.object_list.__doc__
 
-"""
-def profile_detail(request, id):
-    try:
-        user = User.objects.get(id=id)
-    except User.DoesNotExist:
-        raise Http404
-    profile = UserProfile.objects.get(user=user)
-    context = {
-        'object': profile,
-    }
-    return render_to_response('profiles/profile_detail.html', context, context_instance=RequestContext(request))
-"""
-def profile_detail(request, username):
+@login_required
+def profile_detail(request, username, profile=None):
     try:
         user = User.objects.get(username__iexact=username)
     except User.DoesNotExist:
-        raise Http404
-    profile = UserProfile.objects.get(user=user)
-    print profile.mugshot
-    context = { 'object':profile }
+        #raise Http404
+        pass
+    try:
+        profile = UserProfile.objects.get(user=user)
+    except UserProfile.DoesNotExist:
+        pass
+    context = { 
+        'object': profile
+    }
     return render_to_response('profile/profile_detail.html', context, context_instance=RequestContext(request))
 
 

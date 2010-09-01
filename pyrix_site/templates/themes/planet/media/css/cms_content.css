@@ -77,15 +77,25 @@
 .cms_article_table_list tr.row2 {
     background: #E5ECF9;
 }
-
+.content_body {
+    padding: 1px;
+    margin: 0px;
+    display: inline;
+}
+.content_body .content_title {
+    border-bottom: 1px solid #CCC;
+    padding: 10px;
+    margin: 0px;
+}
 .accordion_title {
     width: 100%;
     float: left;
     _float: none;  /* Float works in all browsers but IE6 */
-    background: #FFF;
+    background: #F8F8F8;
     cursor: pointer;
     padding: 10px 0px;
-    border-top: 1px solid #CCC;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #CCC;
 }
 
 .accordion_title h3 {
@@ -99,17 +109,26 @@
     _float: none; /* Float works in all browsers but IE6 */
     background: #F8F8F8;
     padding: 10px 0px;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #FFF;
 }
-
+.read_more a {
+    color: #3C3C3C;
+    text-decoration: underline;
+}
+.read_more a:hover{
+    background: #3C3C3C;
+    color: #E3E3E3;
+}
 .accordion_content div.content {
     padding: 10px;
 }
 .on {
-    background: #CCCCCC;
+    background: #E8E8E8;
 }
 	
 .over {
-    background: #CCCCCC;
+    background: #E8E8E8;
 }
 
 .accordion {
