@@ -22,50 +22,74 @@
       <div id="menu_tree"><ul>{% show_menu 1 2 0 1 %}</ul></div>
     </div>
   </div>
+  
+  <div class="block">
+    <h3 class="block_title">{% trans "cms menu" %}</h3>
+    <div class="block_content">
+      <div id="menu_tree"><ul>{% show_menu 1 2 0 1 %}</ul></div>
+    </div>
+  </div>
 </div>
 
 <div class="span-18 last">
   <div class="block">
-  <h3 class="block_title">{% trans "CMS Content" %}</h3>
-  <div class="block_content">
-  <div style="padding:10px">
-  <h1>Section:{{ section }} - Category:{{ category }}</h1>
-  <h2>{{ article.title }}</h2>
-  <h5>{% trans 'Author' %}: <a href="{% url profile_detail article.created_by %}">{{ article.created_by }}</a> | 
-  Created Time: {{ article.created_date|date:"Y.m.d" }} | Pub Status: {{ article.pub_status }} | Start Pub From: {{ article.pub_start_date }} | End Pub To: {{ article.pub_end_date }} | Last Modified By: {{ article.last_modified_by }} | Last Modified Date: {{ article.last_modified_date }}</h5>
-  
-  {{ article.content|code_highlight }}
-  
-  <h3>Tags:</h3><span>{{ article.tags.name }}</span>
-  {% if request.user.is_authenticated %}
-  <hr/>
-  <h3>comments:</h3>
-  <p>There are {% get_comment_count for article as comment_count %}{{ comment_count }} comments</p>
-  {% get_comment_list for article as comment_list %}
-  <div id="comments">
-  <ul>
-  {% for comment in comment_list %}
-    <li id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
-      <div class="commenter">{% avatar comment.user 48 %}</div>
-      <div class="comment">
-        <p>{{ comment.comment|escape|linebreaksbr }}</p>
-        <span>{{ comment.submit_date|date:"Y.m.d" }}</span>
+    <h3 class="block_title">{% trans "CMS Content" %}</h3>
+    <div class="block_content">
+      <h3 class="content_title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+      <div class="content_info">
+        <span class="author_info">{% trans 'written by author' %}: <a href="{% url profile_detail article.created_by %}">{{ article.created_by }}</a></span>
+        <span class="date_info">{{ article.created_date }}</span>
       </div>
-    </li>
-  {% endfor %}
-  </ul>
-  </div>
-
-  <!--
-  {% for comment in comment_list %}
-  <p>Posted by: {{ comment.user_name }} on {{ comment.submit_date }}</p>
-  <p>Comment: {{ comment.comment }}</p>
-  {% endfor %}-->
-  <!--{% render_comment_list for article %}-->
-  {% render_comment_form for article %}
-  {% endif %}
-  </div>
-  </div>
+      <div class="article_info">
+        <span>{% trans "Read Times:" %}<a>{{ article.hits }}</a><span>
+        <span>{% trans "Published in:" %}<a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></span>
+      </div>
+      <div class="article_tags">Tags:{{ article.tags }}</div>
+      <div class="article_content">{{ article.content|code_highlight }}</div>
+      {% if request.user.is_authenticated %}
+      <hr/>
+      <h3>{% trans "comments" %}</h3>
+      <p>There are {% get_comment_count for article as comment_count %}{{ comment_count }} comments</p>
+      {% get_comment_list for article as comment_list %}
+      <div id="comments">
+        <ul>
+          {% for comment in comment_list %}
+          <li id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
+            <div class="commenter">{% avatar comment.user 48 %}</div>
+            <div class="comment">
+              <p>{{ comment.comment|escape|linebreaksbr }}</p>
+              <span>{{ comment.submit_date|date:"Y.m.d" }}</span>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% get_comment_form for article as form %}
+      <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+        <table>
+          {% for field in form %}
+            {% if field.is_hidden %}
+              {{ field }}
+            {% else %}
+              {% if field.errors %}{{ field.errors }}{% endif %}
+              {% if field.label_tag
+              <tr {% if field.errors %} class="error"{% endif %}{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+                <th>{{ field.label_tag }}</th>
+                <td>{{ field }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+              <tr>
+          <td></td>
+          <td>
+            <input type="submit" name="post" class="submit-post" value="{% trans 'Submit' %}" />
+            <input type="submit" name="preview" class="submit_post" value="{% trans 'Preview' %}">
+          </td>
+        </tr>
+        </table>
+      </form>
+      {% endif %}
+    </div>
   </div>
 </div>
 {% endblock %}

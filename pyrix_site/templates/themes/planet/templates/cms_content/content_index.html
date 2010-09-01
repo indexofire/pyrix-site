@@ -25,15 +25,15 @@
     <div class="content_body">
       <h3 class="content_title">CMS Content</h3>
       <div class="block">
-      <div class="accordion">
-      {% for article in articles %}
-        <div class="accordion_title"><h3>{{ article.title }} - {{ article.created_by }}:{{ article.created_date }}</h3></div>
-        <div class="accordion_content">
-          <div class="content">{{ article.content|code_highlight|truncatewords_html:200 }}
-          <span class="read_more"><h4><a href="{{ article.get_absolute_url }}" target="_self">{% trans "read more" %}</a></h4></span></div>
+        <div class="accordion">
+        {% for article in articles %}
+          <div class="accordion_title item"><h3>{{ article.title }} - {{ article.created_by }}:{{ article.created_date }}</h3></div>
+          <div class="accordion_content item">
+            <div class="content">{{ article.content|code_highlight|truncatewords_html:200 }}</div>
+            <span class="read_more"><a href="{{ article.get_absolute_url }}" target="_self">{% trans "read more" %}</a></span>
+          </div>
+        {% endfor %}
         </div>
-      {% endfor %}
-      </div>
       </div>
     </div>
   </div>
