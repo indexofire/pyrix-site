@@ -749,8 +749,22 @@ span.loading_small{
     border: 0px;
 }
 
-
-
 .inner {
     padding: 10px;
+}
+.trancate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 430px;
+    height:32px;
+    line-height:32px;
+}
+.trancate_small {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 210px;
+    height:24px;
+    line-height:24px;
 }
