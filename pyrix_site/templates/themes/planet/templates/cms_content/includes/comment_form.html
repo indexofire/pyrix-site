@@ -6,19 +6,16 @@
   <div class="block_content">
     <div id="comments">
     {% get_comment_list for article as comment_list %}
-      <div class="comment_list">
-        <ul>
-        {% for comment in comment_list %}
-          <li id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
-            <div class="commenter">{% avatar comment.user 48 %}</div>
-            <div class="comment">
-              <p>{{ comment.comment|escape|linebreaksbr }}</p>
-              <span>{{ comment.submit_date|date:"Y.m.d" }}</span>
-            </div>
-          </li>
-        {% endfor %}
-        </ul>
+    {% for comment in comment_list %}
+      <div id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
+        <div class="commenter">{% avatar comment.user 64 %}</div>
+        <div class="comment">
+          <span class="author"><a href="{% url profile_detail comment.user %}">{{ comment.user }}</a></span>
+          <span class="date" style="display: none">{{ comment.submit_date|date:"Y.m.d" }}</span>
+          <div class="content">{{ comment.comment|escape|linebreaksbr }}</div>
+        </div>
       </div>
+    {% endfor %}
     </div>
     <div id="comment_form">
     {% get_comment_form for article as form %}
