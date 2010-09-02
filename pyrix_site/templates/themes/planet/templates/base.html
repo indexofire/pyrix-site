@@ -22,17 +22,16 @@
 
 <div id="top" class="clearfix">
   <div class="container">
-    <h2 id="site_name"><a href="/" target="_self">HZCDC.Labs</a></h2>
-    <ul id="top_menu">{% show_menu 0 0 0 0 %}</ul>
+    <div class="span-4" id="site_name"><a href="/" target="_self">HZCDC.Labs</a></div>
+    <div class="span-20 last"><ul id="top_menu">{% show_menu 0 0 0 0 %}</ul></div>
   </div>
 </div>
 
 <div id="panel" class="clearfix">
   <div class="container">
-    <ul id="breadcrumb" class="span-20">
+    <ul id="breadcrumb">
       {% block breadcrumb %}{% show_breadcrumb %}{% endblock breadcrumb %}
     </ul>
-    <span class="span-4 last"></span>
   </div>
 </div>
 
