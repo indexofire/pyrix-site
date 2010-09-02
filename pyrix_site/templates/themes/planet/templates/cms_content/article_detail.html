@@ -1,98 +1,33 @@
-{% extends 'base.html' %}
-{% load i18n menu_tags cms_tags content_tags comments avatar_tags %}
+{% extends 'cms_content/cms_content_base.html' %}
+{% load i18n menu_tags cms_tags content_tags avatar_tags %}
 
-{% block title %}
-{{ article.title }}
-{% endblock title %}
+{% block title %}{{ article.title }}{% endblock title %}
 
 {% block extra_head %}
-<link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
+  <link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
 {% endblock extra_head %}
 
+{% block breadcrumb %}{{ block.super }}{% endblock breadcrumb %}
 
-{% block breadcrumb %}
-{{ block.super }}
-{% endblock breadcrumb %}
+{% block cms_content_menu %}<div id="menu_tree"><ul>{% show_menu 1 2 0 1 %}</ul></div>{% endblock cms_content_menu %}
 
-{% block content %}
-<div class="span-6">
-  <div class="block">
-    <h3 class="block_title">{% trans "cms menu" %}</h3>
-    <div class="block_content">
-      <div id="menu_tree"><ul>{% show_menu 1 2 0 1 %}</ul></div>
+{% block col_right %}
+<div class="block">
+  <h3 class="block_title">{% trans "Article" %}:<a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+  <div class="block_content">
+    <h3 class="article_title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+    <div class="article_info">
+      <span>{% trans 'written by author' %}: <a href="{% url profile_detail article.created_by %}">{{ article.created_by }}</a></span>
+      <span>{{ article.created_date }}</span>
+      <span>{% trans "Read Times" %}: <a href="">{{ article.hits }}</a><span>
+      <span>{% trans "Published in" %}: <a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></span>
     </div>
-  </div>
-  
-  <div class="block">
-    <h3 class="block_title">{% trans "cms menu" %}</h3>
-    <div class="block_content">
-      <div id="menu_tree"><ul>{% show_menu 1 2 0 1 %}</ul></div>
-    </div>
+    <div class="article_tags">Tags:{{ article.tags.name }}</div>
+    <div class="article_content">{{ article.content|code_highlight }}</div>
   </div>
 </div>
-
-<div class="span-18 last">
-  <div class="block">
-    <h3 class="block_title">{% trans "CMS Content" %}</h3>
-    <div class="block_content">
-      <h3 class="content_title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
-      <div class="content_info">
-        <span class="author_info">{% trans 'written by author' %}: <a href="{% url profile_detail article.created_by %}">{{ article.created_by }}</a></span>
-        <span class="date_info">{{ article.created_date }}</span>
-      </div>
-      <div class="article_info">
-        <span>{% trans "Read Times:" %}<a>{{ article.hits }}</a><span>
-        <span>{% trans "Published in:" %}<a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></span>
-      </div>
-      <div class="article_tags">Tags:{{ article.tags }}</div>
-      <div class="article_content">{{ article.content|code_highlight }}</div>
-      {% if request.user.is_authenticated %}
-      <hr/>
-      <h3>{% trans "comments" %}</h3>
-      <p>There are {% get_comment_count for article as comment_count %}{{ comment_count }} comments</p>
-      {% get_comment_list for article as comment_list %}
-      <div id="comments">
-        <ul>
-          {% for comment in comment_list %}
-          <li id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
-            <div class="commenter">{% avatar comment.user 48 %}</div>
-            <div class="comment">
-              <p>{{ comment.comment|escape|linebreaksbr }}</p>
-              <span>{{ comment.submit_date|date:"Y.m.d" }}</span>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% get_comment_form for article as form %}
-      <form action="{% comment_form_target %}" method="post">{% csrf_token %}
-        <table>
-          {% for field in form %}
-            {% if field.is_hidden %}
-              {{ field }}
-            {% else %}
-              {% if field.errors %}{{ field.errors }}{% endif %}
-              {% if field.label_tag
-              <tr {% if field.errors %} class="error"{% endif %}{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-                <th>{{ field.label_tag }}</th>
-                <td>{{ field }}</td>
-              </tr>
-            {% endif %}
-          {% endfor %}
-              <tr>
-          <td></td>
-          <td>
-            <input type="submit" name="post" class="submit-post" value="{% trans 'Submit' %}" />
-            <input type="submit" name="preview" class="submit_post" value="{% trans 'Preview' %}">
-          </td>
-        </tr>
-        </table>
-      </form>
-      {% endif %}
-    </div>
-  </div>
-</div>
-{% endblock %}
+{% if request.user.is_authenticated %}{% include "cms_content/includes/comment_form.html" %}{% endif %}
+{% endblock col_right %}
 
 {% block topbar %}
 {{ block.super }}

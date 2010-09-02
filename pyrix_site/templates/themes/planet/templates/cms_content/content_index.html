@@ -1,45 +1,31 @@
-{% extends 'base.html' %}
+{% extends 'cms_content/cms_content_base.html' %}
 {% load i18n menu_tags content_tags %}
 
 {% block title %}{% trans "CMS Content" %}{% endblock title %}
 
 {% block extra_head %}
-  <link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
+{{ block.super }}
   <script src="{{ MEDIA_URL }}js/accordion.js" type="text/javascript"></script>
 {% endblock extra_head %}
 
-{% block content %}
-<div class="span-6">
-  <div class="block">
-    <h3 class="block_title">{% trans "cms menu" %}</h3>
-    <div class="block_content">
-      <div id="menu_tree"><ul>{% show_menu 1 2 0 2 %}</ul></div>
-    </div>
-  </div>
-</div>
+{% block cms_content_menu %}{{ block.super }}{% endblock cms_content_menu %}
 
-<div class="span-18 last">
-  <div class="block">
-  <h3 class="block_title">{% trans "CMS Content" %}</h3>
-  <div class="block_content">
-    <div class="content_body">
-      <h3 class="content_title">CMS Content</h3>
-      <div class="block">
-        <div class="accordion">
-        {% for article in articles %}
-          <div class="accordion_title item"><h3>{{ article.title }} - {{ article.created_by }}:{{ article.created_date }}</h3></div>
-          <div class="accordion_content item">
-            <div class="content">{{ article.content|code_highlight|truncatewords_html:200 }}</div>
-            <span class="read_more"><a href="{{ article.get_absolute_url }}" target="_self">{% trans "read more" %}</a></span>
-          </div>
-        {% endfor %}
+{% block col_right %}
+<div class="block">
+  <h3 class="block_title">{% trans "Latest Articles" %}</h3>
+  <div class="block_content" id="latest_article">
+      <div class="accordion">
+      {% for article in articles %}
+        <div class="accordion_title item"><h3>{{ article.title }} - {{ article.created_by }}:{{ article.created_date }}</h3></div>
+        <div class="accordion_content item">
+          <div class="content">{{ article.content|code_highlight|truncatewords_html:200 }}</div>
+          <span class="read_more"><a href="{{ article.get_absolute_url }}" target="_self">{% trans "read more" %}</a></span>
         </div>
+      {% endfor %}
       </div>
-    </div>
-  </div>
   </div>
 </div>
-{% endblock content%}
+{% endblock col_right %}
 
 {% block control %}
 <a href="{% url cms_content_article_add %}">add article</a> | 

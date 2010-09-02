@@ -2,13 +2,14 @@
 
 <div class="block">
   <h3 class="block_title">{% trans "Latest Articles" %}</h3>
-  <div class="block_content">
+  <div class="block_content" id="latest_article">
+    <ul>
     {% for article in articles %}
-      <div class="item_list">
-        <a href="{{ article.get_absolute_url }}" title="{% trans 'author' %}:{{ article.created_by }}">{{ article.title }} | {{ article.last_modified_date|date:"Y.m.d" }}</a>
-      </div>
+      <li class="item">
+        <a href="{{ article.get_absolute_url }}" title="{% trans 'author' %}:{{ article.created_by }} |  {% trans 'publish date' %}:{{ article.last_modified_date|date:'Y.m.d' }}">{{ forloop.counter }}. {{ article.title }}</a>
+      </li>
     {% empty %}
-      <div>{% trans "No Articles Currently" %}</div>
+      <div class="blank_item">{% trans "No Articles Currently" %}</div>
     {% endfor %}
   </div>
 </div>

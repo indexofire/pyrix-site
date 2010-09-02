@@ -1,0 +1,35 @@
+{% load i18n comments avatar_tags %}
+
+{% get_comment_count for article as comment_count %}
+<div class="block">
+  <h3 class="block_title">{% trans "comments" %}: <span>{% blocktrans %}There are {{ comment_count }} comments{% endblocktrans %}</span></h3>
+  <div class="block_content">
+    <div id="comments">
+    {% get_comment_list for article as comment_list %}
+      <div class="comment_list">
+        <ul>
+        {% for comment in comment_list %}
+          <li id="c{{ comment.id }}" class="{% cycle row1,row2 %}">
+            <div class="commenter">{% avatar comment.user 48 %}</div>
+            <div class="comment">
+              <p>{{ comment.comment|escape|linebreaksbr }}</p>
+              <span>{{ comment.submit_date|date:"Y.m.d" }}</span>
+            </div>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div id="comment_form">
+    {% get_comment_form for article as form %}
+      <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+        <div>{{ form.comment }}</div>
+        <div style="display:none">{{ form.honeypot }}{{ form.content_type }}{{ form.object_pk }}{{ form.timestamp }}{{ form.security_hash }}</div>
+        <div>
+          <input type="submit" name="post" class="submit-post" value="{% trans 'Submit' %}" />
+          <input type="submit" name="preview" class="submit_post" value="{% trans 'Preview' %}">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
