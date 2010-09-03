@@ -1,5 +1,5 @@
 import urllib
-
+import hashlib
 from django import template
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
@@ -35,3 +35,29 @@ def avatar(user, size=80):
     return """<img src="%s" alt="%s" width="%s" height="%s" />""" % (url, alt, 
             size, size)
 register.simple_tag(avatar)
+
+@register.simple_tag
+def gravatar(email, size=48):
+    """
+    Simply gets the Gravatar for the commenter. There is no rating or
+    custom "not found" icon yet. Used with the Django comments.
+    
+    If no size is given, the default is 48 pixels by 48 pixels.
+    
+    Template Syntax::
+    
+        {% gravatar comment.user_email [size] %}
+        
+    Example usage::
+        
+        {% gravatar comment.user_email 48 %}
+    
+    """
+    
+    url = "http://www.gravatar.com/avatar.php?"
+    url += urllib.urlencode({
+        'gravatar_id': hashlib.md5(email).hexdigest(), 
+        'size': str(size)
+    })
+    
+    return """<img src="%s" width="%s" height="%s" alt="gravatar" class="gravatar" border="0" />""" % (url, size, size)

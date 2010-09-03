@@ -24,6 +24,10 @@
     </div>
     <div class="article_tags">Tags:{{ article.tags.name }}</div>
     <div class="article_content">{{ article.content|code_highlight }}</div>
+    <div class="article_info">
+      <span><a href="{{ article.previous_article.get_absolute_url }}">{{ article.previous_article }}</a></span>
+      <span><a href="{{ article.next_article.get_absolute_url }}">{{ article.next_article }}</a></span>
+    </div>
   </div>
 </div>
 {% if request.user.is_authenticated %}{% include "cms_content/includes/comment_form.html" %}{% endif %}
