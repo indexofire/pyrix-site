@@ -18,11 +18,10 @@ h1,h2,h3,h4,h5,h6,p,a {
 }
 a {
     text-decoration: none;
-}
-a:link,
-a:visited,
-a:hover {
     color: #222;
+}
+a:hover {
+    text-decoration: underline;
 }
 
 /* Header Background */
@@ -47,10 +46,9 @@ a:hover {
 #breadcrumb {
     float: left;
     list-style-type: none;
-    margin: 0px;
+    margin-left: -5px;
     padding: 0px;
 }
-
 #breadcrumb li {
     float: left;
     padding: 0px;
@@ -65,7 +63,7 @@ a:hover {
 #breadcrumb li span {
     float: left;
     margin: 0px;
-    padding: 0px 20px 0px 10px;
+    padding: 0px 15px 0px 5px;
     line-height: 32px;
 }
 #breadcrumb li a:hover {
@@ -98,12 +96,14 @@ a:hover {
 }
 
 #site_name {
-    font-size:24px;
+    font-size:32px;
     font-weight: bold;
     text-align: bottom;
 }
 #site_name a {
-    padding: 4px;
+    padding: 4px 0px 4px 40px;
+    background: url(../img/logo.png) no-repeat 0px 6px;
+    text-shadow: rgba(10, 10, 10, 0.6) 2px 2px 1px;
 }
 #top ul {
     height: 20px;

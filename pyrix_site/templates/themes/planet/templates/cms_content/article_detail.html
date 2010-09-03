@@ -7,7 +7,17 @@
   <link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
 {% endblock extra_head %}
 
-{% block breadcrumb %}{{ block.super }}{% endblock breadcrumb %}
+{% block breadcrumb %}{{ block.super }}
+<li>
+  <strong><a href="{{ article.get_absolute_url }}">{{ article.category.section.name }}</a></strong>
+</li>
+<li>
+  <strong><a href="{{ article.get_absolute_url }}">{{ article.category.name }}</a></strong>
+</li>
+<li>
+  <span>{{ article.title }}</span>
+</li>
+{% endblock breadcrumb %}
 
 {% block cms_content_menu %}<div id="menu_tree"><ul>{% show_menu 1 2 0 1 %}</ul></div>{% endblock cms_content_menu %}
 
