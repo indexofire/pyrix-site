@@ -6,7 +6,7 @@
     {{ child.get_menu_title }}{% if not child.is_leaf_node %}{% endif %}
   </a>
   {% if child.children %}
-  <ul>
+  <ul class="children">
       {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
   </ul>
   {% endif %}

@@ -2,7 +2,32 @@
 {% load i18n menu_tags %}
 
 {% block extra_head %}
-  <link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
+<link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+var mouseover_tid = [];
+var mouseout_tid = [];
+jQuery(document).ready(function(){
+	jQuery('#menus > li').each(function(index){
+		jQuery(this).hover(
+			function(){
+				var _self = this;
+				clearTimeout(mouseout_tid[index]);
+				mouseover_tid[index] = setTimeout(function() {
+					jQuery(_self).find('ul:eq(0)').fadeIn(100);
+				}, 300);
+			},
+			function(){
+				var _self = this;
+				clearTimeout(mouseover_tid[index]);
+				mouseout_tid[index] = setTimeout(function() {
+					jQuery(_self).find('ul:eq(0)').fadeOut(100);
+				}, 300);
+			}
+ 
+		);
+	});
+});
+</script>
 {% endblock extra_head %}
 
 {% block content %}
@@ -10,9 +35,7 @@
   <div class="block">
     <h3 class="block_title">{% trans "cms menu" %}</h3>
     <div class="block_content" id="menu_tree">
-    {% block cms_content_menu %}
-      <ul>{% show_menu 1 2 0 2 %}</ul>
-    {% endblock cms_content_menu %}
+      <ul id="menus">{% block cms_content_menu %}{% show_menu 1 2 0 2 %}{% endblock cms_content_menu %}</ul>
     </div>
   </div>
   {% block col_left %}{% endblock col_left %}
