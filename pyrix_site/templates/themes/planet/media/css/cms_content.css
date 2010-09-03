@@ -37,23 +37,31 @@
 }
 .article_info {
     background: #EBEBEB;
-    padding: 5px 0px;
-    width: 100%;
+    padding: 5px 10px;
+    border-bottom: 1px dashed #CCC;
+    border-top: 1px dashed #CCC;
 }
 .article_info span {
     color: #888888;
     padding: 2px 5px;
-    margin-right: 10px;
 }
 .article_info span a{
     color: #5F7CAA;
 }
 .article_tags {
     padding: 10px;
-    border-bottom: 2px dashed #E1E1E1;
+    border-bottom: 1px dashed #CCC;
+}
+.article_tags a {
+    padding: 1px 4px;
+    text-decoration: underline;
+}
+.article_tags a:hover {
+    background: #CECECE;
 }
 .article_content {
     padding: 10px;
+    
 }
 
 /* accordion */
