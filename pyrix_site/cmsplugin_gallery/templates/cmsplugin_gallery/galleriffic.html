@@ -1,0 +1,92 @@
+{% extends "cmsplugin_gallery/base.html" %}
+{% load thumbnail %}
+{% block cmsplugin_gallery_js %}
+{{ block.super }}
+<script type="text/javascript" src="{{ cmsplugin_gallery_media_url }}/galleriffic/js/jquery.galleriffic.js"></script>
+<script type="text/javascript" src="{{ cmsplugin_gallery_media_url }}/galleriffic/js/jquery.history.js"></script>
+<script type="text/javascript" src="{{ cmsplugin_gallery_media_url }}/galleriffic/js/jquery.opacityrollover.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    // We only want these styles applied when javascript is enabled
+    $('div.navigation').css({'width' : '200px', 'float' : 'left'});
+    $('div.content').css('display', 'block');
+
+    // Initially set opacity on thumbs and add
+    // additional styling for hover effect on thumbs
+    var onMouseOutOpacity = 0.67;
+    $('#thumbs_{{ gallery.id }} ul.thumbs li').opacityrollover({
+        mouseOutOpacity:   onMouseOutOpacity,
+        mouseOverOpacity:  1.0,
+        fadeSpeed:         'fast',
+        exemptionSelector: '.selected'
+    });
+
+    // Initialize Advanced Galleriffic Gallery
+    var gallery = $('#thumbs_{{ gallery.id }}').galleriffic({
+        delay:                     2500,
+        numThumbs:                 15,
+        preloadAhead:              10,
+        enableTopPager:            true,
+        enableBottomPager:         true,
+        maxPagesToShow:            7,
+        imageContainerSel:         '#slideshow_{{ gallery.id }}',
+        controlsContainerSel:      '#controls_{{ gallery.id }}',
+        captionContainerSel:       '#caption_{{ gallery.id }}',
+        loadingContainerSel:       '#loading_{{ gallery.id }}',
+        renderSSControls:          true,
+        renderNavControls:         true,
+        playLinkText:              'Play Slideshow',
+        pauseLinkText:             'Pause Slideshow',
+        prevLinkText:              '&lsaquo; Previous Photo',
+        nextLinkText:              'Next Photo &rsaquo;',
+        nextPageLinkText:          'Next &rsaquo;',
+        prevPageLinkText:          '&lsaquo; Prev',
+        enableHistory:             false,
+        autoStart:                 false,
+        syncTransitions:           true,
+        defaultTransitionDuration: 900,
+        onSlideChange:             function(prevIndex, nextIndex) {
+            // 'this' refers to the gallery, which is an extension of $('#thumbs')
+            this.find('ul.thumbs').children()
+                .eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
+                .eq(nextIndex).fadeTo('fast', 1.0);
+        },
+        onPageTransitionOut:       function(callback) {
+            this.fadeTo('fast', 0.0, callback);
+        },
+        onPageTransitionIn:        function() {
+            this.fadeTo('fast', 1.0);
+        }
+    });
+});
+
+</script>
+{% endblock %}
+{% block cmsplugin_gallery_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{{ cmsplugin_gallery_media_url }}/galleriffic/css/galleriffic-2.css" type="text/css" />
+{% endblock %}
+{% block cmsplugin_gallery_content %} 
+<div id="cmsplugin_gallery_galleriffic_{{ gallery.id }}" class="cmsplugin_gallery_galleriffic">
+    <div class="content">
+        <div id="controls_{{ gallery.id }}" class="controls"></div>
+        <div class="slideshow-container">
+            <div id="loading_{{ gallery.id }}" class="loader"></div>
+            <div id="slideshow_{{ gallery.id }}" class="slideshow"></div>
+        </div>
+        <div id="caption_{{ gallery.id }}" class="caption-container"></div>
+    </div>
+    <div id="thumbs_{{ gallery.id }}" class="navigation">
+        <ul class="thumbs noscript">
+            {% for photo in gallery.active_photos %}
+            <li>
+                <a class="thumb" href="{{ photo.image.url }}" title="{{ photo.title }}"><img src="{% thumbnail photo.image 80x80 %}" alt="{{ photo.title }}" /></a>
+                <div class="caption">
+                    <div class="image-title">{{ photo.title }}</div>
+                    <div class="image-desc">{{ photo.description }}</div>
+                </div>
+            </li>{% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

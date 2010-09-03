@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block breadcrumb %}{{ block.super }}<li><span>{% trans "help" %}</span></li>{% endblock breadcrumb %}
+
+{% block content %}
+<div class="container">
+  This is help page.
+</div>
+{% endblock content %}

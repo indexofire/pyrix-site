@@ -23,7 +23,12 @@
 <div id="top" class="clearfix">
   <div class="container">
     <div class="span-4" id="site_name"><a href="/" target="_self">HZCDC.Labs</a></div>
-    <div class="span-20 last"><ul id="top_menu">{% show_menu 0 0 0 0 %}</ul></div>
+    <div class="span-20 last">
+      <ul id="top_menu">
+        {% show_menu 0 0 0 0 %}
+        <li class="help"><a href="{% url help_page %}">?</a></li>
+      </ul>
+    </div>
   </div>
 </div>
 

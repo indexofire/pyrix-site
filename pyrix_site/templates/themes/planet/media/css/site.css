@@ -66,9 +66,8 @@ a:hover {
     padding: 0px 15px 0px 5px;
     line-height: 32px;
 }
-#breadcrumb li a:hover {
-    text-decoration: underline;
-}
+
+
 
 /* Page Footer Settings */
 #footer {
@@ -133,6 +132,7 @@ a:hover {
 #top ul li a:hover {
     background-color: #FEFEFE;
     color: #222;
+    text-decoration: none;
 }
 
 /* Main */
@@ -433,6 +433,11 @@ a:hover {
 #top_menu .item {
     background: #333;
     border: 0px;
+}
+#top_menu li.help a:hover {
+    background: #333;
+    color: #FFF;
+    text-decoration: none;
 }
 
 .inner {

@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'cms.plugins.link',
     'cms.plugins.picture',
     'cmsplugin_rst',
+    'cmsplugin_gallery',
     'cms_content.plugins',
     #'south',
     'reversion',
@@ -144,6 +145,7 @@ INSTALLED_APPS = (
     'djangohelper',
     'haystack',
     'taggit',
+    'easy_thumbnails',
 )
 
 try:

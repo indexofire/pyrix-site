@@ -7,6 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^favicon.ico/$', redirect_to, {'url': '/media/favicon.ico'}),
+
     #(r'^robots.txt$', direct_to_template, {'template': 'robots.txt', 'mimetype': 'text/plain'}),
     (r'^admin/', include(admin.site.urls)),
     (r'^jsi18n/(?P<packages>\S+?)/$', 'django.views.i18n.javascript_catalog'),
@@ -21,6 +22,7 @@ urlpatterns = patterns('',
     url(r'^attachments/', include('attachments.urls')),
     url(r'^avatar/', include('simpleavatar.urls')),
     url(r'^search/', include('haystack.urls')),
+    url(r'^help/$', direct_to_template, {'template': 'help.html', 'mimetype': 'text/html'}, name='help_page'),
 )
 
 if settings.DEBUG:
