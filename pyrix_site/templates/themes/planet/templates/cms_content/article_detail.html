@@ -19,10 +19,10 @@
     <div class="article_info">
       <span>{% trans 'written by author' %}: <a href="{% url profile_detail article.created_by %}">{{ article.created_by }}</a></span>
       <span>{{ article.created_date }}</span>
-      <span>{% trans "Read Times" %}: <a href="">{{ article.hits }}</a><span>
+      <span>{% trans "Read Times" %}: <a href="">{{ hits }}</a><span>
       <span>{% trans "Published in" %}: <a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></span>
     </div>
-    <div class="article_tags">Tags:{{ article.tags.name }}</div>
+    <div class="article_tags">Tags:{% for tag in tags %}<a href="{% url cms_content_article_by_tag tag %}">{{ tag }}</a>{% endfor %}</div>
     <div class="article_content">{{ article.content|code_highlight }}</div>
     <div class="article_info">
       <span><a href="{{ article.previous_article.get_absolute_url }}">{{ article.previous_article }}</a></span>
@@ -30,7 +30,7 @@
     </div>
   </div>
 </div>
-{% if request.user.is_authenticated %}{% include "cms_content/includes/comment_form.html" %}{% endif %}
+{% include "cms_content/includes/comment_form.html" %}
 {% endblock col_right %}
 
 {% block topbar %}
