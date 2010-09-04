@@ -1,9 +1,18 @@
-{% extends "profile/profile_base.html" %}
+{% extends "userprofile/profile_base.html" %}
+{% load i18n %}
 
 {% block title %}Profile for {{ object.user.username }}{% endblock %}
 
+{% block breadcrumb %}{{ block.super }}
+<li>
+  <strong><a href="{% url profile_list %}">{% trans "profile list" %}</a></strong>
+</li>
+<li>
+  <span>{% trans "your profile" %}</span>
+</li>
+{% endblock breadcrumb %}
 
-{% block content %}
+{% block profile %}
 <h2 id="user_name">{{ object.user }}<em id="user_city">{{ object.city }}, {{ object.state }}</em></h2>
 <h3 id="user_age_and_gender">{{ object.get_gender_display }}{% if object.age %}, {{ object.age }}{% endif %}</h3>
 <img src="{{ MEDIA_URL }}/{{ object.mugshot }}" />
@@ -24,4 +33,4 @@
 {% endfor %}
 </ul>
 {% endif %}
-{% endblock %}
+{% endblock profile %}

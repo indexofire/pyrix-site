@@ -3,7 +3,6 @@ from django import forms
 from django.forms import ModelForm
 from django.forms.models import inlineformset_factory
 from django.contrib.auth.models import User
-
 from userprofile.models import *
 
 

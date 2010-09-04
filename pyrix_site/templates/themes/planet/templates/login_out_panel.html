@@ -8,10 +8,11 @@ form p label {
 
 <div class="block">
   <h3 class="block_title">{% trans "Login" %}</h3>
-  <div class="block_content">
+  <div class="block_content" style="padding: 10px">
   {% if request.user.is_authenticated %}
-    <p style="padding: 10px"><a href="{% url profile_detail request.user.username %}">{% trans "My Profile" %}</a></p>
-    <p style="padding: 10px"><a href="/account/logout/">logout</a></p>
+    <p>Welcome Back! {{ request.user.username }}</p>
+    <p><a href="{% url profile_detail request.user.username %}">Check out your profile</a></p>
+    <p><a href="/account/logout/">logout</a></p>
   {% else %}
     {% if form.errors %}
       <p>{% trans "Your username and password didn't match. Please try again." %}</p>

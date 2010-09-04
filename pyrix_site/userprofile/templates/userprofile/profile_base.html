@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container clearfix">
+  <div class="span-24 last">
+    <div class="block">
+      <h3 class="block_title">{% trans "Profile List" %}</h3>
+      <div class="block_content">
+        {% block profile %}{% endblock profile %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

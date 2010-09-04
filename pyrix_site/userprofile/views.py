@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+from django import forms
+from django.conf import settings
+from django.db.models import get_model
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404, HttpResponseRedirect
@@ -7,15 +11,52 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.core.urlresolvers import reverse
-
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import SiteProfileNotAvailable
 from userprofile.models import *
 from userprofile.forms import *
 
 
+def get_profile_model():
+    """
+    Return the model class for the currently-active user profile
+    model, as defined by the ``AUTH_PROFILE_MODULE`` setting. If that
+    setting is missing, raise
+    ``django.contrib.auth.models.SiteProfileNotAvailable``.
+    
+    """
+    if (not hasattr(settings, 'AUTH_PROFILE_MODULE')) or \
+           (not settings.AUTH_PROFILE_MODULE):
+        raise SiteProfileNotAvailable
+    profile_mod = get_model(*settings.AUTH_PROFILE_MODULE.split('.'))
+    if profile_mod is None:
+        raise SiteProfileNotAvailable
+    return profile_mod
+
+
+def get_profile_form():
+    """
+    Return a form class (a subclass of the default ``ModelForm``)
+    suitable for creating/editing instances of the site-specific user
+    profile model, as defined by the ``AUTH_PROFILE_MODULE``
+    setting. If that setting is missing, raise
+    ``django.contrib.auth.models.SiteProfileNotAvailable``.
+    
+    """
+    profile_mod = get_profile_model()
+    class _ProfileForm(forms.ModelForm):
+        class Meta:
+            model = profile_mod
+            exclude = ('user',) # User will be filled in by the view.
+    return _ProfileForm
+
+
+
+@login_required
 def profile_list(request):
     return list_detail.object_list(
         request,
-        template_name='profile/profile_list.html',
+        template_name='userprofile/profile_list.html',
         queryset=UserProfile.objects.all(),
         paginate_by=20,
     )
@@ -26,20 +67,19 @@ def profile_detail(request, username, profile=None):
     try:
         user = User.objects.get(username__iexact=username)
     except User.DoesNotExist:
-        #raise Http404
-        pass
+        raise Http404
     try:
         profile = UserProfile.objects.get(user=user)
     except UserProfile.DoesNotExist:
-        pass
+        return HttpResponseRedirect(reverse('profile_create'))
     context = { 
         'object': profile
     }
-    return render_to_response('profile/profile_detail.html', context, context_instance=RequestContext(request))
+    return render_to_response('userprofile/profile_detail.html', context, context_instance=RequestContext(request))
 
 
 @login_required
-def profile_edit(request, template_name='profile/profile_form.html'):
+def profile_edit(request, template_name='userprofile/profile_form.html'):
     """Edit profile."""
 
     if request.POST:
@@ -74,9 +114,8 @@ def profile_edit(request, template_name='profile/profile_form.html'):
         }
     return render_to_response(template_name, context, context_instance=RequestContext(request))
 
-@permission_required('profile.can_create')
-def profile_create(request, form_class=None, success_url=None,
-    template_name='profile/profile_create.html'):
+#@permission_required('profile.can_create')
+def profile_create(request, form_class=None, success_url=None, template_name='userprofile/profile_create.html'):
     """Create a profile for the current user, if one doesn't already
     exist.
     
@@ -141,7 +180,7 @@ def profile_create(request, form_class=None, success_url=None,
     if success_url is None:
         success_url = reverse('profile_detail', kwargs={'username': request.user.username})
     if form_class is None:
-        form_class = utils.get_profile_form()
+        form_class = get_profile_form()
     if request.method == 'POST':
         form = form_class(data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -153,6 +192,4 @@ def profile_create(request, form_class=None, success_url=None,
             return HttpResponseRedirect(success_url)
     else:
         form = form_class()
-    return render_to_response(template_name,
-                              {'form': form},
-                              context_instance=RequestContext(request))
+    return render_to_response(template_name,{'form': form}, context_instance=RequestContext(request))
