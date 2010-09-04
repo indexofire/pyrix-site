@@ -9,10 +9,10 @@
 
 {% block breadcrumb %}{{ block.super }}
 <li>
-  <strong><a href="{{ article.get_absolute_url }}">{{ article.category.section.name }}</a></strong>
+  <strong><a href="{{ article.category.section.get_absolute_url }}">{{ article.category.section.name }}</a></strong>
 </li>
 <li>
-  <strong><a href="{{ article.get_absolute_url }}">{{ article.category.name }}</a></strong>
+  <strong><a href="{{ article.category.get_absolute_url }}">{{ article.category.name }}</a></strong>
 </li>
 <li>
   <span>{{ article.title }}</span>

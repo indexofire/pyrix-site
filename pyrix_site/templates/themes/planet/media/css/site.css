@@ -237,13 +237,10 @@ a:hover {
 #panel {
     background-color: #E8E8E8;
     height: 32px;
-    line-height: 24px;
-    padding: 0px 20px;
-    margin-bottom: 20px;
+    margin: 0px 0px 20px 0px;
     -webkit-box-shadow: rgba(0,0,0,0.3) 0px 1px 3px;
-    -moz-box-shadow:  rgba(0,0,0,0.3) 0px 1px 3px;
+    -moz-box-shadow:  rgba(0,0,0,0.3) -3px 1px 3px;
 }
-
 /* box */
 .block_plain {
     background-color: #F8F8F8;
