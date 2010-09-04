@@ -32,7 +32,7 @@
       <span>{% trans "Read Times" %}: <a href="">{{ hits }}</a><span>
       <span>{% trans "Published in" %}: <a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></span>
     </div>
-    <div class="article_tags">Tags:{% for tag in tags %}<a href="{% url cms_content_article_by_tag tag %}">{{ tag }}</a>{% endfor %}</div>
+    <div class="article_tags">Tags:{% for tag in article_tags %}<a href="{% url cms_content_article_by_tag tag %}">{{ tag }}</a>{% endfor %}</div>
     <div class="article_content">{{ article.content|code_highlight }}</div>
     <div class="article_info">
       <span><a href="{{ article.previous_article.get_absolute_url }}">{{ article.previous_article }}</a></span>

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n menu_tags %}
+{% load i18n menu_tags content_tags %}
 
 {% block extra_head %}
 <link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
@@ -36,6 +36,12 @@ jQuery(document).ready(function(){
     <h3 class="block_title">{% trans "cms menu" %}</h3>
     <div class="block_content" id="menu_tree">
       <ul id="menus">{% block cms_content_menu %}{% show_menu 1 2 0 2 %}{% endblock cms_content_menu %}</ul>
+    </div>
+  </div>
+  <div class="block">
+    <h3 class="block_title">{% trans "tags" %}</h3>
+    <div class="block_content" style="padding: 10px">
+      {% include 'cms_content/tagcloud_include.html' %}
     </div>
   </div>
   {% block col_left %}{% endblock col_left %}

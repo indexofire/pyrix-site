@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     'haystack',
     'taggit',
     'easy_thumbnails',
+    'templatetag_sugar',
 )
 
 try:

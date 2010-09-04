@@ -24,24 +24,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Header Background */
-#header_bg {
-    background: #606162;
-    height: 60px;
-    width: 100%;
-    border-bottom: 1px solid black;
-    display: block;
-    position: absolute;
-    z-index: -1;
-}
-
-#head_icon {
-    height: 60px;
-    display: block;
-    background: #FFFFFF;
-    margin: 0px 5px;
-}
-
 /* Breadcrumb Settings */
 #breadcrumb {
     float: left;
@@ -67,15 +49,12 @@ a:hover {
     line-height: 32px;
 }
 
-
-
 /* Page Footer Settings */
 #footer {
     background: #FFF;
     margin-top: 50px;
     border-top: 1px solid #CCC;
 }
-
 #footer .con {
     padding: 20px 10px;
 }
@@ -89,11 +68,9 @@ a:hover {
     padding: 10px 20px;
     overflow: hidden;
 }
-
 #top a {
     color: #FFF;
 }
-
 #site_name {
     font-size:32px;
     font-weight: bold;
@@ -102,7 +79,8 @@ a:hover {
 #site_name a {
     padding: 4px 0px 4px 40px;
     background: url(../img/logo.png) no-repeat 0px 6px;
-    text-shadow: rgba(10, 10, 10, 0.6) 2px 2px 1px;
+    text-shadow: rgba(0, 0, 0, 0.6) 2px 2px 1px;
+    text-decoration: none;
 }
 #top ul {
     height: 20px;
