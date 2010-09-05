@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*-
-import os
 from django.db import models
 from django.utils.translation import ugettext as _
 from cms.models import CMSPlugin
-from cmsplugin_slidershow import settings, utils
+from cmsplugin_slidershow. settings import *
 
+
+TEMPLATES = [
+    'cmsplugin_slidershow/slidershow.html', 'slider_show',
+]
 
 class SliderShow(CMSPlugin):
     """
-    Class that represents a SliderShow.
+    Class that wrapper a SliderShow.
 
     Property:
     ``title``
-        The gallery title, if given it will be displayed in the gallery 
+        The slidershow's title, if given it will be displayed in the slidershow
         header (optional).
 
-    ``render_template``
-        The rendering engine to use for the gallery, this is a template path.
+    ``template``
+        The rendering engine to use for the slider, this is a template path.
 
     You can retrieve the list of active photos with the ``active_photos`` 
     convenience method.
@@ -26,29 +29,30 @@ class SliderShow(CMSPlugin):
         _(u'title'),
         max_length=50,
         blank=True,
-        help_text=_("The slidershow's title, if given it will be displayed in the gallery header (optional)")
+        help_text=_("The slidershow's title, if given it will be displayed in the header (optional)")
     )
-    render_template = models.CharField(
-        _(u'rendering engine'),
+    template = models.CharField(
+        _(u'slidershow style'),
         max_length=255,
-        choices=utils.get_rendering_engine_choices(),
-        help_text=_("The rendering engine to use for the slidershow")
+        choices=TEMPLATES,
+        default='slider_show',
+        help_text=_("Setup the style of slidershow")
     )
 
     class Meta:
-        verbose_name = _('gallery')
-        verbose_name_plural = _('galleries')
+        verbose_name = _('slidershow')
+        verbose_name_plural = _('slidershowes')
 
     def __unicode__(self):
         if self.title:
             return self.title
-        return u'%s #%s' % (_('gallery'), self.id)
+        return u'%s #%s' % (_('slidershow'), self.id)
 
     def active_photos(self):
         """
         Return the active photos queryset.
         """
-        return self.photo_set.filter(active=True)
+        return self.sliderpicture_set.filter(active=True)
 
 
 class SliderPicture(models.Model):
@@ -92,7 +96,7 @@ class SliderPicture(models.Model):
     )
     image = models.ImageField(
         _('image'),
-        upload_to=settings.CMSPLUGIN_GALLERY_UPLOAD_DIR,
+        upload_to=CMSPLUGIN_SLIDERSHOW_UPLOAD_DIR,
         help_text=_('Please upload a jpeg or png image')
     )
     link = models.CharField(
@@ -104,13 +108,12 @@ class SliderPicture(models.Model):
     active = models.BooleanField(
         _('Active'), 
         default=True,
-        help_text=_('Uncheck this to deactivate the photo in the gallery '\
-                    'without removing it'))
+        help_text=_('Uncheck this to deactivate the photo in the slidershow without removing it'))
     order = models.IntegerField(_('Order'), blank = True, null = True)
 
     class Meta:
-        verbose_name = _('photo')
-        verbose_name_plural = _('photos')
+        verbose_name = _('sliderpicture')
+        verbose_name_plural = _('sliderpictures')
         ordering = ('order',)
 
     def __unicode__(self):

@@ -9,8 +9,8 @@ $(document).ready(function() {
 		//Set Variables
 		var imgAlt = $(this).find('img').attr("alt"); //Get Alt Tag of Image
 		var imgTitle = $(this).find('a').attr("href"); //Get Main Image URL
-		var imgDesc = $(this).find('.block').html(); 	//Get HTML of block
-		var imgDescHeight = $(".main_image").find('.block').height();	//Calculate height of block
+		var imgDesc = $(this).find('.imgblock').html(); 	//Get HTML of block
+		var imgDescHeight = $(".main_image").find('.imgblock').height();	//Calculate height of block
 
 		if ($(this).is(".active")) {  //If it's already active, then...
 			return false; // Don't click through

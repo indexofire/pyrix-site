@@ -1,0 +1,33 @@
+{% load thumbnail %}
+
+{% block extra_head %}
+  <script type="text/javascript" src="{{ MEDIA_URL }}cmsplugin_slidershow/js/slidershow.js"></script>
+  <link href="{{ MEDIA_URL }}cmsplugin_slidershow/css/slidershow.css"rel="stylesheet" type="text/css" />
+{% endblock extra_head %}
+
+<div class="main_image">
+  <img src="banner1.jpg" alt="- banner1" />
+  <div class="desc">
+    <a href="#" class="collapse">Close Me!</a>
+    <div class="block">
+      <h2>Slowing Down</h2>
+      <small>04/10/09</small>
+      <p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.<br /><a href="http://store.glennz.com/slowingdown.html" target="_blank">Artwork By Glenn Jones</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="image_thumb">
+  <ul>
+  {% for picture in pictures %}
+    <li>
+      <a href="banner1.jpg"><img src="banner1_thumb.jpg" alt="Slowing Dow" /></a>
+	  <div class="block">
+		<h2>Slowing Down</h2>
+		<small>04/10/09</small>
+        <p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.<br /><a href="http://store.glennz.com/slowingdown.html" target="_blank">Artwork By Glenn Jones</a> </p>
+      </div>
+	</li>
+  {% endfor %}
+  </ul>
+</div>

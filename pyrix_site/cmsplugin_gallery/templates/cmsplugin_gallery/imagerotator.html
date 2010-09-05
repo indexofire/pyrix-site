@@ -1,0 +1,49 @@
+{% extends "cmsplugin_gallery/base.html" %}
+{% load thumbnail %}
+
+{% block cmsplugin_gallery_js %}
+{{ block.super }}
+<script type="text/javascript" src="{{ cmsplugin_gallery_media_url }}/imagerotator/js/slidershow.js"></script>
+{% endblock %}
+
+{% block cmsplugin_gallery_css %}
+{{ block.super }}
+<link href="{{ cmsplugin_gallery_media_url }}/imagerotator/css/slidershow.css"rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block cmsplugin_gallery_content %}
+<div style="display:none;"> 
+{% for photo in gallery.active_photos reversed %}
+  <img src="{{ photo.image.url }}" />
+{% endfor %}
+</div>
+
+{% for photo in gallery.active_photos %}
+{% if forloop.first %}
+<div class="main_image">
+  <img src="{{ photo.image.url }}" />
+  <div class="desc">
+    <a href="#" class="collapse">{{ photo.title }}</a>
+    <div class="imgblock">
+      <h2>{{ photo.title }}</h2>
+      <p>{{ photo.description }}</p>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+<div class="image_thumb">
+  <ul>
+  {% for photo in gallery.active_photos %}
+    <li>
+      <a href="{{ photo.image.url }}"><img src="{% thumbnail photo.image 80x80 crop %}" /></a>
+	  <div class="imgblock">
+		<h2>{{ photo.title }}</h2>
+        <p>{{ photo.description }}</p>
+      </div>
+	</li>
+  {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

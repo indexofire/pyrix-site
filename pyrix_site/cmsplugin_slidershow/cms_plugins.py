@@ -1,38 +1,22 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
+from django.conf import settings
 from django.utils.translation import ugettext as _
 from django.forms.widgets import Media
-from django.conf import settings
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
+from cmsplugin_slidershow.models import SliderPicture, SliderShow
+from cmsplugin_slidershow.settings import *
 
-from cmsplugin_gallery.models import Gallery, Photo
-from cmsplugin_gallery import settings as plugin_settings
 
-
-class PhotoAdmin(admin.StackedInline):
+class SliderShowPlugin(CMSPluginBase):
     """
-    Photo admin class that will be displayed as inline in the gallery admin.
+    SliderShow Plugin Class.
     """
-    model = Photo
-
-    def formfield_for_dbfield(self, db_field, **kwargs):
-        """
-        Method to tweak the widgets attributes.
-        """
-        field = super(PhotoAdmin, self).formfield_for_dbfield(db_field, **kwargs)
-        if db_field.name == 'description':
-            field.widget.attrs['rows'] = 2
-        return field
-
-
-class GalleryPlugin(CMSPluginBase):
-    """
-    Gallery admin class.
-    """
-    model = Gallery
-    name = _('Gallery')
-    inlines = (PhotoAdmin, )
+    model = SliderShow
+    name = _('SliderShow')
+    render_template = "cmsplugin_slidershow/slidershow.html"
+    inlines = (SliderPictureAdmin, )
 
     '''
     class Media:
@@ -57,23 +41,27 @@ class GalleryPlugin(CMSPluginBase):
         context.update({
             'placeholder': placeholder,
             'cmsplugin_gallery_media_url': \
-                plugin_settings.CMSPLUGIN_GALLERY_MEDIA_URL,
-            'gallery': instance,
+                CMSPLUGIN_GALLERY_MEDIA_URL,
+            'slidershow': instance,
             'settings': {
                 'thumbnail_size': (
-                    plugin_settings.CMSPLUGIN_GALLERY_THUMBNAIL_WIDTH,
-                    plugin_settings.CMSPLUGIN_GALLERY_THUMBNAIL_HEIGHT,
+                    CMSPLUGIN_GALLERY_THUMBNAIL_WIDTH,
+                    CMSPLUGIN_GALLERY_THUMBNAIL_HEIGHT,
                 ),
                 'thumbnail_options': \
-                    plugin_settings.CMSPLUGIN_GALLERY_THUMBNAIL_OPTIONS,
+                    CMSPLUGIN_GALLERY_THUMBNAIL_OPTIONS,
                 'show_gallery_title': \
-                    plugin_settings.CMSPLUGIN_GALLERY_SHOW_GALLERY_TITLE,
+                    CMSPLUGIN_GALLERY_SHOW_GALLERY_TITLE,
                 'show_gallery_description': \
-                    plugin_settings.CMSPLUGIN_GALLERY_SHOW_GALLERY_DESCRIPTION,
+                    CMSPLUGIN_GALLERY_SHOW_GALLERY_DESCRIPTION,
             },
         })
         return context
+    
+    def get_plugin_media(self, request, context, plugin):
+        return Media(
+            css = {'all': ('cmsplugin_slidershow/css/slidershow.css',),},
+            js = 
+        )
 
-
-# register the plugin with the django-cms plugin framework
-plugin_pool.register_plugin(GalleryPlugin)
+plugin_pool.register_plugin(SliderShowPlugin)

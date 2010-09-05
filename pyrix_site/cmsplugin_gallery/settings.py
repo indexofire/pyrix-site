@@ -63,5 +63,6 @@ CMSPLUGIN_GALLERY_RENDERING_ENGINES = getattr(
         ('cmsplugin_gallery/galleria.html', gettext('Galleria'),),
         ('cmsplugin_gallery/galleriffic.html', gettext('Galleriffic'),),
         ('cmsplugin_gallery/pickachoose.html', gettext('Pickachoose'),),
+        ('cmsplugin_gallery/imagerotator.html', gettext('ImageRotator'),),
     ]
 )

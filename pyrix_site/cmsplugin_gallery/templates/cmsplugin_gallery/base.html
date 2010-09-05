@@ -1,14 +1,18 @@
 {% load thumbnail %}
+
 {% block cmsplugin_gallery_js %}
 {{ block.super }}
 {% endblock %}
+
 {% block cmsplugin_gallery_css %}
 {{ block.super }}
 {% endblock %}
+
 {% block cmsplugin_gallery_header %}
 {% if gallery.title and cmsplugin_gallery_show_gallery_title %}<h2>{{ gallery.title }}</h2>{% endif %}
 {% if gallery.description and cmsplugin_gallery_show_gallery_description %}<p>{{ gallery.description }}</p>{% endif %}
 {% endblock %}
+
 {% block cmsplugin_gallery_content %}
 <ul>
 {% for photo in gallery.active_photos %}
