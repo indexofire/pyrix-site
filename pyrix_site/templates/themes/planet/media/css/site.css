@@ -434,3 +434,7 @@ a:hover {
     height:24px;
     line-height:24px;
 }
+
+.googlemap-map {
+    height: 400px;
+}

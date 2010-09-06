@@ -19,7 +19,7 @@ $(document).ready(function() {
 			$(".main_image img").animate({ opacity: 0}, 250 );
 			$(".main_image .imgblock").animate({ opacity: 0, marginBottom: -imgDescHeight }, 250 , function() {
 				$(".main_image .imgblock").html(imgDesc).animate({ opacity: 0.85,	marginBottom: "0" }, 250 );
-				$(".main_image img").attr({ src: imgTitle , alt: imgAlt}).animate({ opacity: 1}, 250 );
+				$(".main_image img").attr({ src: imgTitle, alt: imgAlt,}).animate({ opacity: 1}, 250 );
 			});
 		}
 

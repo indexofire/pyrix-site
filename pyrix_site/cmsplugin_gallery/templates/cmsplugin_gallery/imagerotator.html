@@ -12,16 +12,16 @@
 {% endblock %}
 
 {% block cmsplugin_gallery_content %}
-<div style="display:none;"> 
+<div style="display:none;" class="real_img"> 
 {% for photo in gallery.active_photos reversed %}
-  <img src="{{ photo.image.url }}" />
+  <img src="{% thumbnail photo.image 423x223 crop %}" />
 {% endfor %}
 </div>
 
 {% for photo in gallery.active_photos %}
 {% if forloop.first %}
 <div class="main_image">
-  <img src="{{ photo.image.url }}" />
+  <img src="{% thumbnail photo.image 423x223 crop %}" />
   <div class="desc">
     <a href="#" class="collapse">{{ photo.title }}</a>
     <div class="imgblock">
@@ -36,7 +36,7 @@
   <ul>
   {% for photo in gallery.active_photos %}
     <li>
-      <a href="{{ photo.image.url }}"><img src="{% thumbnail photo.image 80x80 crop %}" /></a>
+      <a href="{{ photo.image.url }}"><img src="{% thumbnail photo.image 64x64 crop %}" /></a>
 	  <div class="imgblock">
 		<h2>{{ photo.title }}</h2>
         <p>{{ photo.description }}</p>

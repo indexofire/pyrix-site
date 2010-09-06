@@ -1,11 +1,11 @@
 .main_image {
-    width: 400px;
-    height: 236px;
+    width: 423px;
+    height: 223px;
     float: left;
     background: #333;
     position: relative;
     overflow: hidden; /*--Overflow hidden allows the description to toggle/tuck away as it slides down--*/
-    color: #fff;
+    color: #FFF;
 }
 .main_image h2 {
     font-size: 2em;
@@ -32,10 +32,13 @@
     width: 100%;
     display: none; /*--Hide description by default, if js is enabled, we will show this--*/
 }
-.main_image .imgblock{
+.main_image .imgblock {
     width: 100%;
     background: #111;
     border-top: 1px solid #000;
+}
+.main_image .imgblock h2 {
+    color: #FFF;
 }
 .main_image a.collapse { /*--This is our hide/show tab--*/
     background: url(btn_collapse.gif) no-repeat left top;
@@ -52,15 +55,13 @@
 
 .image_thumb {
     float: left;
-    width: 100px;
+    width: 60px;
     background: #f0f0f0;
     border-right: 1px solid #fff;
     border-top: 1px solid #ccc;
 }
 .image_thumb img {
-    border: 1px solid #ccc;
-    padding: 5px;
-    background: #fff;
+    background: #E8E8E8;
     float: left;
 }
 .image_thumb ul {
@@ -70,9 +71,9 @@
 }
 .image_thumb ul li{
     margin: 0;
-    padding: 12px 10px;
+    padding: 0px;
     background: #f0f0f0 url(nav_a.gif) repeat-x;
-    width: 279px;
+    width: 250px;
     float: left;
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #fff;
@@ -86,7 +87,7 @@
     background: #fff;
     cursor: default;
 }
-html .image_thumb ul li h2 {
+.image_thumb ul li h2 {
     font-size: 1.5em;
     margin: 5px 0;
     padding: 0;
@@ -100,4 +101,3 @@ html .image_thumb ul li h2 {
 .image_thumb ul li p {
     display: none;
 }
-

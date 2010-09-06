@@ -57,6 +57,12 @@ CMS_PLACEHOLDER_CONF = {
         ),
         'name': gettext("right column"),
     },
+    'slidershow': {
+        'plugin': (
+            'GalleryPlugin',
+        ),
+        'name': gettext("slider show"),
+    },
 }
 
 # south
