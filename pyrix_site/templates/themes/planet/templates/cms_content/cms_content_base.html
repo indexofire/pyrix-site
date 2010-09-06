@@ -7,25 +7,25 @@
 var mouseover_tid = [];
 var mouseout_tid = [];
 jQuery(document).ready(function(){
-	jQuery('#menus > li').each(function(index){
-		jQuery(this).hover(
-			function(){
-				var _self = this;
-				clearTimeout(mouseout_tid[index]);
-				mouseover_tid[index] = setTimeout(function() {
-					jQuery(_self).find('ul:eq(0)').fadeIn(100);
-				}, 300);
-			},
-			function(){
-				var _self = this;
-				clearTimeout(mouseover_tid[index]);
-				mouseout_tid[index] = setTimeout(function() {
-					jQuery(_self).find('ul:eq(0)').fadeOut(100);
-				}, 300);
-			}
+    jQuery('#menus > li').each(function(index){
+	jQuery(this).hover(
+	    function(){
+		var _self = this;
+		clearTimeout(mouseout_tid[index]);
+		mouseover_tid[index] = setTimeout(function() {
+		    jQuery(_self).find('ul:eq(0)').fadeIn(100);
+		}, 300);
+	    },
+	    function(){
+		var _self = this;
+		clearTimeout(mouseover_tid[index]);
+		mouseout_tid[index] = setTimeout(function() {
+		    jQuery(_self).find('ul:eq(0)').fadeOut(100);
+		}, 300);
+	    }
  
-		);
-	});
+	);
+    });
 });
 </script>
 {% endblock extra_head %}
@@ -41,7 +41,7 @@ jQuery(document).ready(function(){
   <div class="block">
     <h3 class="block_title">{% trans "tags" %}</h3>
     <div class="block_content" style="padding: 10px">
-      {% include 'cms_content/tagcloud_include.html' %}
+      {% include 'cms_content/includes/tagcloud_include.html' %}
     </div>
   </div>
   {% block col_left %}{% endblock col_left %}
