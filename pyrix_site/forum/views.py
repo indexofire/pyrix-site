@@ -14,19 +14,19 @@ from forum.models import Topic, ForumCategory, Forum, Post
 
 
 def index(request, template_name="forum/forum_index.html"):
-    categories = ForumCategory.objects.all()
-    latest_topics = Topic.objects.all()[:10]
+    categories = ForumCategory.objects.select_related(depth=1).all()
+    latest_topics = Topic.objects.select_related(depth=1).all()[:10]
     #total_topics = Topic.objects.count()
     #total_posts = Post.objects.count()
     #total_users =  User.objects.count()
-    last_registered_user = User.objects.order_by('-date_joined')[0]
+    #last_registered_user = User.objects.order_by('-date_joined')[0]
     extend_context = {
         'categories': categories,
         'topics': latest_topics,
         #'total_topics': total_topics,
         #'total_posts': total_posts, 
         #'total_users': total_users,
-        'last_registered_user': last_registered_user,
+        #'last_registered_user': last_registered_user,
     }
     extend_context.update(getOnlineInfos(True))
     return render_to_response(template_name, extend_context, RequestContext(request))
