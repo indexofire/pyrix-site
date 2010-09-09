@@ -4,27 +4,22 @@
 {% block extra_head %}
 <link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
-var mouseover_tid = [];
-var mouseout_tid = [];
 jQuery(document).ready(function(){
-    jQuery('#menus > li').each(function(index){
-	jQuery(this).hover(
-	    function(){
-		var _self = this;
-		clearTimeout(mouseout_tid[index]);
-		mouseover_tid[index] = setTimeout(function() {
-		    jQuery(_self).find('ul:eq(0)').fadeIn(100);
-		}, 300);
-	    },
-	    function(){
-		var _self = this;
-		clearTimeout(mouseover_tid[index]);
-		mouseout_tid[index] = setTimeout(function() {
-		    jQuery(_self).find('ul:eq(0)').fadeOut(100);
-		}, 300);
-	    }
- 
-	);
+    $('ul#menus li ul').hide(); 
+    jQuery('ul#menus li span').click(function(){
+	if($(this).parent().hasClass('current')) {
+	    $(this).siblings('ul').slideUp('fast',function() {
+		$(this).parent().removeClass('current');
+	    });
+	} else {
+	    $('ul#menus li ul.children').slideUp('fast',function() {
+		$(this).parent().removeClass('current');
+	    });
+	    $(this).siblings('ul').slideToggle('fast',function() {
+		$(this).parent().toggleClass('current');
+	    });
+	}
+	return false;
     });
 });
 </script>
@@ -51,3 +46,8 @@ jQuery(document).ready(function(){
   {% block col_right %}{% endblock col_right %}
 </div>
 {% endblock content %}
+
+
+
+
+

@@ -2,6 +2,7 @@
 
 {% for child in children %}
 <li class="{% if child.selected %}selected {% endif %}{% if child.ancestor %}ancestor {% endif %}item">
+  {% if child.children %}<span class="plus"><a href="javascript.void(0)">+</a></span>{% endif %}
   <a href="{{ child.get_absolute_url }}" class="menu{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}">
     {{ child.get_menu_title }}{% if not child.is_leaf_node %}{% endif %}
   </a>

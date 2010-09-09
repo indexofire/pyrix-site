@@ -367,9 +367,7 @@ a:hover {
 #menu_tree li,
 #latest_article li {
     background:#F8F8F8;
-    height: 24px;
     line-height: 24px;
-    position: relative;
 }
 #menu_tree ul li.title {
     background: #CCC;
@@ -380,31 +378,25 @@ a:hover {
     background: #E8E8E8;
     color: #222;
 }
-#menu_tree ul li a,
 #latest_article ul li a {
-    display: block;
     padding: 0px 10px;
+    display: block;
 }
-#menu_tree ul li a:hover,
 #latest_article ul li a:hover {
     background: #E8E8E8;
 }
-#menu_tree ul li ul.children {
-    display: none;
-    position: absolute;
-    top: -2px;
-    left: 230px;
-    width: 200px;
-    border-left: 1px solid #CCC;
-    border-right: 1px solid #CCC;
+#menu_tree ul.children {
+    margin-bottom: -1px;
     border-top: 1px solid #CCC;
 }
-#menu_tree ul li ul.children li {
-    display: block;
-    float: none;
-    padding: 0px;
-    margin: 0px;
+#menu_tree ul.children li.item {
+    background: #EEEFF0;
+    padding-left: 20px;
 }
+#menu_tree span.plus {
+    padding: 10px 5px;
+}
+
 #top_menu .item {
     background: #333;
     border: 0px;
