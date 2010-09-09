@@ -398,10 +398,24 @@ a:hover {
     padding-left: 16px;
     display: block;
 }
-#menu_tree span.plus {
-    padding: 10px 5px;
+#menu_tree ul.children li.item:hover {
+    background: #C31212;
 }
-
+#menu_tree ul.children li.item a:hover {
+    background: #F6F7F8;
+}
+#menu_tree span.plus a {
+    padding: 0px 4px;
+    margin-left: 4px;
+    border: 1px solid #EFEFEF;
+    background: #9C9C9C;
+    color: #FEFEFE;
+}
+#menu_tree span.plus a:hover {
+    text-decoration: none;
+    background: #4C4C4C;
+    color: #EFEFEF;
+}
 #top_menu .item {
     background: #333;
     border: 0px;
@@ -411,7 +425,6 @@ a:hover {
     color: #FFF;
     text-decoration: none;
 }
-
 .inner {
     padding: 10px;
 }

@@ -9,14 +9,14 @@ jQuery(document).ready(function(){
     jQuery('ul#menus li span').click(function(){
 	if($(this).parent().hasClass('current')) {
 	    $(this).siblings('ul').slideUp('fast',function() {
-		$(this).parent().removeClass('current');
+		    $(this).parent().removeClass('current');
 	    });
 	} else {
 	    $('ul#menus li ul.children').slideUp('fast',function() {
-		$(this).parent().removeClass('current');
+		    $(this).parent().removeClass('current');
 	    });
 	    $(this).siblings('ul').slideToggle('fast',function() {
-		$(this).parent().toggleClass('current');
+		    $(this).parent().toggleClass('current');
 	    });
 	}
 	return false;
