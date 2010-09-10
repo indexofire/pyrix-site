@@ -5,7 +5,6 @@
 <link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 jQuery(document).ready(function(){
-    $('ul#menus li ul').hide(); 
     jQuery('ul#menus li span').click(function(){
 	if($(this).parent().hasClass('current')) {
 	    $(this).siblings('ul').slideUp('fast',function() {
@@ -30,12 +29,12 @@ jQuery(document).ready(function(){
   <div class="block">
     <h3 class="block_title">{% trans "cms menu" %}</h3>
     <div class="block_content" id="menu_tree">
-      <ul id="menus">{% block cms_content_menu %}{% show_menu 1 2 0 2 %}{% endblock cms_content_menu %}</ul>
+      <ul id="menus">{% block cms_content_menu %}{% show_menu 1 2 1 2 %}{% endblock cms_content_menu %}</ul>
     </div>
   </div>
   <div class="block">
     <h3 class="block_title">{% trans "tags" %}</h3>
-    <div class="block_content" style="padding: 10px">
+    <div class="block_content inner">
       {% include 'cms_content/includes/tagcloud_include.html' %}
     </div>
   </div>

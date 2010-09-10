@@ -386,6 +386,7 @@ a:hover {
     background: #E8E8E8;
 }
 #menu_tree ul.children {
+    display: none;
     margin-bottom: -1px;
     border-top: 1px solid #CCC;
 }

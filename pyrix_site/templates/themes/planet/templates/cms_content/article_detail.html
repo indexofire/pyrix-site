@@ -3,10 +3,6 @@
 
 {% block title %}{{ article.title }}{% endblock title %}
 
-{% block extra_head %}
-  <link href="{{ MEDIA_URL }}css/cms_content.css" rel="stylesheet" type="text/css" />
-{% endblock extra_head %}
-
 {% block breadcrumb %}{{ block.super }}
 <li>
   <strong><a href="{{ article.category.section.get_absolute_url }}">{{ article.category.section.name }}</a></strong>
@@ -19,7 +15,7 @@
 </li>
 {% endblock breadcrumb %}
 
-{% block cms_content_menu %}<div id="menu_tree"><ul>{% show_menu 1 2 0 1 %}</ul></div>{% endblock cms_content_menu %}
+{% block cms_content_menu %}{{ block.super }}{% endblock cms_content_menu %}
 
 {% block col_right %}
 <div class="block">

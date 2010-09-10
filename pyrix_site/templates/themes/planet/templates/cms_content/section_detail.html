@@ -3,13 +3,10 @@
 
 {% block extra_head %}{{ block.super }}{% endblock extra_head %}
 
-{% block cms_content_menu %}{% show_menu 1 2 0 2 %}{% endblock cms_content_menu %}
-
 {% block col_right %}
 <div class="block">
   <h3 class="block_title">{% trans "CMS Content" %}</h3>
-  <div class="block_content">
-  <div style="padding:10px">
+  <div class="block_content inner">
   <h2>{{ category.section }}</h2>
   <table class="cms_category">
   <tr class="title">
@@ -23,7 +20,6 @@
   </tr>
   {% endfor %}
   </table>
-  </div>
   </div>
 </div>
 
