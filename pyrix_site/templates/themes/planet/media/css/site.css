@@ -51,9 +51,12 @@ a:hover {
 
 /* Page Footer Settings */
 #footer {
-    background: #FFF;
+    background: #F8F8F8;
     margin-top: 50px;
     border-top: 1px solid #CCC;
+}
+#footer .border {
+    border-top: 1px solid #FFF;
 }
 #footer .con {
     padding: 20px 10px;
@@ -62,9 +65,9 @@ a:hover {
 /* page's top */
 #top {
     border-bottom: 1px solid #FFF;
-    background: #333;
-    height: 40px;
-    line-height: 40px;
+    background: #3C3C3C;
+    height: 60px;
+    line-height: 60px;
     padding: 10px 20px;
     overflow: hidden;
 }
@@ -75,6 +78,7 @@ a:hover {
     font-size:32px;
     font-weight: bold;
     text-align: bottom;
+    float: left;
 }
 #site_name a {
     padding: 4px 0px 4px 40px;
@@ -82,51 +86,72 @@ a:hover {
     text-shadow: rgba(0, 0, 0, 0.6) 2px 2px 1px;
     text-decoration: none;
 }
-#top ul {
-    height: 20px;
-    line-height: 20px;
-    padding: 10px 0px;
-    margin: 0px -5px 0px 0px;
+#top_menu ul {
+    height: 16px;
+    line-height: 16px;
+    padding-top: 45px;
+    margin-right: -5px;
     list-style: none;
     float: right;
 }
-
-#top ul li {
+#top_menu ul li {
     float: left;
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: bold;
 }
-
-#top ul li a {
+#top_menu ul li a {
     display: block;
     margin: 0px 5px;
-    padding: 4px 5px;
-    border-radius: 8px 8px;
-    -moz-border-radius: 8px 8px;
-}
-
-#top ul li a.selected,
-#top ul li a.ancestor,
-#top ul li a:hover {
-    background-color: #FEFEFE;
-    color: #222;
+    padding: 5px 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 4px;
     text-decoration: none;
 }
-
+#top_menu ul li a.selected,
+#top_menu ul li a.ancestor {
+    background-color: #FEFEFE;
+    color: #222;
+}
+#top_menu ul li a:hover {
+    background-color: #FAFAFA;
+    color: #222;
+}
+#user_panel {
+    background: #58585D;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-bottomright: 8px;
+    float: right;
+    padding: 0px 10px;
+    margin-top: -90px;
+    height: 36px;
+    line-height: 36px;
+    color: #FFF;
+}
+#user_panel a {
+    padding: 3px 6px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    font-weight: bold;
+}
+#user_panel a:hover {
+    background: #9C9D9E;
+    text-decoration: none;
+}
 /* Main */
 #main {
     min-height: 680px;
 }
-
 #login_div div label {
     width: 60px;
     display: inline-block;
 }
-
 #login_div div input {
     width: 140px;
 }
-
 /* Main Menu Settings */
 #main_menu {
     margin-top: 53px;
@@ -290,7 +315,7 @@ a:hover {
     display: block;
     background: url(rating_bg.gif) no-repeat;
     position: absolute;
-    top: 0; 
+    top: 0;
     left: 0;
     font-size: 2em;
     width: 25px;
@@ -326,7 +351,7 @@ a:hover {
 .pagination a:hover {
     background-color: #DDEEFF;
     border: 1px solid #BBDDFF;
-    color: #5F7CAA;	
+    color: #5F7CAA;
 }
 .pagination .current {
     border:1px solid #BBDDFF;
@@ -418,7 +443,7 @@ a:hover {
     color: #EFEFEF;
 }
 #top_menu .item {
-    background: #333;
+    background: #3C3C3C;
     border: 0px;
 }
 #top_menu li.help a:hover {

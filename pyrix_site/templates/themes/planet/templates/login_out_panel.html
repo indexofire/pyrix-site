@@ -18,7 +18,7 @@ form p label {
       <p>{% trans "Your username and password didn't match. Please try again." %}</p>
     {% endif %}
     <div id="login_div" style="padding:10px;">
-      <form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+      <form method="post" action="{% url auth_login %}">{% csrf_token %}
       <div>
         <label for="id_username">{% trans "username" %}:</label>
         <input id="id_username" type="text" name="username" maxlength="30" />
@@ -32,7 +32,7 @@ form p label {
       <p></p>
       <div>
         <a href="{% url django.contrib.auth.views.password_reset %}">{% trans "Forget Password?" %}</a> | 
-        <a href="/account/register/">{% trans "Join" %}</a>
+        <a href="{% url registration_register %}">{% trans "Join" %}</a>
       </div>
       </form>
     </div>

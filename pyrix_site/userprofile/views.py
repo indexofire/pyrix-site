@@ -51,7 +51,6 @@ def get_profile_form():
     return _ProfileForm
 
 
-
 @login_required
 def profile_list(request):
     return list_detail.object_list(
@@ -61,6 +60,7 @@ def profile_list(request):
         paginate_by=20,
     )
 profile_list.__doc__ = list_detail.object_list.__doc__
+
 
 @login_required
 def profile_detail(request, username, profile=None):

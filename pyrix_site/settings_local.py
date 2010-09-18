@@ -100,6 +100,6 @@ FORUM_CTX_CONFIG = {
 }
 
 LOGIN_REDIRECT_URL = "/"
-LOGIN_URL = "/accounts/login/"
+LOGIN_URL = "/account/login/"
 
 DATE_FORMAT = 'N j, Y'

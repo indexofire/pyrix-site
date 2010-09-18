@@ -8,5 +8,4 @@ urlpatterns = patterns('',
     url(r'^create/$', profile_create, name='profile_create'),
     url(r'^edit/$', profile_edit, name='profile_edit'),
     url(r'^(?P<username>[-\w]+)/$', profile_detail, name='profile_detail'),
-    #url(r'^(?P<id>\d{1,2}/$', profile_detail, name='profile_detail'),
 )
