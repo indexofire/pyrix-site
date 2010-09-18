@@ -8,6 +8,6 @@
 
 <div>
 {% for tag in tags %}
-<font size="{{tag.weight|floatformat:0}}"><a href="{% url cms_content_article_by_tag tag %}">{{ tag }}</a></font> 
+<a href="{% url cms_content_article_by_tag tag %}" style="font-size:{{ tag.weight|floatformat:0 }}em">{{ tag }}</a>
 {% endfor %}
 </div>
