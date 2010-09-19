@@ -8,7 +8,7 @@
  */
 
 body {
-    background: #D0DADF url(../img/main_bg.png) no-repeat 100% 92px;
+    background: #D0DADF;
     font-family:"Helvetica Neue", Arial, Helvetica, 雅黑, simsun, sans-serif;
 }
 
@@ -53,15 +53,18 @@ a:hover {
 #footer {
     background: #F8F8F8;
     margin-top: 50px;
-    border-top: 1px solid #CCC;
+    border-top: 1px solid #ACACAC;
 }
-#footer .border {
+#footer .fborder {
     border-top: 1px solid #FFF;
 }
 #footer .con {
     padding: 20px 10px;
 }
-
+#footer .con strong {
+    margin: 2px 12px 2px 10px;
+    padding: 4px 5px;
+}
 /* page's top */
 #top {
     border-bottom: 1px solid #FFF;
@@ -132,15 +135,24 @@ a:hover {
     color: #FFF;
 }
 #user_panel a {
+    margin: 1px 4px;
     padding: 3px 6px;
     border-radius: 2px;
     -moz-border-radius: 2px;
     font-weight: bold;
+    text-shadow: rgba(0, 0, 0, 0.6) 1px 1px 0px;
 }
 #user_panel a:hover {
     background: #9C9D9E;
     text-decoration: none;
 }
+div.line {
+    border-left: 1px solid #393939;
+    border-right: 1px solid #BEBEBE;
+    display: inline;
+    height: 24px;
+}
+
 /* Main */
 #main {
     min-height: 680px;

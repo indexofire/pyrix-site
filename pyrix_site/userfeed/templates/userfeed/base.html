@@ -1,0 +1,12 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load theme_tags %}
+
+{% block body_class %}feeds{% endblock %}
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <li><a href="{% url my_feeds %} ">{% trans "My Feeds" %}</a></li>
+    {% endif %}
+{% endblock %}
