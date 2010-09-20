@@ -1,0 +1,48 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".signin").mouseup(function(e) {          
+        e.preventDefault();
+        $("fieldset#signin_menu").toggle();
+        $(".signin").toggleClass("menu-open");
+    });
+    $("fieldset#signin_menu").mouseup(function() {
+        return false
+    });
+    $(document).mouseup(function(e) {
+        if($(e.target).parent("a.signin").length==0) {
+            $(".signin").removeClass("menu-open");
+            $("fieldset#signin_menu").hide();
+        }
+    });			
+			
+});
+</script>
+<div id="user_panel">
+{% if user.is_authenticated %}
+    <input type="search" style="border:1px" value="search" />
+    <div class="line"></div>
+    <a href="{% url profile_detail user.username %}">{{ user.username }}</a>
+    <div class="line"></div>
+    <a href="">控制面板</a>
+    <div class="line"></div>
+    <a href="/account/logout/">注销</a>
+{% else %}
+    <fieldset id="signin_menu">
+    <form method="post" id="signin" action="{% url auth_login %}">{% csrf_token %}
+    <label for="username">用户名:</label>
+    <input id="username" name="username" value="" title="username" tabindex="4" type="text">
+    <label for="password">密码:</label>
+    <input id="password" name="password" value="" title="password" tabindex="5" type="password">
+    <input type="submit" value="确定" />
+    <input type="hidden" name="next" value="{{ next }}" />
+    <div class="line"></div>
+    </form>
+    </fieldset>
+    <a href="#" class="signin"><span>登录菜单</span></a>
+    <div class="line"></div>
+    <a href="{% url registration_register %}">注册</a>
+    <div class="line"></div>
+    <a href="{% url django.contrib.auth.views.password_reset %}">忘记密码？</a>
+{% endif %}
+</div>
+

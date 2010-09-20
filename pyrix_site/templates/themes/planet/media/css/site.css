@@ -9,7 +9,7 @@
 
 body {
     background: #D0DADF;
-    font-family:"Helvetica Neue", Arial, Helvetica, 雅黑, simsun, sans-serif;
+    font-family: "Helvetica Neue", Arial, Helvetica, 雅黑, simsun, sans-serif;
 }
 
 /* reset text-align in IE6 */
@@ -146,11 +146,36 @@ a:hover {
     background: #9C9D9E;
     text-decoration: none;
 }
-div.line {
-    border-left: 1px solid #393939;
-    border-right: 1px solid #BEBEBE;
-    display: inline;
-    height: 24px;
+#user_panel a.signin span {
+    background: url(../img/toggle_down_light.png) no-repeat 100% 50%;
+    padding:4px 16px 6px 0;
+}
+#user_panel a.menu-open span {
+	background: url(../img/toggle_up_dark.png) no-repeat 100% 50%;
+}
+#signin_menu {
+    display:none;
+    width:280px;
+    font-size:1em;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+#signin_menu label {
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    font-weight: bold;
+    text-shadow: rgba(0, 0, 0, 0.6) 1px 1px 0px;
+}
+#signin_menu input[type=text],
+#signin_menu input[type=password] {
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    border:1px solid #ACACAC;
+    font-size:1em;
+    width:60px;
+    margin: 0px 6px 0px 0px;
 }
 
 /* Main */
@@ -482,7 +507,13 @@ div.line {
     height:24px;
     line-height:24px;
 }
-
 .googlemap-map {
     height: 400px;
+}
+div.line {
+    border-left: 1px solid #393939;
+    border-right: 1px solid #BEBEBE;
+    display: inline;
+    height: 24px;
+    margin-right: 4px;
 }
