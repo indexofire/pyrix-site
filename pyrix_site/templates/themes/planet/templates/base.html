@@ -12,6 +12,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
   <!--<script src="{{ MEDIA_URL }}js/panel.js" type="text/javascript"></script>-->
 {% block extra_head %}{% endblock extra_head %}
+{% include "google_analytics.html" %}
 </head>
 
 <body>
@@ -69,6 +70,7 @@
         <strong><a href="/contact/" class="dark">联系我们</a></strong><div class="line"></div>
       </center>
     </div>
+    <div><center><img src="{{ MEDIA_URL }}img/browsers.png" alt="建议浏览器"/></center></div>
     <p class="con" style="text-align:center;margin:0px;paddng:10px;">Copyright: <a href="mailto:indexofire@gmail.com">Mark Renton</a>@2010</p>
   </div>
 </div>
