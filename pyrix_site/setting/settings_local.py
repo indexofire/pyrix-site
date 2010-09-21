@@ -1,6 +1,24 @@
 # -*- coding: utf-8 -*-
+import os
+from settings import PROJECT_PATH
 
 gettext = lambda s: s
+
+# debug
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+# database setting
+DATABASE_FILE = os.path.join(PROJECT_PATH, 'database/data.sql')
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': DATABASE_FILE,
+        'OPTIONS': {
+            'timeout': 10,
+        }
+    }
+}
 
 # django-cms-2.0 Settings:
 #CMS_CACHE_PREFIX = 'cms'
@@ -75,7 +93,7 @@ CMS_CONTENT_CODE_HIGHLIGHT = True
 CMS_CONTENT_CODE_HIGHLIGHT_CSS = 'code_highlight'
 CMS_CONTENT_CODE_HIGHLIGHT_LINENOS = True
 
-AKISMET_API_KEY = '773ea92115d8'
+#AKISMET_API_KEY = '773ea92115d8'
 
 # django-registration
 ACCOUNT_ACTIVATION_DAYS = 14
@@ -89,7 +107,7 @@ HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = 'search_index'
 
 # reCapture
-RECAPTCHA_PRIVATE_KEY = '6LfIO7wSAAAAAPPt4nVtrUIzFc49_FQoM1MT_i0r'
+#RECAPTCHA_PRIVATE_KEY = '6LfIO7wSAAAAAPPt4nVtrUIzFc49_FQoM1MT_i0r'
 
 # forum
 FORUM_CTX_CONFIG = {

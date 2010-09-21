@@ -3,8 +3,7 @@
 import os
 from settings import PROJECT_PATH
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+
 ADMINS = (
     ('WebMaster', 'webmaster@localhost.com'),
 )
@@ -12,18 +11,6 @@ ADMINS = (
 #CACHE_BACKEND = 'locmem://127.0.0.1:11211/'
 
 MANAGERS = ADMINS
-
-DATABASE_FILE = os.path.join(PROJECT_PATH, 'database/data.sql')
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DATABASE_FILE,
-        'OPTIONS': {
-            'timeout': 10,
-        }
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -141,10 +128,10 @@ INSTALLED_APPS = (
     'wiki',
     'forum',
     'attachments',
-    'onlineuser',
+    #'onlineuser',
     'simpleavatar',
     'account',
-    'djangohelper',
+    #'djangohelper',
     'haystack',
     'taggit',
     'easy_thumbnails',
